@@ -191,7 +191,7 @@ p {
 }
 
 .language-select select {
-  width: 116px;
+  width: 132px;
   min-height: 42px;
   padding: 0 34px 0 12px;
   border: 1.5px solid var(--border-default);
@@ -296,6 +296,7 @@ p {
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .hero-copy h2 {
@@ -778,47 +779,40 @@ time,
 .verify-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  width: fit-content;
+  justify-content: space-between;
+  gap: 10px;
+  width: min(100%, 240px);
   max-width: 100%;
-  min-height: 34px;
-  margin-top: 9px;
-  padding: 6px 10px;
-  border-radius: var(--radius-pill);
-  background: var(--ink-900);
+  min-height: 44px;
+  margin-top: 12px;
+  padding: 10px 14px 10px 16px;
+  border: 1px solid rgba(255, 183, 0, 0.34);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(255, 183, 0, 0.24), transparent 42%),
+    var(--ink-900);
   color: var(--white);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
+  line-height: 1.2;
+  box-shadow: 0 10px 22px rgba(26, 25, 22, 0.12);
+  transition:
+    transform 160ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .verify-link:hover {
-  background: var(--ink-800);
+  background:
+    linear-gradient(135deg, rgba(255, 183, 0, 0.34), transparent 42%),
+    var(--ink-800);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-1px);
 }
 
 .verify-link svg {
   width: 16px;
   height: 16px;
-}
-
-.site-footer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 48px;
-  padding: 34px max(24px, calc((100% - 1200px) / 2));
-  background: var(--ink-900);
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.site-footer p {
-  max-width: 760px;
-}
-
-.site-footer a {
-  color: var(--brand);
-  font-weight: 800;
 }
 
 @media (max-width: 1020px) {
@@ -964,7 +958,7 @@ time,
   }
 
   .language-select select {
-    width: 104px;
+    width: 138px;
     min-height: 38px;
     font-size: 14px;
   }
@@ -1008,6 +1002,10 @@ time,
   .awards-list div {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .verify-link {
+    width: 100%;
   }
 }
 

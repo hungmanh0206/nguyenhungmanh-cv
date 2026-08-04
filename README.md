@@ -1,6 +1,6 @@
-# Nguyen Hung Manh CV
+# NGUYEN HUNG MANH CV
 
-Personal bilingual CV website for Nguyen Hung Manh, built with Vinext/Next and
+Personal bilingual CV website for NGUYEN HUNG MANH, built with Vinext/Next and
 styled from the provided SAPP Academy design-system tokens without using the
 SAPP logo.
 

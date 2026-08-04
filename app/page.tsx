@@ -21,7 +21,7 @@ const content = {
     languageLabel: "Ngôn ngữ",
     nav: ["Kinh nghiệm", "Kỹ năng", "Chứng chỉ", "Liên hệ"],
     heroBadge: "IT Tester | AI QA Engineer",
-    name: "Nguyễn Hùng Mạnh",
+    name: "NGUYỄN HÙNG MẠNH",
     role: "QA Engineer định hướng AI-driven Testing",
     intro:
       "QA Engineer có kinh nghiệm kiểm thử phần mềm, phân tích yêu cầu và đảm bảo chất lượng sản phẩm. Tôi tập trung ứng dụng AI để tối ưu quy trình QA, từ phân tích yêu cầu, thiết kế test case đến báo cáo kiểm thử.",
@@ -212,7 +212,7 @@ const content = {
     languageLabel: "Language",
     nav: ["Experience", "Skills", "Certificates", "Contact"],
     heroBadge: "IT Tester | AI QA Engineer",
-    name: "Nguyen Hung Manh",
+    name: "NGUYEN HUNG MANH",
     role: "QA Engineer focused on AI-driven Testing",
     intro:
       "QA Engineer with experience in software quality assurance and requirement analysis. I focus on using AI to improve QA workflows, from requirement analysis and test design to execution and reporting.",
@@ -591,10 +591,6 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="site-footer">
-        <p>{t.footer}</p>
-        <a href="mailto:hungmanh0206@gmail.com">hungmanh0206@gmail.com</a>
-      </footer>
     </div>
   );
 }

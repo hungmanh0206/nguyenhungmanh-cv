@@ -5,8 +5,8 @@ import test from "node:test";
 test("defines the bilingual CV content and external links", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
 
-  assert.match(page, /Nguyễn Hùng Mạnh/);
-  assert.match(page, /Nguyen Hung Manh/);
+  assert.match(page, /NGUYỄN HÙNG MẠNH/);
+  assert.match(page, /NGUYEN HUNG MANH/);
   assert.match(page, /nguyen-hung-manh-cv-vi\.pdf/);
   assert.match(page, /nguyen-hung-manh-cv-en\.pdf/);
   assert.match(page, /hust\.ediploma\.vn\/verify\/Zf3y-0Ovt-iJen/);
