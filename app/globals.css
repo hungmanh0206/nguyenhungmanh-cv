@@ -95,6 +95,7 @@ p {
 .site-shell {
   position: relative;
   min-height: 100vh;
+  padding-bottom: 64px;
   overflow-x: hidden;
 }
 
@@ -850,6 +851,10 @@ time,
 @media (max-width: 760px) {
   body {
     font-size: 15px;
+  }
+
+  .site-shell {
+    padding-bottom: 48px;
   }
 
   .site-header {
