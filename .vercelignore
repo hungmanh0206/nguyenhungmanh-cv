@@ -1,0 +1,11 @@
+.wrangler
+.openai
+build
+db
+design-system
+dist
+drizzle
+examples
+tmp
+worker
+dev-server*.log
