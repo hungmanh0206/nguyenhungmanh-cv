@@ -175,7 +175,7 @@ const content = {
       note: "Đã tốt nghiệp 2019",
     },
     certTitle: "Chứng chỉ",
-    verifyLabel: "Xác thực chứng chỉ",
+    verifyLabel: "Xem chứng chỉ",
     certs: [
       { year: "2020", title: "TOEIC 600" },
       {
@@ -366,7 +366,7 @@ const content = {
       note: "Graduated in 2019",
     },
     certTitle: "Certifications",
-    verifyLabel: "Verify credential",
+    verifyLabel: "View certificate",
     certs: [
       { year: "2020", title: "TOEIC 600" },
       {
