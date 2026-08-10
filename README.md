@@ -24,6 +24,6 @@ npm run build
 
 - `app/page.tsx`: bilingual CV content and page structure.
 - `app/globals.css`: responsive visual design based on gold/ink tokens.
-- `public/manh-profile.png`: profile image extracted from the supplied CV.
+- `public/manh-profile.png`: profile image supplied for the website hero.
 - `public/nguyen-hung-manh-cv-vi.pdf`: Vietnamese CV download.
 - `public/nguyen-hung-manh-cv-en.pdf`: English CV download.
