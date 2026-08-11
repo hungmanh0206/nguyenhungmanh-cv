@@ -7,6 +7,9 @@ test("defines the bilingual CV content and external links", async () => {
 
   assert.match(page, /NGUYỄN HÙNG MẠNH/);
   assert.match(page, /NGUYEN HUNG MANH/);
+  assert.match(page, /Khoa Công nghệ thông tin/);
+  assert.match(page, /Chuyên ngành Hệ thống thông tin/);
+  assert.match(page, /Đã tốt nghiệp 01\/2019/);
   assert.match(page, /nguyen-hung-manh-cv-vi\.pdf/);
   assert.match(page, /nguyen-hung-manh-cv-en\.pdf/);
   assert.match(page, /data-analysis-certificate\.pdf/);
