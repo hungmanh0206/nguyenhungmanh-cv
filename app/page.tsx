@@ -72,7 +72,7 @@ const content = {
     ],
     focusTitle: "Mục tiêu nghề nghiệp",
     focus:
-      "Phát triển theo hướng AI QA Engineer, xây dựng các giải pháp kiểm thử thông minh, nâng cao độ phủ kiểm thử và rút ngắn vòng phản hồi chất lượng cho sản phẩm.",
+      "Phát triển chuyên sâu theo hướng AI QA Engineer, ứng dụng kinh nghiệm xây dựng AI Agent vào quy trình kiểm thử nhằm tự động hóa các tác vụ QA, nâng cao độ phủ kiểm thử, phát hiện lỗi sớm và rút ngắn vòng phản hồi chất lượng sản phẩm.",
     experienceTitle: "Kinh nghiệm làm việc",
     productLabel: "Sản phẩm đã tham gia",
     experiences: [
@@ -293,7 +293,7 @@ const content = {
     ],
     focusTitle: "Career objective",
     focus:
-      "Grow as an AI QA Engineer by building smarter testing solutions, improving test coverage, and shortening the quality feedback loop for product teams.",
+      "Deepen my specialization as an AI QA Engineer by applying experience building AI Agents to testing workflows, automating QA tasks, improving test coverage, detecting defects early, and shortening the product quality feedback loop.",
     experienceTitle: "Work experience",
     productLabel: "Products contributed to",
     experiences: [
