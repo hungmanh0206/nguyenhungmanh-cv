@@ -198,8 +198,6 @@ const content = {
     ],
     educationTitle: "Học vấn",
     education: {
-      status: "Đã tốt nghiệp",
-      graduationDate: "01/2019",
       periodLabel: "Thời gian học",
       faculty: "Khoa Công nghệ thông tin",
       major: "Chuyên ngành Hệ thống thông tin",
@@ -420,8 +418,6 @@ const content = {
     ],
     educationTitle: "Education",
     education: {
-      status: "Graduated",
-      graduationDate: "01/2019",
       periodLabel: "Study period",
       faculty: "Faculty of Information Technology",
       major: "Information Systems Major",
@@ -646,19 +642,18 @@ export default function Home() {
               >
                 <SectionTitle id="education-title">{t.educationTitle}</SectionTitle>
                 <div className="education-credential">
-                  <div className="education-status-block">
-                    <span>{t.education.status}</span>
-                    <strong>{t.education.graduationDate}</strong>
-                  </div>
                   <div className="education-content">
                     <h3>{t.education.school}</h3>
                     <div className="education-track" aria-label={t.education.note}>
                       <span>{t.education.faculty}</span>
                       <span>{t.education.major}</span>
                     </div>
-                    <div className="education-period">
-                      <span>{t.education.periodLabel}</span>
-                      <time>{t.education.date}</time>
+                    <div className="education-meta">
+                      <div className="education-period">
+                        <span>{t.education.periodLabel}</span>
+                        <time>{t.education.date}</time>
+                      </div>
+                      <span className="education-status-badge">{t.education.note}</span>
                     </div>
                   </div>
                 </div>
