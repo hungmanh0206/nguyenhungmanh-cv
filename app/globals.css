@@ -959,10 +959,15 @@ time,
   font-weight: 800;
   line-height: 1.2;
   box-shadow: none;
+  white-space: nowrap;
   transition:
     transform 160ms ease,
     border-color 180ms ease,
     box-shadow 180ms ease;
+}
+
+.verify-link span {
+  white-space: nowrap;
 }
 
 .verify-link:hover {
@@ -972,6 +977,7 @@ time,
 }
 
 .verify-link svg {
+  flex: 0 0 13px;
   width: 13px;
   height: 13px;
 }
