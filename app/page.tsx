@@ -198,6 +198,9 @@ const content = {
     ],
     educationTitle: "Học vấn",
     education: {
+      status: "Đã tốt nghiệp",
+      graduationDate: "01/2019",
+      periodLabel: "Thời gian học",
       faculty: "Khoa Công nghệ thông tin",
       major: "Chuyên ngành Hệ thống thông tin",
       school: "Học viện Công nghệ Bưu chính Viễn thông",
@@ -417,6 +420,9 @@ const content = {
     ],
     educationTitle: "Education",
     education: {
+      status: "Graduated",
+      graduationDate: "01/2019",
+      periodLabel: "Study period",
       faculty: "Faculty of Information Technology",
       major: "Information Systems Major",
       school: "Posts and Telecommunications Institute of Technology",
@@ -639,14 +645,22 @@ export default function Home() {
                 aria-labelledby="education-title"
               >
                 <SectionTitle id="education-title">{t.educationTitle}</SectionTitle>
-                <div className="compact-item education-item">
-                  <div>
-                    <h3>{t.education.faculty}</h3>
-                    <p className="education-major">{t.education.major}</p>
-                    <p className="education-school">{t.education.school}</p>
-                    <span className="education-status">{t.education.note}</span>
+                <div className="education-credential">
+                  <div className="education-status-block">
+                    <span>{t.education.status}</span>
+                    <strong>{t.education.graduationDate}</strong>
                   </div>
-                  <time>{t.education.date}</time>
+                  <div className="education-content">
+                    <h3>{t.education.school}</h3>
+                    <div className="education-track" aria-label={t.education.note}>
+                      <span>{t.education.faculty}</span>
+                      <span>{t.education.major}</span>
+                    </div>
+                    <div className="education-period">
+                      <span>{t.education.periodLabel}</span>
+                      <time>{t.education.date}</time>
+                    </div>
+                  </div>
                 </div>
               </article>
 
