@@ -4,6 +4,8 @@ import { ChangeEvent, ReactNode, useEffect, useState } from "react";
 
 type Locale = "vi" | "en";
 type IconName =
+  | "book"
+  | "building"
   | "calendar"
   | "download"
   | "external"
@@ -198,7 +200,6 @@ const content = {
     ],
     educationTitle: "Học vấn",
     education: {
-      periodLabel: "Thời gian học",
       faculty: "Khoa Công nghệ thông tin",
       major: "Chuyên ngành Hệ thống thông tin",
       school: "Học viện Công nghệ Bưu chính Viễn thông",
@@ -418,7 +419,6 @@ const content = {
     ],
     educationTitle: "Education",
     education: {
-      periodLabel: "Study period",
       faculty: "Faculty of Information Technology",
       major: "Information Systems Major",
       school: "Posts and Telecommunications Institute of Technology",
@@ -644,15 +644,18 @@ export default function Home() {
                 <div className="education-credential">
                   <div className="education-content">
                     <h3>{t.education.school}</h3>
-                    <div className="education-track" aria-label={t.education.note}>
-                      <span>{t.education.faculty}</span>
-                      <span>{t.education.major}</span>
+                    <time className="education-date">{t.education.date}</time>
+                    <div className="education-details" aria-label={t.education.note}>
+                      <p>
+                        <Icon name="building" />
+                        <span>{t.education.faculty}</span>
+                      </p>
+                      <p>
+                        <Icon name="book" />
+                        <span>{t.education.major}</span>
+                      </p>
                     </div>
                     <div className="education-meta">
-                      <div className="education-period">
-                        <span>{t.education.periodLabel}</span>
-                        <time>{t.education.date}</time>
-                      </div>
                       <span className="education-status-badge">{t.education.note}</span>
                     </div>
                   </div>
@@ -994,6 +997,23 @@ function ContactRow({
 
 function Icon({ name }: { name: IconName }) {
   const paths: Record<IconName, ReactNode> = {
+    book: (
+      <>
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
+      </>
+    ),
+    building: (
+      <>
+        <path d="M4 21h16" />
+        <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+        <path d="M9 7h1" />
+        <path d="M14 7h1" />
+        <path d="M9 11h1" />
+        <path d="M14 11h1" />
+        <path d="M10 21v-4h4v4" />
+      </>
+    ),
     calendar: (
       <>
         <path d="M8 2v4" />
