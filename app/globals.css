@@ -287,8 +287,7 @@ p {
     0 0 0 1px rgba(255, 183, 0, 0.38);
 }
 
-.hero-media span,
-.eyebrow {
+.hero-media span {
   display: inline-flex;
   width: fit-content;
   max-width: 100%;
@@ -1336,10 +1335,6 @@ time,
 
   .hero-media img {
     width: min(260px, 100%);
-  }
-
-  .hero-media span {
-    display: none;
   }
 
   .hero-copy h1 {

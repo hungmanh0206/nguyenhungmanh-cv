@@ -569,7 +569,6 @@ export default function Home() {
             <span>{t.heroBadge}</span>
           </div>
           <div className="hero-copy">
-            <p className="eyebrow">{t.heroBadge}</p>
             <h1 id="hero-title">{t.name}</h1>
             <h2>{t.role}</h2>
             <p className="hero-intro">{t.intro}</p>
