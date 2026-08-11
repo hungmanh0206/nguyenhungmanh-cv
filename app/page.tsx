@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, ReactNode, useState } from "react";
+import { ChangeEvent, ReactNode, useEffect, useState } from "react";
 
 type Locale = "vi" | "en";
 type IconName =
@@ -12,6 +12,9 @@ type IconName =
   | "map"
   | "phone";
 
+const modalSections = ["experience", "skills", "certificates", "contact"] as const;
+type ModalKey = (typeof modalSections)[number];
+
 const certificateUrl = "https://hust.ediploma.vn/verify/Zf3y-0Ovt-iJen";
 const linkedinUrl = "https://www.linkedin.com/in/nguyen-hung-manh-97316117b/";
 
@@ -20,6 +23,7 @@ const content = {
     languageName: "Tiếng Việt",
     languageLabel: "Ngôn ngữ",
     nav: ["Kinh nghiệm", "Kỹ năng", "Chứng chỉ", "Liên hệ"],
+    modalCloseLabel: "Đóng",
     heroBadge: "IT Tester | AI QA Engineer",
     name: "NGUYỄN HÙNG MẠNH",
     role: "QA Engineer định hướng AI-driven Testing",
@@ -64,11 +68,18 @@ const content = {
     focus:
       "Phát triển theo hướng AI QA Engineer, xây dựng các giải pháp kiểm thử thông minh, nâng cao độ phủ kiểm thử và rút ngắn vòng phản hồi chất lượng cho sản phẩm.",
     experienceTitle: "Kinh nghiệm làm việc",
+    productLabel: "Sản phẩm đã tham gia",
     experiences: [
       {
         role: "IT Tester",
         company: "Công ty Cổ phần Giáo dục SAPP",
         date: "02/2026 - Nay",
+        products: [
+          {
+            name: "LMS Pro",
+            href: "https://lms-pro.sapp.edu.vn/lms-pro-new-version?tab=home",
+          },
+        ],
         bullets: [
           "Phân tích yêu cầu nghiệp vụ, xây dựng Test Design và Test Case cho hệ thống quản lý học tập LMS PRO.",
           "Thực hiện Functional Testing, UI Testing, API Testing, Integration Testing và Regression Testing nhằm đảm bảo chất lượng và tính ổn định của sản phẩm.",
@@ -80,6 +91,12 @@ const content = {
         role: "Kiểm thử phần mềm",
         company: "Công ty Cổ phần ULEARNBOX",
         date: "04/2024 - 04/2025",
+        products: [
+          {
+            name: "uPresenter",
+            href: "https://upresenter.ai/vi/",
+          },
+        ],
         bullets: [
           "Xây dựng Test Plan và Test Case cho nền tảng eLearning ứng dụng AI, bao gồm AI Content Generation, Text-to-Speech, Slide Recognition và Learning Management.",
           "Đảm bảo chất lượng cho các tính năng AI và luồng nghiệp vụ trọng yếu của hệ thống.",
@@ -91,6 +108,16 @@ const content = {
         role: "Kiểm thử phần mềm",
         company: "Công ty Cổ phần Hệ thống ATOMI",
         date: "04/2019 - 04/2024",
+        products: [
+          {
+            name: "ActivePresenter",
+            href: "https://atomisystems.com/activepresenter/",
+          },
+          {
+            name: "Saola Animate",
+            href: "https://atomisystems.com/saola-animate/",
+          },
+        ],
         bullets: [
           "Phân tích yêu cầu, xây dựng Test Plan và Test Case cho ActivePresenter và Saola Animate.",
           "Thực hiện kiểm thử chức năng, giao diện, tương thích đa nền tảng Windows/macOS và kiểm thử hồi quy.",
@@ -176,6 +203,8 @@ const content = {
     },
     certTitle: "Chứng chỉ",
     verifyLabel: "Xem chứng chỉ",
+    certificatePreviewTitle: "Chứng chỉ Data Analysis",
+    certificateFallback: "Mở trang xác thực",
     certs: [
       { year: "2020", title: "TOEIC 600" },
       {
@@ -211,6 +240,7 @@ const content = {
     languageName: "English",
     languageLabel: "Language",
     nav: ["Experience", "Skills", "Certificates", "Contact"],
+    modalCloseLabel: "Close",
     heroBadge: "IT Tester | AI QA Engineer",
     name: "NGUYEN HUNG MANH",
     role: "QA Engineer focused on AI-driven Testing",
@@ -255,11 +285,18 @@ const content = {
     focus:
       "Grow as an AI QA Engineer by building smarter testing solutions, improving test coverage, and shortening the quality feedback loop for product teams.",
     experienceTitle: "Work experience",
+    productLabel: "Products contributed to",
     experiences: [
       {
         role: "IT Tester",
         company: "SAPP Education JSC",
         date: "02/2026 - Present",
+        products: [
+          {
+            name: "LMS Pro",
+            href: "https://lms-pro.sapp.edu.vn/lms-pro-new-version?tab=home",
+          },
+        ],
         bullets: [
           "Analyzed business requirements and developed Test Designs and Test Cases for the LMS PRO Learning Management System.",
           "Performed Functional, UI, API, Integration, and Regression Testing to ensure product quality and system stability.",
@@ -271,6 +308,12 @@ const content = {
         role: "Quality Assurance Tester",
         company: "ULEARNBOX JSC",
         date: "04/2024 - 04/2025",
+        products: [
+          {
+            name: "uPresenter",
+            href: "https://upresenter.ai/vi/",
+          },
+        ],
         bullets: [
           "Developed Test Plans and Test Cases for an AI-powered eLearning platform covering AI Content Generation, Text-to-Speech, Slide Recognition, and Learning Management.",
           "Performed testing and quality assurance for AI-driven features and core business workflows.",
@@ -282,6 +325,16 @@ const content = {
         role: "Quality Assurance Tester",
         company: "ATOMI SYSTEMS INC.",
         date: "04/2019 - 04/2024",
+        products: [
+          {
+            name: "ActivePresenter",
+            href: "https://atomisystems.com/activepresenter/",
+          },
+          {
+            name: "Saola Animate",
+            href: "https://atomisystems.com/saola-animate/",
+          },
+        ],
         bullets: [
           "Analyzed requirements and developed Test Plans and Test Cases for ActivePresenter and Saola Animate desktop applications.",
           "Performed functional, UI, cross-platform Windows/macOS, and regression testing to ensure product quality and stability.",
@@ -367,6 +420,8 @@ const content = {
     },
     certTitle: "Certifications",
     verifyLabel: "View certificate",
+    certificatePreviewTitle: "Data Analysis Certificate",
+    certificateFallback: "Open verification page",
     certs: [
       { year: "2020", title: "TOEIC 600" },
       {
@@ -400,13 +455,51 @@ const content = {
   },
 } as const;
 
+type Content = (typeof content)[Locale];
+type Experience = Content["experiences"][number];
+type SkillGroup = Content["skillGroups"][number];
+type Certificate = Content["certs"][number];
+type Product = {
+  readonly name: string;
+  readonly href: string;
+};
+
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("vi");
+  const [activeModal, setActiveModal] = useState<ModalKey | null>(null);
   const t = content[locale];
-  const navTargets = ["#experience", "#skills", "#certificates", "#contact"];
+
+  useEffect(() => {
+    if (!activeModal) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveModal(null);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeModal]);
 
   function handleLocaleChange(event: ChangeEvent<HTMLSelectElement>) {
     setLocale(event.target.value as Locale);
+  }
+
+  function openModal(section: ModalKey) {
+    setActiveModal(section);
+  }
+
+  function closeModal() {
+    setActiveModal(null);
   }
 
   return (
@@ -418,9 +511,17 @@ export default function Home() {
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
           {t.nav.map((item, index) => (
-            <a key={item} href={navTargets[index]}>
+            <button
+              aria-controls={activeModal ? "section-modal" : undefined}
+              aria-expanded={activeModal === modalSections[index]}
+              aria-pressed={activeModal === modalSections[index]}
+              className={activeModal === modalSections[index] ? "is-active" : undefined}
+              key={item}
+              onClick={() => openModal(modalSections[index])}
+              type="button"
+            >
               {item}
-            </a>
+            </button>
           ))}
         </nav>
         <label className="language-select">
@@ -494,43 +595,15 @@ export default function Home() {
 
             <section id="experience" aria-labelledby="experience-title">
               <SectionTitle id="experience-title">{t.experienceTitle}</SectionTitle>
-              <div className="timeline">
-                {t.experiences.map((job) => (
-                  <article className="timeline-item" key={`${job.role}-${job.date}`}>
-                    <div className="timeline-marker" aria-hidden="true" />
-                    <div className="timeline-content">
-                      <div className="timeline-head">
-                        <div>
-                          <h3>{job.role}</h3>
-                          <p>{job.company}</p>
-                        </div>
-                        <time>{job.date}</time>
-                      </div>
-                      <ul>
-                        {job.bullets.map((bullet) => (
-                          <li key={bullet}>{bullet}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </article>
-                ))}
-              </div>
+              <ExperienceList
+                experiences={t.experiences}
+                productLabel={t.productLabel}
+              />
             </section>
 
             <section id="skills" aria-labelledby="skills-title">
               <SectionTitle id="skills-title">{t.skillsTitle}</SectionTitle>
-              <div className="skills-grid">
-                {t.skillGroups.map((group) => (
-                  <article className="skill-group" key={group.title}>
-                    <h3>{group.title}</h3>
-                    <div>
-                      {group.items.map((item) => (
-                        <span key={item}>{item}</span>
-                      ))}
-                    </div>
-                  </article>
-                ))}
-              </div>
+              <SkillsGrid skillGroups={t.skillGroups} />
             </section>
 
             <section className="split-section">
@@ -552,27 +625,12 @@ export default function Home() {
                 aria-labelledby="certificates-title"
               >
                 <SectionTitle id="certificates-title">{t.certTitle}</SectionTitle>
-                <div className="certificate-list">
-                  {t.certs.map((cert) => (
-                    <div className="certificate-item" key={`${cert.year}-${cert.title}`}>
-                      <span className="year-pill">{cert.year}</span>
-                      <div>
-                        <h3>{cert.title}</h3>
-                        {"href" in cert && cert.href ? (
-                          <a
-                            className="verify-link"
-                            href={cert.href}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <span>{t.verifyLabel}</span>
-                            <Icon name="external" />
-                          </a>
-                        ) : null}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <CertificateList
+                  certs={t.certs}
+                  mode="page"
+                  onOpenModal={() => openModal("certificates")}
+                  verifyLabel={t.verifyLabel}
+                />
               </article>
             </section>
 
@@ -591,8 +649,259 @@ export default function Home() {
         </section>
       </main>
 
+      {activeModal ? (
+        <div
+          className="modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              closeModal();
+            }
+          }}
+        >
+          <section
+            aria-labelledby="section-modal-title"
+            aria-modal="true"
+            className={`section-modal modal-${activeModal}`}
+            id="section-modal"
+            role="dialog"
+          >
+            <header className="modal-header">
+              <div>
+                <span className="modal-kicker">{t.name}</span>
+                <h2 id="section-modal-title">{getModalTitle(activeModal, t)}</h2>
+              </div>
+              <button
+                aria-label={t.modalCloseLabel}
+                autoFocus
+                className="modal-close"
+                onClick={closeModal}
+                type="button"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </header>
+            <div className="modal-body">{renderModalBody(activeModal, t)}</div>
+          </section>
+        </div>
+      ) : null}
     </div>
   );
+}
+
+function ExperienceList({
+  experiences,
+  productLabel,
+}: {
+  experiences: readonly Experience[];
+  productLabel: string;
+}) {
+  return (
+    <div className="timeline">
+      {experiences.map((job) => (
+        <article className="timeline-item" key={`${job.role}-${job.date}`}>
+          <div className="timeline-marker" aria-hidden="true" />
+          <div className="timeline-content">
+            <div className="timeline-head">
+              <div>
+                <h3>{job.role}</h3>
+                <p>{job.company}</p>
+              </div>
+              <time>{job.date}</time>
+            </div>
+            <ul>
+              {job.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+            {hasProducts(job) ? (
+              <ProductLinks label={productLabel} products={job.products} />
+            ) : null}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ProductLinks({
+  label,
+  products,
+}: {
+  label: string;
+  products: readonly Product[];
+}) {
+  return (
+    <div className="product-links">
+      <strong>{label}</strong>
+      <div>
+        {products.map((product) => (
+          <a
+            className="product-chip"
+            href={product.href}
+            key={product.name}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>{product.name}</span>
+            <Icon name="external" />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SkillsGrid({ skillGroups }: { skillGroups: readonly SkillGroup[] }) {
+  return (
+    <div className="skills-grid">
+      {skillGroups.map((group) => (
+        <article className="skill-group" key={group.title}>
+          <h3>{group.title}</h3>
+          <div>
+            {group.items.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function CertificateList({
+  certificateFallback,
+  certificatePreviewTitle,
+  certs,
+  mode,
+  onOpenModal,
+  verifyLabel,
+}: {
+  certificateFallback?: string;
+  certificatePreviewTitle?: string;
+  certs: readonly Certificate[];
+  mode: "page" | "modal";
+  onOpenModal?: () => void;
+  verifyLabel: string;
+}) {
+  const linkedCertificate = certs.find(hasHref);
+
+  return (
+    <>
+      <div className="certificate-list">
+        {certs.map((cert) => (
+          <div className="certificate-item" key={`${cert.year}-${cert.title}`}>
+            <span className="year-pill">{cert.year}</span>
+            <div>
+              <h3>{cert.title}</h3>
+              {hasHref(cert) ? (
+                mode === "page" ? (
+                  <button
+                    className="verify-link"
+                    onClick={onOpenModal}
+                    type="button"
+                  >
+                    <span>{verifyLabel}</span>
+                    <Icon name="external" />
+                  </button>
+                ) : (
+                  <a
+                    className="verify-link"
+                    href={cert.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span>{verifyLabel}</span>
+                    <Icon name="external" />
+                  </a>
+                )
+              ) : null}
+            </div>
+          </div>
+        ))}
+      </div>
+      {mode === "modal" && linkedCertificate ? (
+        <div className="certificate-preview">
+          <div className="certificate-preview-head">
+            <h3>{certificatePreviewTitle}</h3>
+            <a
+              className="preview-open-link"
+              href={linkedCertificate.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>{certificateFallback}</span>
+              <Icon name="external" />
+            </a>
+          </div>
+          <iframe
+            loading="lazy"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
+            src={linkedCertificate.href}
+            title={certificatePreviewTitle}
+          />
+        </div>
+      ) : null}
+    </>
+  );
+}
+
+function renderModalBody(section: ModalKey, t: Content) {
+  if (section === "experience") {
+    return <ExperienceList experiences={t.experiences} productLabel={t.productLabel} />;
+  }
+
+  if (section === "skills") {
+    return <SkillsGrid skillGroups={t.skillGroups} />;
+  }
+
+  if (section === "certificates") {
+    return (
+      <CertificateList
+        certificateFallback={t.certificateFallback}
+        certificatePreviewTitle={t.certificatePreviewTitle}
+        certs={t.certs}
+        mode="modal"
+        verifyLabel={t.verifyLabel}
+      />
+    );
+  }
+
+  return (
+    <div className="modal-contact">
+      <div className="modal-contact-list">
+        {t.contact.map((item) => (
+          <ContactRow key={`${item.label}-${item.value}`} {...item} />
+        ))}
+      </div>
+      <div className="modal-interests">
+        <SectionTitle>{t.interestsTitle}</SectionTitle>
+        <ul className="simple-list">
+          {t.interests.map((interest) => (
+            <li key={interest}>{interest}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function getModalTitle(section: ModalKey, t: Content) {
+  const titles: Record<ModalKey, string> = {
+    certificates: t.certTitle,
+    contact: t.contactTitle,
+    experience: t.experienceTitle,
+    skills: t.skillsTitle,
+  };
+
+  return titles[section];
+}
+
+function hasProducts(job: Experience): job is Experience & { products: readonly Product[] } {
+  return "products" in job;
+}
+
+function hasHref(cert: Certificate): cert is Certificate & { href: string } {
+  return "href" in cert && Boolean(cert.href);
 }
 
 function SectionTitle({ children, id }: { children: ReactNode; id?: string }) {

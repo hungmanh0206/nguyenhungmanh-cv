@@ -11,6 +11,12 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /nguyen-hung-manh-cv-en\.pdf/);
   assert.match(page, /hust\.ediploma\.vn\/verify\/Zf3y-0Ovt-iJen/);
   assert.match(page, /linkedin\.com\/in\/nguyen-hung-manh-97316117b/);
+  assert.match(page, /atomisystems\.com\/activepresenter/);
+  assert.match(page, /atomisystems\.com\/saola-animate/);
+  assert.match(page, /upresenter\.ai\/vi/);
+  assert.match(page, /lms-pro\.sapp\.edu\.vn\/lms-pro-new-version\?tab=home/);
+  assert.match(page, /Xem chứng chỉ/);
+  assert.match(page, /View certificate/);
   assert.doesNotMatch(page, /logo-sapp|assets\/logo-sapp/i);
 });
 
