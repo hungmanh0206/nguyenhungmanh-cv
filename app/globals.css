@@ -328,10 +328,31 @@ p {
 }
 
 .hero-intro {
+  display: grid;
+  gap: 10px;
   max-width: 720px;
-  margin-top: 18px;
+  margin: 18px 0 0;
+  padding: 0;
   color: rgba(255, 255, 255, 0.82);
   font-size: 18px;
+  list-style: none;
+}
+
+.hero-intro li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.hero-intro li::before {
+  position: absolute;
+  top: 0.75em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 3px rgba(255, 183, 0, 0.14);
+  content: "";
 }
 
 .hero-stats {
