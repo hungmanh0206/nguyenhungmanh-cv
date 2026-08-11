@@ -203,7 +203,7 @@ const content = {
       faculty: "Khoa Công nghệ thông tin",
       major: "Chuyên ngành Hệ thống thông tin",
       school: "Học viện Công nghệ Bưu chính Viễn thông",
-      date: "2014 - 01/2019",
+      date: "08/2014-01/2019",
       note: "Đã tốt nghiệp 01/2019",
     },
     certTitle: "Chứng chỉ",
@@ -422,7 +422,7 @@ const content = {
       faculty: "Faculty of Information Technology",
       major: "Information Systems Major",
       school: "Posts and Telecommunications Institute of Technology",
-      date: "2014 - 01/2019",
+      date: "08/2014-01/2019",
       note: "Graduated in January 2019",
     },
     certTitle: "Certifications",
@@ -663,7 +663,7 @@ export default function Home() {
               </article>
 
               <article
-                className="section-card"
+                className="section-card certificates-card"
                 id="certificates"
                 aria-labelledby="certificates-title"
               >
@@ -677,14 +677,14 @@ export default function Home() {
               </article>
             </section>
 
-            <section className="section-card" aria-labelledby="awards-title">
+            <section className="section-card awards-card" aria-labelledby="awards-title">
               <SectionTitle id="awards-title">{t.awardsTitle}</SectionTitle>
               <div className="awards-list">
                 {t.awards.map((award) => (
-                  <div key={`${award.year}-${award.title}`}>
-                    <span>{award.year}</span>
+                  <article className="award-item" key={`${award.year}-${award.title}`}>
+                    <time className="year-pill">{award.year}</time>
                     <p>{award.title}</p>
-                  </div>
+                  </article>
                 ))}
               </div>
             </section>
@@ -835,8 +835,8 @@ function CertificateList({
       <div className="certificate-list">
         {certs.map((cert) => (
           <div className="certificate-item" key={`${cert.year}-${cert.title}`}>
-            <span className="year-pill">{cert.year}</span>
-            <div>
+            <time className="year-pill">{cert.year}</time>
+            <div className="certificate-copy">
               <h3>{cert.title}</h3>
               {hasHref(cert) ? (
                 mode === "page" ? (
