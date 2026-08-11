@@ -30,7 +30,6 @@ const content = {
     modalCloseLabel: "Đóng",
     heroBadge: "IT Tester | AI QA Engineer",
     name: "NGUYỄN HÙNG MẠNH",
-    role: "QA Engineer định hướng AI-driven Testing",
     intro: [
       "Tôi là 1 QA Engineer có kinh nghiệm kiểm thử phần mềm, phân tích yêu cầu và đảm bảo chất lượng sản phẩm.",
       "Với định hướng AI-driven Testing, tôi tập trung ứng dụng AI để tối ưu quy trình QA, từ phân tích yêu cầu, thiết kế test case, thực thi kiểm thử đến báo cáo kiểm thử.",
@@ -251,7 +250,6 @@ const content = {
     modalCloseLabel: "Close",
     heroBadge: "IT Tester | AI QA Engineer",
     name: "NGUYEN HUNG MANH",
-    role: "QA Engineer focused on AI-driven Testing",
     intro: [
       "I am a QA Engineer with experience in software testing, requirement analysis, and product quality assurance.",
       "With an AI-driven Testing direction, I focus on applying AI to optimize QA workflows, from requirement analysis, test case design, and test execution to test reporting.",
@@ -574,7 +572,6 @@ export default function Home() {
           </div>
           <div className="hero-copy">
             <h1 id="hero-title">{t.name}</h1>
-            <h2>{t.role}</h2>
             <ul className="hero-intro">
               {t.intro.map((item) => (
                 <li key={item}>{item}</li>
