@@ -16,6 +16,7 @@ const modalSections = ["experience", "skills", "certificates", "contact"] as con
 type ModalKey = (typeof modalSections)[number];
 
 const certificateUrl = "https://hust.ediploma.vn/verify/Zf3y-0Ovt-iJen";
+const certificatePdfUrl = "/data-analysis-certificate.pdf";
 const linkedinUrl = "https://www.linkedin.com/in/nguyen-hung-manh-97316117b/";
 
 const content = {
@@ -204,6 +205,7 @@ const content = {
     certTitle: "Chứng chỉ",
     verifyLabel: "Xem chứng chỉ",
     certificatePreviewTitle: "Chứng chỉ Data Analysis",
+    certificateDownloadLabel: "Tải PDF chứng chỉ",
     certificateFallback: "Mở trang xác thực",
     certs: [
       { year: "2020", title: "TOEIC 600" },
@@ -421,6 +423,7 @@ const content = {
     certTitle: "Certifications",
     verifyLabel: "View certificate",
     certificatePreviewTitle: "Data Analysis Certificate",
+    certificateDownloadLabel: "Download PDF",
     certificateFallback: "Open verification page",
     certs: [
       { year: "2020", title: "TOEIC 600" },
@@ -661,7 +664,7 @@ export default function Home() {
           <section
             aria-labelledby="section-modal-title"
             aria-modal="true"
-            className={`section-modal modal-${activeModal}`}
+            className={`section-modal section-modal-${activeModal}`}
             id="section-modal"
             role="dialog"
           >
@@ -770,6 +773,7 @@ function SkillsGrid({ skillGroups }: { skillGroups: readonly SkillGroup[] }) {
 
 function CertificateList({
   certificateFallback,
+  certificateDownloadLabel,
   certificatePreviewTitle,
   certs,
   mode,
@@ -777,6 +781,7 @@ function CertificateList({
   verifyLabel,
 }: {
   certificateFallback?: string;
+  certificateDownloadLabel?: string;
   certificatePreviewTitle?: string;
   certs: readonly Certificate[];
   mode: "page" | "modal";
@@ -823,20 +828,29 @@ function CertificateList({
         <div className="certificate-preview">
           <div className="certificate-preview-head">
             <h3>{certificatePreviewTitle}</h3>
-            <a
-              className="preview-open-link"
-              href={linkedCertificate.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span>{certificateFallback}</span>
-              <Icon name="external" />
-            </a>
+            <div className="preview-actions">
+              <a
+                className="preview-open-link"
+                href={certificatePdfUrl}
+                download
+              >
+                <Icon name="download" />
+                <span>{certificateDownloadLabel}</span>
+              </a>
+              <a
+                className="preview-open-link"
+                href={linkedCertificate.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>{certificateFallback}</span>
+                <Icon name="external" />
+              </a>
+            </div>
           </div>
           <iframe
             loading="lazy"
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
-            src={linkedCertificate.href}
+            src={`${certificatePdfUrl}#toolbar=1&navpanes=0&view=FitH`}
             title={certificatePreviewTitle}
           />
         </div>
@@ -857,6 +871,7 @@ function renderModalBody(section: ModalKey, t: Content) {
   if (section === "certificates") {
     return (
       <CertificateList
+        certificateDownloadLabel={t.certificateDownloadLabel}
         certificateFallback={t.certificateFallback}
         certificatePreviewTitle={t.certificatePreviewTitle}
         certs={t.certs}

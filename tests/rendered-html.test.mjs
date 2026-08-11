@@ -9,6 +9,7 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /NGUYEN HUNG MANH/);
   assert.match(page, /nguyen-hung-manh-cv-vi\.pdf/);
   assert.match(page, /nguyen-hung-manh-cv-en\.pdf/);
+  assert.match(page, /data-analysis-certificate\.pdf/);
   assert.match(page, /hust\.ediploma\.vn\/verify\/Zf3y-0Ovt-iJen/);
   assert.match(page, /linkedin\.com\/in\/nguyen-hung-manh-97316117b/);
   assert.match(page, /atomisystems\.com\/activepresenter/);
@@ -25,5 +26,6 @@ test("ships the profile image and both CV PDF assets", async () => {
     access(new URL("../public/manh-profile.png", import.meta.url)),
     access(new URL("../public/nguyen-hung-manh-cv-vi.pdf", import.meta.url)),
     access(new URL("../public/nguyen-hung-manh-cv-en.pdf", import.meta.url)),
+    access(new URL("../public/data-analysis-certificate.pdf", import.meta.url)),
   ]);
 });
