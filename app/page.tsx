@@ -17,6 +17,7 @@ type ModalKey = (typeof modalSections)[number];
 
 const certificateUrl = "https://hust.ediploma.vn/verify/Zf3y-0Ovt-iJen";
 const certificatePdfUrl = "/data-analysis-certificate.pdf";
+const certificatePdfPreviewUrl = `${certificatePdfUrl}#toolbar=1&navpanes=0&zoom=page-fit&view=Fit`;
 const linkedinUrl = "https://www.linkedin.com/in/nguyen-hung-manh-97316117b/";
 
 const content = {
@@ -210,7 +211,7 @@ const content = {
     certs: [
       { year: "2020", title: "TOEIC 600" },
       {
-        year: "2025",
+        year: "2026",
         title:
           "Data Analysis - Khóa học Data Analysis giảng dạy bởi Đại học Bách Khoa và Rikkeisoft",
         href: certificateUrl,
@@ -428,7 +429,7 @@ const content = {
     certs: [
       { year: "2020", title: "TOEIC 600" },
       {
-        year: "2025",
+        year: "2026",
         title:
           "Data Analysis - Hanoi University of Science and Technology (HUST) & Rikkeisoft",
         href: certificateUrl,
@@ -470,6 +471,7 @@ type Product = {
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("vi");
   const [activeModal, setActiveModal] = useState<ModalKey | null>(null);
+  const [isModalClosing, setIsModalClosing] = useState(false);
   const t = content[locale];
 
   useEffect(() => {
@@ -480,7 +482,7 @@ export default function Home() {
     const previousOverflow = document.body.style.overflow;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setActiveModal(null);
+        setIsModalClosing(true);
       }
     };
 
@@ -493,16 +495,36 @@ export default function Home() {
     };
   }, [activeModal]);
 
+  useEffect(() => {
+    if (!isModalClosing) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setActiveModal(null);
+      setIsModalClosing(false);
+    }, 180);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [isModalClosing]);
+
   function handleLocaleChange(event: ChangeEvent<HTMLSelectElement>) {
     setLocale(event.target.value as Locale);
   }
 
   function openModal(section: ModalKey) {
+    setIsModalClosing(false);
     setActiveModal(section);
   }
 
   function closeModal() {
-    setActiveModal(null);
+    if (!activeModal || isModalClosing) {
+      return;
+    }
+
+    setIsModalClosing(true);
   }
 
   return (
@@ -654,7 +676,7 @@ export default function Home() {
 
       {activeModal ? (
         <div
-          className="modal-backdrop"
+          className={`modal-backdrop${isModalClosing ? " is-closing" : ""}`}
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) {
               closeModal();
@@ -808,17 +830,7 @@ function CertificateList({
                     <span>{verifyLabel}</span>
                     <Icon name="external" />
                   </button>
-                ) : (
-                  <a
-                    className="verify-link"
-                    href={cert.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span>{verifyLabel}</span>
-                    <Icon name="external" />
-                  </a>
-                )
+                ) : null
               ) : null}
             </div>
           </div>
@@ -850,7 +862,7 @@ function CertificateList({
           </div>
           <iframe
             loading="lazy"
-            src={`${certificatePdfUrl}#toolbar=1&navpanes=0&view=FitH`}
+            src={certificatePdfPreviewUrl}
             title={certificatePreviewTitle}
           />
         </div>

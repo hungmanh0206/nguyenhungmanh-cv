@@ -822,8 +822,10 @@ time,
 
 .certificate-item {
   display: grid;
-  grid-template-columns: 68px minmax(0, 1fr);
-  gap: 14px;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 42px;
 }
 
 .awards-list div {
@@ -836,8 +838,8 @@ time,
 .year-pill {
   display: inline-flex;
   width: fit-content;
-  min-width: 58px;
-  height: 32px;
+  min-width: 68px;
+  height: 34px;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-pill);
@@ -907,6 +909,12 @@ time,
     radial-gradient(circle at 18% 16%, rgba(255, 183, 0, 0.22), transparent 30%),
     rgba(26, 25, 22, 0.62);
   backdrop-filter: blur(12px);
+  animation: modal-backdrop-in 180ms ease-out both;
+}
+
+.modal-backdrop.is-closing {
+  pointer-events: none;
+  animation: modal-backdrop-out 180ms ease-in both;
 }
 
 .section-modal {
@@ -925,6 +933,12 @@ time,
   box-shadow:
     0 32px 80px rgba(0, 0, 0, 0.3),
     0 12px 34px rgba(255, 183, 0, 0.14);
+  transform-origin: center 42%;
+  animation: modal-panel-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.modal-backdrop.is-closing .section-modal {
+  animation: modal-panel-out 170ms ease-in both;
 }
 
 .section-modal.section-modal-certificates {
@@ -932,7 +946,7 @@ time,
 }
 
 .section-modal.section-modal-contact {
-  width: min(1040px, 100%);
+  width: min(760px, 100%);
 }
 
 .section-modal::before {
@@ -1013,9 +1027,11 @@ time,
 
 .modal-contact {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(280px, 0.9fr);
-  gap: 22px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
   align-items: start;
+  width: min(620px, 100%);
+  margin: 0 auto;
 }
 
 .modal-contact-list,
@@ -1030,13 +1046,9 @@ time,
 
 .modal-contact-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  padding: 22px;
-}
-
-.modal-contact-list .contact-row:nth-child(5) {
-  grid-column: 1 / -1;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 10px 18px;
 }
 
 .modal-interests {
@@ -1044,19 +1056,20 @@ time,
 }
 
 .modal-contact .contact-row {
-  min-height: 86px;
-  padding: 14px;
-  border: 1px solid rgba(230, 224, 213, 0.78);
-  background:
-    linear-gradient(135deg, rgba(255, 183, 0, 0.1), transparent 54%),
-    var(--white);
+  min-height: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(230, 224, 213, 0.82);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink-800);
 }
 
+.modal-contact .contact-row:last-child {
+  border-bottom: 0;
+}
+
 .modal-contact a.contact-row:hover {
-  border-color: rgba(255, 183, 0, 0.52);
   color: var(--ink-900);
-  box-shadow: 0 8px 18px rgba(26, 25, 22, 0.08);
 }
 
 .modal-contact .contact-row strong {
@@ -1119,6 +1132,50 @@ time,
   height: min(66vh, 720px);
   border: 0;
   background: var(--white);
+}
+
+@keyframes modal-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-backdrop-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-panel-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
 }
 
 @media (max-width: 1020px) {
@@ -1323,6 +1380,28 @@ time,
     gap: 8px;
   }
 
+  .section-modal-certificates .certificate-list {
+    gap: 12px;
+  }
+
+  .section-modal-certificates .certificate-item {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    min-height: 0;
+  }
+
+  .section-modal-certificates .year-pill {
+    min-width: 52px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .section-modal-certificates .certificate-item h3 {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
   .verify-link {
     width: 100%;
   }
@@ -1363,7 +1442,7 @@ time,
   }
 
   .certificate-preview iframe {
-    height: 460px;
+    height: min(56vh, 430px);
   }
 }
 
@@ -1371,6 +1450,8 @@ time,
   *,
   *::before,
   *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 1ms !important;
   }
