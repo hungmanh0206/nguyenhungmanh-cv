@@ -37,8 +37,9 @@ const content = {
     heroBadge: "IT Tester | AI QA Engineer",
     name: "NGUYỄN HÙNG MẠNH",
     intro: [
-      "Tôi là 1 QA Engineer có kinh nghiệm kiểm thử phần mềm, phân tích yêu cầu và đảm bảo chất lượng sản phẩm.",
-      "Với định hướng AI-driven Testing, tôi tập trung ứng dụng AI để tối ưu quy trình QA, từ phân tích yêu cầu, thiết kế test case, thực thi kiểm thử đến báo cáo kiểm thử.",
+      "QA Engineer - kiểm thử phần mềm, phân tích yêu cầu và đảm bảo chất lượng.",
+      "AI-driven Testing - ứng dụng AI vào thiết kế test case, thực thi và báo cáo.",
+      "LMS & eLearning - tập trung vào sản phẩm học tập số và nền tảng đào tạo.",
     ],
     ctaPrimary: "Tải CV tiếng Việt",
     ctaSecondary: "LinkedIn",
@@ -257,8 +258,9 @@ const content = {
     heroBadge: "IT Tester | AI QA Engineer",
     name: "NGUYEN HUNG MANH",
     intro: [
-      "I am a QA Engineer with experience in software testing, requirement analysis, and product quality assurance.",
-      "With an AI-driven Testing direction, I focus on applying AI to optimize QA workflows, from requirement analysis, test case design, and test execution to test reporting.",
+      "QA Engineer - software testing, requirement analysis, and quality assurance.",
+      "AI-driven Testing - applying AI to test design, execution, and reporting.",
+      "LMS & eLearning - focused on digital learning products and training platforms.",
     ],
     ctaPrimary: "Download English CV",
     ctaSecondary: "LinkedIn",
@@ -671,11 +673,13 @@ export default function Home() {
       <main>
         <section className="hero-section" aria-labelledby="hero-title">
           <div className="hero-media">
-            <img src="/manh-profile.png" alt={t.name} />
-            <span>{t.heroBadge}</span>
+            <div className="hero-portrait">
+              <img src="/manh-profile.png" alt={t.name} />
+            </div>
           </div>
           <div className="hero-copy">
             <h1 id="hero-title">{t.name}</h1>
+            <span className="hero-role">{t.heroBadge}</span>
             <ul className="hero-intro">
               {t.intro.map((item) => (
                 <li key={item}>{item}</li>
