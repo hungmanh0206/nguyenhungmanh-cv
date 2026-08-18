@@ -37,9 +37,18 @@ const content = {
     heroBadge: "IT Tester | AI QA Engineer",
     name: "NGUYỄN HÙNG MẠNH",
     intro: [
-      "QA Engineer - kiểm thử phần mềm, phân tích yêu cầu và đảm bảo chất lượng.",
-      "AI-driven Testing - ứng dụng AI vào thiết kế test case, thực thi và báo cáo.",
-      "LMS & eLearning - tập trung vào sản phẩm học tập số và nền tảng đào tạo.",
+      {
+        title: "QA Engineer",
+        copy: "kiểm thử phần mềm, phân tích yêu cầu và đảm bảo chất lượng.",
+      },
+      {
+        title: "AI-driven Testing",
+        copy: "ứng dụng AI vào thiết kế test case, thực thi và báo cáo.",
+      },
+      {
+        title: "LMS/eLearning",
+        copy: "tập trung vào sản phẩm học tập số và nền tảng đào tạo.",
+      },
     ],
     ctaPrimary: "Tải CV tiếng Việt",
     ctaSecondary: "LinkedIn",
@@ -258,9 +267,18 @@ const content = {
     heroBadge: "IT Tester | AI QA Engineer",
     name: "NGUYEN HUNG MANH",
     intro: [
-      "QA Engineer - software testing, requirement analysis, and quality assurance.",
-      "AI-driven Testing - applying AI to test design, execution, and reporting.",
-      "LMS & eLearning - focused on digital learning products and training platforms.",
+      {
+        title: "QA Engineer",
+        copy: "software testing, requirement analysis, and quality assurance.",
+      },
+      {
+        title: "AI-driven Testing",
+        copy: "applying AI to test design, execution, and reporting.",
+      },
+      {
+        title: "LMS/eLearning",
+        copy: "focused on digital learning products and training platforms.",
+      },
     ],
     ctaPrimary: "Download English CV",
     ctaSecondary: "LinkedIn",
@@ -682,7 +700,10 @@ export default function Home() {
             <span className="hero-role">{t.heroBadge}</span>
             <ul className="hero-intro">
               {t.intro.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item.title}>
+                  <span className="hero-intro-title">{item.title}</span>
+                  <span className="hero-intro-copy">{item.copy}</span>
+                </li>
               ))}
             </ul>
             <div className="hero-stats" aria-label="Profile highlights">
