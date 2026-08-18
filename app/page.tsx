@@ -1,6 +1,12 @@
 "use client";
 
-import { ChangeEvent, ReactNode, useEffect, useState } from "react";
+import {
+  type KeyboardEvent as ReactKeyboardEvent,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 type Locale = "vi" | "en";
 type IconName =
@@ -474,10 +480,17 @@ type Product = {
   readonly href: string;
 };
 
+const languageOptions = [
+  { value: "vi", label: content.vi.languageName },
+  { value: "en", label: content.en.languageName },
+] as const satisfies readonly { value: Locale; label: string }[];
+
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("vi");
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [activeModal, setActiveModal] = useState<ModalKey | null>(null);
   const [isModalClosing, setIsModalClosing] = useState(false);
+  const languageComboboxRef = useRef<HTMLDivElement>(null);
   const t = content[locale];
 
   useEffect(() => {
@@ -502,6 +515,32 @@ export default function Home() {
   }, [activeModal]);
 
   useEffect(() => {
+    if (!isLanguageOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!languageComboboxRef.current?.contains(event.target as Node)) {
+        setIsLanguageOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsLanguageOpen(false);
+      }
+    };
+
+    window.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isLanguageOpen]);
+
+  useEffect(() => {
     if (!isModalClosing) {
       return;
     }
@@ -516,8 +555,32 @@ export default function Home() {
     };
   }, [isModalClosing]);
 
-  function handleLocaleChange(event: ChangeEvent<HTMLSelectElement>) {
-    setLocale(event.target.value as Locale);
+  function handleLocaleSelect(nextLocale: Locale) {
+    setLocale(nextLocale);
+    setIsLanguageOpen(false);
+  }
+
+  function handleLanguageKeyDown(event: ReactKeyboardEvent<HTMLButtonElement>) {
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      setIsLanguageOpen(true);
+      setLocale((currentLocale) => {
+        const direction = event.key === "ArrowDown" ? 1 : -1;
+        const currentIndex = languageOptions.findIndex(
+          (option) => option.value === currentLocale,
+        );
+        const nextIndex =
+          (currentIndex + direction + languageOptions.length) % languageOptions.length;
+
+        return languageOptions[nextIndex].value;
+      });
+      return;
+    }
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setIsLanguageOpen((open) => !open);
+    }
   }
 
   function openModal(section: ModalKey) {
@@ -555,13 +618,54 @@ export default function Home() {
             </button>
           ))}
         </nav>
-        <label className="language-select">
-          <span>{t.languageLabel}</span>
-          <select value={locale} onChange={handleLocaleChange}>
-            <option value="vi">{content.vi.languageName}</option>
-            <option value="en">{content.en.languageName}</option>
-          </select>
-        </label>
+        <div className="language-select" ref={languageComboboxRef}>
+          <span id="language-label">{t.languageLabel}</span>
+          <div className="language-combobox">
+            <button
+              aria-activedescendant={
+                isLanguageOpen ? `language-option-${locale}` : undefined
+              }
+              aria-controls="language-options"
+              aria-expanded={isLanguageOpen}
+              aria-haspopup="listbox"
+              aria-labelledby="language-label language-combobox-value"
+              className="language-trigger"
+              id="language-combobox"
+              onClick={() => setIsLanguageOpen((open) => !open)}
+              onKeyDown={handleLanguageKeyDown}
+              role="combobox"
+              type="button"
+            >
+              <span id="language-combobox-value">{t.languageName}</span>
+              <span className="language-chevron" aria-hidden="true" />
+            </button>
+            {isLanguageOpen ? (
+              <div
+                aria-labelledby="language-label"
+                className="language-options"
+                id="language-options"
+                role="listbox"
+              >
+                {languageOptions.map((option) => (
+                  <button
+                    aria-selected={locale === option.value}
+                    className={`language-option${
+                      locale === option.value ? " is-selected" : ""
+                    }`}
+                    id={`language-option-${option.value}`}
+                    key={option.value}
+                    onClick={() => handleLocaleSelect(option.value)}
+                    role="option"
+                    type="button"
+                  >
+                    <span>{option.label}</span>
+                    <span aria-hidden="true">{locale === option.value ? "✓" : ""}</span>
+                  </button>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </div>
       </header>
 
       <main>
