@@ -1617,26 +1617,22 @@ time,
   }
 
   .hero-intro {
-    width: fit-content;
-    max-width: 100%;
-    gap: 7px;
-    margin: 14px auto 0;
-    font-size: 15px;
+    width: min(100%, 330px);
+    gap: 6px;
+    margin: 12px auto 0;
+    font-size: 14px;
+    line-height: 1.35;
     text-align: left;
   }
 
   .hero-intro li {
-    padding-left: 17px;
-  }
-
-  .hero-intro-copy {
-    display: none;
+    padding-left: 16px;
   }
 
   .hero-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    margin-top: 18px;
+    gap: 7px;
+    margin-top: 14px;
     text-align: left;
   }
 
@@ -1645,30 +1641,31 @@ time,
   }
 
   .hero-stats div {
-    min-height: 76px;
-    padding: 12px 10px;
-    border-radius: var(--radius-md);
+    min-height: 58px;
+    padding: 8px 10px;
+    border-radius: 18px;
   }
 
   .hero-stats strong {
-    font-size: 18px;
+    font-size: 16px;
     overflow-wrap: anywhere;
   }
 
   .hero-stats span {
-    font-size: 12px;
+    margin-top: 3px;
+    font-size: 11px;
     line-height: 1.25;
     overflow-wrap: anywhere;
   }
 
   .hero-actions {
-    gap: 10px;
-    margin-top: 18px;
+    gap: 8px;
+    margin-top: 14px;
   }
 
   .button {
-    min-height: 50px;
-    padding: 13px 18px;
+    min-height: 46px;
+    padding: 11px 16px;
   }
 
   .modal-contact,
@@ -1753,7 +1750,7 @@ time,
   }
 
   .hero-section {
-    padding: 16px;
+    padding: 15px;
   }
 
   .hero-copy h1 {
@@ -1769,12 +1766,12 @@ time,
   }
 
   .hero-stats div {
-    min-height: 72px;
-    padding: 11px 10px;
+    min-height: 56px;
+    padding: 8px 10px;
   }
 
   .hero-stats strong {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .hero-stats span {
@@ -1782,12 +1779,12 @@ time,
   }
 
   .button {
-    min-height: 48px;
+    min-height: 45px;
     width: 100%;
   }
 
   .hero-actions .button-outline {
-    min-height: 48px;
+    min-height: 45px;
   }
 
   .section-title {
