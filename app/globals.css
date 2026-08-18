@@ -40,13 +40,13 @@
   --color-plum-shadow: #25162a;
   --color-iris: #730394;
   --color-iris-light: #d17dfe;
-  --color-channel-blue: #1264a3;
+  --color-channel-blue: #6f3d7e;
   --color-carbon: #1d1c1d;
   --color-charcoal: #454245;
   --color-mid-gray: #696969;
   --color-fog: #edeaed;
   --color-soft-white: #fefbff;
-  --color-ice-blue: #e8f5fa;
+  --color-ice-blue: #f9f0ff;
   --gradient-button-primary: linear-gradient(135deg, #4f3359 0%, #392340 52%, #a45bb8 100%);
   --gradient-button-primary-hover: linear-gradient(135deg, #392340 0%, #4f3359 48%, #b86cd0 100%);
   --frosted-bg: rgba(255, 255, 255, 0.72);
@@ -80,10 +80,10 @@
   --ink-100: #f4edf7;
   --ink-50: var(--color-soft-white);
   --white: #ffffff;
-  --info-50: var(--color-ice-blue);
-  --info-700: var(--color-channel-blue);
-  --success-50: #e9f8f1;
-  --success-700: #126947;
+  --info-50: var(--color-purple-haze);
+  --info-700: var(--color-aubergine);
+  --success-50: #f5e8fb;
+  --success-700: var(--color-aubergine);
   --brand: var(--sapp-gold-500);
   --brand-hover: var(--sapp-gold-600);
   --text-primary: var(--ink-900);
@@ -1010,31 +1010,25 @@ time,
   border-radius: var(--radius-pill);
   background:
     var(--frosted-highlight),
-    rgba(255, 255, 255, 0.52);
-  color: var(--ink-700);
+    rgba(249, 240, 255, 0.62);
+  color: var(--color-aubergine);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
 }
 
-.skill-group:nth-child(3) span {
-  border-color: rgba(27, 78, 158, 0.18);
-  background: var(--info-50);
-  color: var(--info-700);
-}
-
-.skill-group:nth-child(3)::before {
-  background: linear-gradient(90deg, var(--color-channel-blue), rgba(42, 111, 219, 0.08));
-}
-
+.skill-group:nth-child(3) span,
 .skill-group:nth-child(5) span {
-  border-color: rgba(20, 97, 63, 0.18);
-  background: var(--success-50);
-  color: var(--success-700);
+  border-color: rgba(209, 125, 254, 0.38);
+  background:
+    var(--frosted-highlight),
+    rgba(249, 240, 255, 0.72);
+  color: var(--color-aubergine);
 }
 
+.skill-group:nth-child(3)::before,
 .skill-group:nth-child(5)::before {
-  background: linear-gradient(90deg, #1f8a5b, rgba(31, 138, 91, 0.08));
+  background: linear-gradient(90deg, var(--brand), rgba(209, 125, 254, 0.18));
 }
 
 .split-section {
@@ -1104,7 +1098,7 @@ time,
 }
 
 .education-details p:last-child svg {
-  color: var(--info-700);
+  color: var(--color-iris);
 }
 
 .education-details span {
@@ -1123,10 +1117,12 @@ time,
   min-height: 34px;
   align-items: center;
   padding: 5px 10px;
-  border: 1px solid rgba(20, 97, 63, 0.18);
+  border: 1px solid rgba(209, 125, 254, 0.36);
   border-radius: var(--radius-pill);
-  background: var(--success-50);
-  color: var(--success-700);
+  background:
+    var(--frosted-highlight),
+    rgba(249, 240, 255, 0.76);
+  color: var(--color-aubergine);
   font-size: 13px;
   font-weight: 800;
   line-height: 1.25;
