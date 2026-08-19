@@ -1139,9 +1139,11 @@ time,
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  max-width: 100%;
   color: var(--ink-700);
   font-size: 13px;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .product-links > strong .stage-icon {
@@ -1171,6 +1173,7 @@ time,
 }
 
 .product-chip {
+  max-width: 100%;
   padding: 7px 11px;
   border: 1px solid rgba(234, 200, 254, 0.5);
   background:
@@ -1182,6 +1185,12 @@ time,
     transform 160ms ease,
     border-color 180ms ease,
     box-shadow 180ms ease;
+}
+
+.product-chip span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .product-chip:hover {
