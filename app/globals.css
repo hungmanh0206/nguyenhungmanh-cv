@@ -852,11 +852,14 @@ p {
   flex-basis: 34px;
   width: 34px;
   height: 34px;
-  border-color: rgba(234, 200, 254, 0.36);
+  border-color: rgba(255, 255, 255, 0.34);
   background:
-    var(--frosted-highlight),
-    rgba(255, 255, 255, 0.08);
-  color: var(--color-iris-light);
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.42), transparent 42%),
+    linear-gradient(145deg, rgba(234, 200, 254, 0.34), rgba(209, 125, 254, 0.12));
+  color: var(--white);
+  box-shadow:
+    0 10px 26px rgba(37, 22, 42, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.36) inset;
 }
 
 .profile-panel .section-title-icon .stage-icon {
@@ -868,6 +871,17 @@ p {
   flex-basis: 0;
   min-width: 0;
   background: linear-gradient(90deg, rgba(209, 125, 254, 0.42), rgba(234, 200, 254, 0.1));
+}
+
+.profile-panel .contact-icon {
+  border-color: rgba(255, 255, 255, 0.3);
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.38), transparent 44%),
+    linear-gradient(145deg, rgba(234, 200, 254, 0.28), rgba(209, 125, 254, 0.1));
+  color: var(--white);
+  box-shadow:
+    0 8px 24px rgba(37, 22, 42, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.32) inset;
 }
 
 .contact-list {
@@ -1600,7 +1614,7 @@ time,
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
-  padding: 10px 18px;
+  padding: 12px 24px 12px 30px;
 }
 
 .modal-interests {
@@ -1608,8 +1622,10 @@ time,
 }
 
 .modal-contact .contact-row {
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 12px;
   min-height: 0;
-  padding: 14px 0;
+  padding: 14px 0 14px 12px;
   border-bottom: 1px solid rgba(234, 200, 254, 0.38);
   border-radius: 0;
   background: transparent;
@@ -1617,6 +1633,8 @@ time,
 }
 
 .modal-contact .contact-icon {
+  width: 36px;
+  height: 36px;
   border-color: rgba(234, 200, 254, 0.54);
   background:
     var(--frosted-highlight),
@@ -2084,6 +2102,27 @@ time,
 
   .modal-body {
     padding: 20px;
+  }
+
+  .modal-contact-list {
+    padding: 8px 14px 8px 22px;
+  }
+
+  .modal-contact .contact-row {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 8px;
+    padding: 13px 0 13px 8px;
+  }
+
+  .modal-contact .contact-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 14px;
+  }
+
+  .modal-contact .contact-icon .stage-icon {
+    width: 15px;
+    height: 15px;
   }
 
   .certificate-preview-head {
