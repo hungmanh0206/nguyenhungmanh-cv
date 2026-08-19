@@ -32,5 +32,6 @@ test("ships the profile image and both CV PDF assets", async () => {
     access(new URL("../public/nguyen-hung-manh-cv-vi.pdf", import.meta.url)),
     access(new URL("../public/nguyen-hung-manh-cv-en.pdf", import.meta.url)),
     access(new URL("../public/data-analysis-certificate.pdf", import.meta.url)),
+    access(new URL("../public/stage-icons.svg", import.meta.url)),
   ]);
 });

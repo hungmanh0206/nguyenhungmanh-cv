@@ -10,18 +10,45 @@ import {
 
 type Locale = "vi" | "en";
 type IconName =
+  | "academy"
   | "book"
   | "building"
   | "calendar"
+  | "certificate"
+  | "check"
+  | "chevron"
+  | "close"
+  | "database"
   | "download"
   | "external"
+  | "globe"
+  | "home"
+  | "layers"
+  | "link"
   | "linkedin"
   | "mail"
   | "map"
-  | "phone";
+  | "phone"
+  | "progress"
+  | "settings"
+  | "shield"
+  | "spark"
+  | "star"
+  | "target"
+  | "user"
+  | "zap";
 
 const modalSections = ["experience", "skills", "certificates", "contact"] as const;
 type ModalKey = (typeof modalSections)[number];
+
+const navIcons: readonly IconName[] = ["progress", "layers", "certificate", "user"];
+const skillGroupIcons: readonly IconName[] = [
+  "shield",
+  "settings",
+  "spark",
+  "zap",
+  "database",
+];
 
 const certificateUrl = "https://hust.ediploma.vn/verify/Zf3y-0Ovt-iJen";
 const certificatePdfUrl = "/data-analysis-certificate.pdf";
@@ -634,7 +661,8 @@ export default function Home() {
               onClick={() => openModal(modalSections[index])}
               type="button"
             >
-              {item}
+              <Icon name={navIcons[index]} />
+              <span>{item}</span>
             </button>
           ))}
         </nav>
@@ -656,8 +684,9 @@ export default function Home() {
               role="combobox"
               type="button"
             >
+              <Icon className="language-icon" name="globe" />
               <span id="language-combobox-value">{t.languageName}</span>
-              <span className="language-chevron" aria-hidden="true" />
+              <Icon className="language-chevron" name="chevron" />
             </button>
             {isLanguageOpen ? (
               <div
@@ -679,7 +708,9 @@ export default function Home() {
                     type="button"
                   >
                     <span>{option.label}</span>
-                    <span aria-hidden="true">{locale === option.value ? "✓" : ""}</span>
+                    <span className="language-option-check" aria-hidden="true">
+                      {locale === option.value ? <Icon name="check" /> : null}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -734,14 +765,14 @@ export default function Home() {
 
         <section className="cv-layout">
           <aside className="profile-panel" id="contact" aria-labelledby="contact-title">
-            <SectionTitle id="contact-title">{t.contactTitle}</SectionTitle>
+            <SectionTitle icon="user" id="contact-title">{t.contactTitle}</SectionTitle>
             <div className="contact-list">
               {t.contact.map((item) => (
                 <ContactRow key={`${item.label}-${item.value}`} {...item} />
               ))}
             </div>
             <div className="divider" />
-            <SectionTitle>{t.interestsTitle}</SectionTitle>
+            <SectionTitle icon="spark">{t.interestsTitle}</SectionTitle>
             <ul className="simple-list">
               {t.interests.map((interest) => (
                 <li key={interest}>{interest}</li>
@@ -751,12 +782,12 @@ export default function Home() {
 
           <div className="content-stack">
             <section className="section-card focus-card" aria-labelledby="focus-title">
-              <SectionTitle id="focus-title">{t.focusTitle}</SectionTitle>
+              <SectionTitle icon="target" id="focus-title">{t.focusTitle}</SectionTitle>
               <p>{t.focus}</p>
             </section>
 
             <section id="experience" aria-labelledby="experience-title">
-              <SectionTitle id="experience-title">{t.experienceTitle}</SectionTitle>
+              <SectionTitle icon="progress" id="experience-title">{t.experienceTitle}</SectionTitle>
               <ExperienceList
                 experiences={t.experiences}
                 productLabel={t.productLabel}
@@ -764,7 +795,7 @@ export default function Home() {
             </section>
 
             <section id="skills" aria-labelledby="skills-title">
-              <SectionTitle id="skills-title">{t.skillsTitle}</SectionTitle>
+              <SectionTitle icon="layers" id="skills-title">{t.skillsTitle}</SectionTitle>
               <SkillsGrid skillGroups={t.skillGroups} />
             </section>
 
@@ -773,7 +804,7 @@ export default function Home() {
                 className="section-card education-card"
                 aria-labelledby="education-title"
               >
-                <SectionTitle id="education-title">{t.educationTitle}</SectionTitle>
+                <SectionTitle icon="academy" id="education-title">{t.educationTitle}</SectionTitle>
                 <div className="education-credential">
                   <div className="education-content">
                     <h3>{t.education.school}</h3>
@@ -800,7 +831,7 @@ export default function Home() {
                 id="certificates"
                 aria-labelledby="certificates-title"
               >
-                <SectionTitle id="certificates-title">{t.certTitle}</SectionTitle>
+                <SectionTitle icon="certificate" id="certificates-title">{t.certTitle}</SectionTitle>
                 <CertificateList
                   certs={t.certs}
                   mode="page"
@@ -811,7 +842,7 @@ export default function Home() {
             </section>
 
             <section className="section-card awards-card" aria-labelledby="awards-title">
-              <SectionTitle id="awards-title">{t.awardsTitle}</SectionTitle>
+              <SectionTitle icon="star" id="awards-title">{t.awardsTitle}</SectionTitle>
               <div className="awards-list">
                 {t.awards.map((award) => (
                   <article className="award-item" key={`${award.year}-${award.title}`}>
@@ -853,7 +884,7 @@ export default function Home() {
                 onClick={closeModal}
                 type="button"
               >
-                <span aria-hidden="true">×</span>
+                <Icon name="close" />
               </button>
             </header>
             <div className="modal-body">{renderModalBody(activeModal, t)}</div>
@@ -908,7 +939,10 @@ function ProductLinks({
 }) {
   return (
     <div className="product-links">
-      <strong>{label}</strong>
+      <strong>
+        <Icon name="link" />
+        <span>{label}</span>
+      </strong>
       <div>
         {products.map((product) => (
           <a
@@ -930,9 +964,14 @@ function ProductLinks({
 function SkillsGrid({ skillGroups }: { skillGroups: readonly SkillGroup[] }) {
   return (
     <div className="skills-grid">
-      {skillGroups.map((group) => (
+      {skillGroups.map((group, index) => (
         <article className="skill-group" key={group.title}>
-          <h3>{group.title}</h3>
+          <h3>
+            <span className="skill-icon" aria-hidden="true">
+              <Icon name={skillGroupIcons[index] ?? "layers"} />
+            </span>
+            <span>{group.title}</span>
+          </h3>
           <div>
             {group.items.map((item) => (
               <span key={item}>{item}</span>
@@ -990,7 +1029,10 @@ function CertificateList({
       {mode === "modal" && linkedCertificate ? (
         <div className="certificate-preview">
           <div className="certificate-preview-head">
-            <h3>{certificatePreviewTitle}</h3>
+            <h3>
+              <Icon name="certificate" />
+              <span>{certificatePreviewTitle}</span>
+            </h3>
             <div className="preview-actions">
               <a
                 className="preview-open-link"
@@ -1082,11 +1124,24 @@ function hasHref(cert: Certificate): cert is Certificate & { href: string } {
   return "href" in cert && Boolean(cert.href);
 }
 
-function SectionTitle({ children, id }: { children: ReactNode; id?: string }) {
+function SectionTitle({
+  children,
+  icon,
+  id,
+}: {
+  children: ReactNode;
+  icon?: IconName;
+  id?: string;
+}) {
   return (
     <div className="section-title">
+      {icon ? (
+        <span className="section-title-icon" aria-hidden="true">
+          <Icon name={icon} />
+        </span>
+      ) : null}
       <h2 id={id}>{children}</h2>
-      <span aria-hidden="true" />
+      <span className="section-title-line" aria-hidden="true" />
     </div>
   );
 }
@@ -1104,18 +1159,23 @@ function ContactRow({
 }) {
   const body = (
     <>
-      <Icon name={icon} />
+      <span className="contact-icon" aria-hidden="true">
+        <Icon name={icon} />
+      </span>
       <span>
         <strong>{label}</strong>
         <em>{value}</em>
       </span>
     </>
   );
+  const rowClassName = `contact-row${
+    href?.startsWith("mailto") ? " contact-row-email" : ""
+  }`;
 
   if (href) {
     return (
       <a
-        className="contact-row"
+        className={rowClassName}
         href={href}
         target={href.startsWith("http") ? "_blank" : undefined}
         rel="noreferrer"
@@ -1125,83 +1185,59 @@ function ContactRow({
     );
   }
 
-  return <div className="contact-row">{body}</div>;
+  return <div className={rowClassName}>{body}</div>;
 }
 
-function Icon({ name }: { name: IconName }) {
-  const paths: Record<IconName, ReactNode> = {
-    book: (
-      <>
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
-      </>
-    ),
-    building: (
-      <>
-        <path d="M4 21h16" />
-        <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
-        <path d="M9 7h1" />
-        <path d="M14 7h1" />
-        <path d="M9 11h1" />
-        <path d="M14 11h1" />
-        <path d="M10 21v-4h4v4" />
-      </>
-    ),
-    calendar: (
-      <>
-        <path d="M8 2v4" />
-        <path d="M16 2v4" />
-        <path d="M3 10h18" />
-        <rect x="3" y="4" width="18" height="18" rx="3" />
-      </>
-    ),
-    download: (
-      <>
-        <path d="M12 3v12" />
-        <path d="m7 10 5 5 5-5" />
-        <path d="M5 21h14" />
-      </>
-    ),
-    external: (
-      <>
-        <path d="M14 3h7v7" />
-        <path d="M10 14 21 3" />
-        <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
-      </>
-    ),
-    linkedin: (
-      <>
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-        <path d="M2 9h4v12H2z" />
-        <circle cx="4" cy="4" r="2" />
-      </>
-    ),
-    mail: (
-      <>
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="m3 7 9 7 9-7" />
-      </>
-    ),
-    map: (
-      <>
-        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z" />
-        <circle cx="12" cy="10" r="3" />
-      </>
-    ),
-    phone: (
-      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z" />
-    ),
+function Icon({ className, name }: { className?: string; name: IconName }) {
+  const stageIconIds: Partial<Record<IconName, string>> = {
+    academy: "stage-icon-academy",
+    book: "stage-icon-book-open",
+    building: "stage-icon-academy",
+    calendar: "stage-icon-calendar",
+    certificate: "stage-icon-certificate",
+    check: "stage-icon-check",
+    chevron: "stage-icon-chevron-down",
+    close: "stage-icon-close",
+    database: "stage-icon-database",
+    download: "stage-icon-download",
+    external: "stage-icon-external-link",
+    globe: "stage-icon-globe",
+    home: "stage-icon-home",
+    layers: "stage-icon-layers",
+    link: "stage-icon-link",
+    mail: "stage-icon-mail",
+    map: "stage-icon-home",
+    phone: "stage-icon-phone",
+    progress: "stage-icon-progress",
+    settings: "stage-icon-settings",
+    shield: "stage-icon-shield-check",
+    spark: "stage-icon-spark",
+    star: "stage-icon-star",
+    target: "stage-icon-target",
+    user: "stage-icon-user",
+    zap: "stage-icon-zap",
   };
+  const classNames = ["stage-icon", className].filter(Boolean).join(" ");
+
+  if (name !== "linkedin") {
+    return (
+      <svg className={classNames} aria-hidden="true">
+        <use href={`/stage-icons.svg#${stageIconIds[name] ?? "stage-icon-spark"}`} />
+      </svg>
+    );
+  }
 
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+    <svg className={classNames} aria-hidden="true" viewBox="0 0 24 24" fill="none">
       <g
         stroke="currentColor"
-        strokeWidth="1.9"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {paths[name]}
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+        <path d="M2 9h4v12H2z" />
+        <circle cx="4" cy="4" r="2" />
       </g>
     </svg>
   );
