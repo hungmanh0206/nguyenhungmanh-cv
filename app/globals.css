@@ -2061,8 +2061,12 @@ time,
   }
 
   .section-title {
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
+  }
+
+  .section-title-line {
+    align-self: center;
   }
 
   .section-title h2 {
