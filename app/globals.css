@@ -1295,6 +1295,7 @@ time,
 
 .education-content h3 {
   font-size: 17px;
+  font-weight: 400;
   line-height: 1.35;
 }
 
@@ -1318,7 +1319,7 @@ time,
   gap: 9px;
   align-items: start;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.45;
 }
 
@@ -1406,11 +1407,11 @@ time,
 }
 
 .certificates-card .certificate-item h3 {
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .awards-card .award-item p {
-  font-weight: 650;
+  font-weight: 400;
 }
 
 .verify-link {
