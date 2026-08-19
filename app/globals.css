@@ -1303,7 +1303,7 @@ time,
 
 .education-content h3 {
   font-size: 17px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.35;
 }
 
@@ -1323,22 +1323,34 @@ time,
 
 .education-details p {
   display: grid;
-  grid-template-columns: 20px minmax(0, 1fr);
-  gap: 9px;
-  align-items: start;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.45;
 }
 
-.education-details .stage-icon {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
+.education-detail-icon {
+  display: inline-grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border: 1px solid rgba(234, 200, 254, 0.52);
+  border-radius: 10px;
+  background:
+    var(--frosted-highlight),
+    rgba(249, 240, 255, 0.72);
   color: var(--brand);
+  box-shadow: 0 6px 16px rgba(37, 22, 42, 0.05);
 }
 
-.education-details p:last-child .stage-icon {
+.education-detail-icon .stage-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.education-details p:last-child .education-detail-icon {
   color: var(--color-iris);
 }
 

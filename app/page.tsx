@@ -811,11 +811,15 @@ export default function Home() {
                     <time className="education-date">{t.education.date}</time>
                     <div className="education-details" aria-label={t.education.note}>
                       <p>
-                        <Icon name="building" />
+                        <span className="education-detail-icon" aria-hidden="true">
+                          <Icon name="layers" />
+                        </span>
                         <span>{t.education.faculty}</span>
                       </p>
                       <p>
-                        <Icon name="book" />
+                        <span className="education-detail-icon" aria-hidden="true">
+                          <Icon name="database" />
+                        </span>
                         <span>{t.education.major}</span>
                       </p>
                     </div>
