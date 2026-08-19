@@ -338,17 +338,17 @@ p {
 
 .language-combobox {
   position: relative;
-  width: 138px;
+  width: 150px;
 }
 
 .language-trigger {
-  display: flex;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) 16px;
   width: 100%;
   min-height: 44px;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 0 13px;
+  column-gap: 8px;
+  padding: 0 12px;
   border: 1px solid rgba(234, 200, 254, 0.58);
   border-radius: var(--radius-md);
   background:
@@ -382,16 +382,24 @@ p {
 }
 
 .language-icon {
+  grid-column: 1;
+  justify-self: center;
+  flex-basis: 16px;
   width: 16px;
   height: 16px;
 }
 
 #language-combobox-value {
+  grid-column: 2;
   min-width: 0;
+  text-align: center;
   white-space: nowrap;
 }
 
 .language-chevron {
+  grid-column: 3;
+  justify-self: center;
+  flex-basis: 16px;
   width: 16px;
   height: 16px;
   transition: transform 420ms var(--motion-ease);
@@ -2012,7 +2020,7 @@ time,
   }
 
   .language-combobox {
-    width: 146px;
+    width: 152px;
   }
 
   .language-trigger {
@@ -2157,6 +2165,19 @@ time,
 @media (max-width: 360px) {
   .language-combobox {
     width: 138px;
+  }
+
+  .language-trigger {
+    grid-template-columns: minmax(0, 1fr) 16px;
+    column-gap: 6px;
+  }
+
+  #language-combobox-value {
+    grid-column: 1;
+  }
+
+  .language-chevron {
+    grid-column: 2;
   }
 
   .language-icon {
