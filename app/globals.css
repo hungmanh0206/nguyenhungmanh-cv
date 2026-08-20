@@ -2592,6 +2592,14 @@ time,
   box-shadow: var(--shadow-sm);
 }
 
+.profile-panel .section-title-icon,
+.modal-interests .section-title-icon {
+  border-color: var(--surface-line-strong);
+  background: #f7f2fa;
+  color: var(--color-aubergine);
+  box-shadow: none;
+}
+
 .section-title h2,
 .profile-panel .section-title h2 {
   color: var(--color-carbon);
