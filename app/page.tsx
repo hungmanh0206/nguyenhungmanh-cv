@@ -1098,7 +1098,7 @@ function renderModalBody(section: ModalKey, t: Content) {
         ))}
       </div>
       <div className="modal-interests">
-        <SectionTitle>{t.interestsTitle}</SectionTitle>
+        <SectionTitle icon="spark">{t.interestsTitle}</SectionTitle>
         <ul className="simple-list">
           {t.interests.map((interest) => (
             <li key={interest}>{interest}</li>
