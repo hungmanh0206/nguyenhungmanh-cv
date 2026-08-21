@@ -1,5 +1,5 @@
-import { CvPortfolio } from "../CvPortfolio";
+import { redirect } from "next/navigation";
 
 export default function SkillsPage() {
-  return <CvPortfolio page="skills" />;
+  redirect("/works#product-skills");
 }

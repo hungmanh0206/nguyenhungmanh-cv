@@ -118,7 +118,7 @@ const content = {
         products: [
           {
             name: "LMS Pro",
-            href: "https://lms-pro.sapp.edu.vn/lms-pro-new-version?tab=home",
+            href: "https://uat-lms.sapp.edu.vn/lms-pro-new-version",
           },
         ],
         bullets: [
@@ -348,7 +348,7 @@ const content = {
         products: [
           {
             name: "LMS Pro",
-            href: "https://lms-pro.sapp.edu.vn/lms-pro-new-version?tab=home",
+            href: "https://uat-lms.sapp.edu.vn/lms-pro-new-version",
           },
         ],
         bullets: [
@@ -547,6 +547,11 @@ const skillGroupThreeDIcons: readonly ThreeDIconName[] = [
   "computer",
   "chart",
 ];
+const interestThreeDIcons: readonly ThreeDIconName[] = [
+  "medal",
+  "computer",
+  "notebook",
+];
 
 const languageOptions = [
   { value: "vi", label: content.vi.languageName },
@@ -560,7 +565,7 @@ const portfolioCopy = {
     bottomNavLabel: "Điều hướng nhanh",
     nav: {
       resume: "Hồ sơ",
-      journey: "Hành trình",
+      journey: "Công việc",
       skills: "Kỹ năng",
       works: "Sản phẩm",
       ai: "AI Workflow",
@@ -597,12 +602,13 @@ const portfolioCopy = {
     skillsEyebrow: "SKILLS",
     skillsLead:
       "Các nhóm kỹ năng QA, AI testing, công cụ và nền tảng tôi sử dụng trong công việc hằng ngày.",
-    journeyEyebrow: "JOURNEY",
-    journeyTitle: "Hành trình phát triển",
+    journeyEyebrow: "WORK",
+    journeyTitle: "Công việc & hành trình",
     journeyOverviewLabel: "Sơ đồ hành trình",
     journeyDetailTitle: "Chi tiết kinh nghiệm",
-    worksEyebrow: "FAVOURITE WORKS",
+    worksEyebrow: "PRODUCTS & SKILLS",
     worksTitle: "Sản phẩm đã tham gia",
+    productSkillTitle: "Kỹ năng sử dụng trong sản phẩm",
     workCaseLabel: "Case",
     viewProject: "Xem sản phẩm",
     aiEyebrow: "AI WORKFLOW",
@@ -610,13 +616,46 @@ const portfolioCopy = {
     aiLead:
       "Một workflow AI Agent cho QA: từ đọc requirement, sinh testcase, publish AIO Tests, execute, triage bug đến re-run verify và đóng vòng học.",
     aiWorkflow: {
+      overviewTitle: "AI Workflow Overview",
       operatingTitle: "Luồng vận hành 3 pha",
       systemTitle: "QA Agent AI System",
+      flowMapTitle: "Input / Workflow / Output",
       guardrailTitle: "Gate kiểm soát chất lượng",
       boundaryTitle: "AI-led / Human-led",
       expansionTitle: "5 trục mở rộng",
       outcomeTitle: "Before -> After",
       artifactTitle: "Artifact mỗi vòng chạy",
+      inputTitle: "Input",
+      workflowTitle: "Workflow",
+      outputTitle: "Output",
+      inputHeadline: "Requirement",
+      inputCopy: "Business rule, rủi ro, nguồn testcase và mirror AIO.",
+      outputHeadline: "PASS Done",
+      outputCopy: "Evidence, bug, coverage, sổ tri thức và vòng học tiếp theo.",
+      roleTitle: "Object",
+      aiActionTitle: "What AI do?",
+      outputItemTitle: "Deliverable",
+      overviewBody: [
+        "Workflow bắt đầu từ requirement, tài liệu nghiệp vụ và rủi ro sản phẩm cần kiểm soát.",
+        "AI hỗ trợ phân tích, sinh testcase, kiểm tra gate và tổng hợp evidence; QA vẫn là người duyệt scope, quyết định bug và chịu trách nhiệm chất lượng cuối cùng.",
+      ],
+      roles: [
+        {
+          icon: "target" as const,
+          title: "BA / PO",
+          copy: "Cung cấp requirement, business rule và ngữ cảnh sản phẩm.",
+        },
+        {
+          icon: "shield" as const,
+          title: "QA",
+          copy: "Duyệt gate, xác nhận coverage và quyết định kết quả kiểm thử.",
+        },
+        {
+          icon: "lab" as const,
+          title: "AI Agent",
+          copy: "Xử lý tác vụ lặp, trace evidence và đề xuất mở rộng kiểm thử.",
+        },
+      ],
       phases: [
         {
           label: "Phase 1",
@@ -736,7 +775,7 @@ const portfolioCopy = {
     bottomNavLabel: "Quick navigation",
     nav: {
       resume: "Resume",
-      journey: "Journey",
+      journey: "Work",
       skills: "Skills",
       works: "Works",
       ai: "AI Workflow",
@@ -773,12 +812,13 @@ const portfolioCopy = {
     skillsEyebrow: "SKILLS",
     skillsLead:
       "The QA, AI testing, tools, and platform skills I use in daily product work.",
-    journeyEyebrow: "JOURNEY",
-    journeyTitle: "My development journey",
+    journeyEyebrow: "WORK",
+    journeyTitle: "Work & journey",
     journeyOverviewLabel: "Journey map",
     journeyDetailTitle: "Detailed experience",
-    worksEyebrow: "FAVOURITE WORKS",
+    worksEyebrow: "PRODUCTS & SKILLS",
     worksTitle: "Products I contributed to",
+    productSkillTitle: "Skills behind the products",
     workCaseLabel: "Case",
     viewProject: "View project",
     aiEyebrow: "AI WORKFLOW",
@@ -786,13 +826,46 @@ const portfolioCopy = {
     aiLead:
       "An AI Agent workflow for QA: reading requirements, generating test cases, publishing AIO Tests, executing, triaging bugs, re-running verification, and closing the learning loop.",
     aiWorkflow: {
+      overviewTitle: "AI Workflow Overview",
       operatingTitle: "Three-phase operation",
       systemTitle: "QA Agent AI System",
+      flowMapTitle: "Input / Workflow / Output",
       guardrailTitle: "Quality gates",
       boundaryTitle: "AI-led / Human-led",
       expansionTitle: "Five expansion axes",
       outcomeTitle: "Before -> After",
       artifactTitle: "Artifacts per run",
+      inputTitle: "Input",
+      workflowTitle: "Workflow",
+      outputTitle: "Output",
+      inputHeadline: "Requirement",
+      inputCopy: "Business rules, risks, testcase source, and AIO mirror.",
+      outputHeadline: "PASS Done",
+      outputCopy: "Evidence, bugs, coverage, knowledge base, and next-loop learning.",
+      roleTitle: "Object",
+      aiActionTitle: "What AI does",
+      outputItemTitle: "Deliverable",
+      overviewBody: [
+        "The workflow starts from requirements, business documents, and product risks that need control.",
+        "AI assists with analysis, testcase generation, gate checks, and evidence synthesis; QA still approves scope, decides bug logging, and owns final quality.",
+      ],
+      roles: [
+        {
+          icon: "target" as const,
+          title: "BA / PO",
+          copy: "Provides requirements, business rules, and product context.",
+        },
+        {
+          icon: "shield" as const,
+          title: "QA",
+          copy: "Approves gates, confirms coverage, and decides testing outcomes.",
+        },
+        {
+          icon: "lab" as const,
+          title: "AI Agent",
+          copy: "Handles repetitive tasks, traces evidence, and proposes test expansion.",
+        },
+      ],
       phases: [
         {
           label: "Phase 1",
@@ -912,50 +985,109 @@ const productProfiles = {
   vi: {
     "LMS Pro": {
       domain: "Learning Management System",
+      frame: "monitor",
       iconSrc: "/product-icons/lms-pro.ico",
+      screenSrcs: [
+        "/product-screens/lms-pro-1.png",
+        "/product-screens/lms-pro-2.png",
+        "/product-screens/lms-pro-3.png",
+      ],
       copy: "Nền tảng quản lý học tập tại SAPP với luồng học, vận hành lớp và báo cáo đào tạo.",
     },
     uPresenter: {
       domain: "AI eLearning",
+      frame: "monitor",
       iconSrc: "/product-icons/upresenter.svg",
+      screenSrcs: [
+        "/product-screens/upresenter-1.png",
+        "/product-screens/upresenter-2.svg",
+        "/product-screens/upresenter-3.svg",
+      ],
       copy: "Nền tảng tạo nội dung học tập có AI hỗ trợ cho slide, giọng đọc và quản lý học liệu.",
     },
     ActivePresenter: {
       domain: "eLearning Authoring",
+      frame: "monitor",
       iconSrc: "/product-icons/activepresenter.svg",
+      screenSrcs: [
+        "/product-screens/activepresenter-1.webp",
+        "/product-screens/activepresenter-2.webp",
+        "/product-screens/activepresenter-3.webp",
+      ],
       copy: "Công cụ tạo bài giảng, quay màn hình, mô phỏng phần mềm và nội dung tương tác.",
     },
     "Saola Animate": {
       domain: "HTML5 Animation",
+      frame: "tablet",
       iconSrc: "/product-icons/saola-animate.png",
+      screenSrcs: [
+        "/product-screens/saola-animate-1.webp",
+        "/product-screens/saola-animate-2.webp",
+        "/product-screens/saola-animate-3.webp",
+        "/product-screens/saola-animate-4.webp",
+      ],
       copy: "Công cụ thiết kế animation HTML5 và nội dung tương tác chạy trên web.",
     },
   },
   en: {
     "LMS Pro": {
       domain: "Learning Management System",
+      frame: "monitor",
       iconSrc: "/product-icons/lms-pro.ico",
+      screenSrcs: [
+        "/product-screens/lms-pro-1.png",
+        "/product-screens/lms-pro-2.png",
+        "/product-screens/lms-pro-3.png",
+      ],
       copy: "A SAPP learning management platform covering learning flows, class operations, and training reports.",
     },
     uPresenter: {
       domain: "AI eLearning",
+      frame: "monitor",
       iconSrc: "/product-icons/upresenter.svg",
+      screenSrcs: [
+        "/product-screens/upresenter-1.png",
+        "/product-screens/upresenter-2.svg",
+        "/product-screens/upresenter-3.svg",
+      ],
       copy: "An AI-assisted learning content platform for slides, voice generation, and learning asset management.",
     },
     ActivePresenter: {
       domain: "eLearning Authoring",
+      frame: "monitor",
       iconSrc: "/product-icons/activepresenter.svg",
+      screenSrcs: [
+        "/product-screens/activepresenter-1.webp",
+        "/product-screens/activepresenter-2.webp",
+        "/product-screens/activepresenter-3.webp",
+      ],
       copy: "An authoring tool for courses, screen recording, software simulation, and interactive content.",
     },
     "Saola Animate": {
       domain: "HTML5 Animation",
+      frame: "tablet",
       iconSrc: "/product-icons/saola-animate.png",
+      screenSrcs: [
+        "/product-screens/saola-animate-1.webp",
+        "/product-screens/saola-animate-2.webp",
+        "/product-screens/saola-animate-3.webp",
+        "/product-screens/saola-animate-4.webp",
+      ],
       copy: "A tool for designing HTML5 animation and interactive web content.",
     },
   },
 } as const satisfies Record<
   Locale,
-  Record<string, { readonly copy: string; readonly domain: string; readonly iconSrc: string }>
+  Record<
+    string,
+    {
+      readonly copy: string;
+      readonly domain: string;
+      readonly frame: "monitor" | "tablet";
+      readonly iconSrc: string;
+      readonly screenSrcs: readonly string[];
+    }
+  >
 >;
 
 const toolLogoProfiles: Record<
@@ -996,12 +1128,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
       label: portfolio.nav.journey,
     },
     {
-      href: "/skills",
-      icon: "shield" as const,
-      key: "skills" as const,
-      label: portfolio.nav.skills,
-    },
-    {
       href: "/works",
       icon: "layers" as const,
       key: "works" as const,
@@ -1023,10 +1149,10 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
   const dockItems = [
     { href: "/", icon: "user" as const, key: "resume" as const, label: portfolio.nav.resume },
     {
-      href: "/skills",
-      icon: "shield" as const,
-      key: "skills" as const,
-      label: portfolio.nav.skills,
+      href: "/journey",
+      icon: "progress" as const,
+      key: "journey" as const,
+      label: portfolio.nav.journey,
     },
     {
       href: "/works",
@@ -1148,6 +1274,8 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
       ".portfolio-main .skill-group",
       ".portfolio-main .journey-milestone",
       ".portfolio-main .ai-phase-card",
+      ".portfolio-main .ai-phase-detail-card",
+      ".portfolio-main .ai-role-card",
       ".portfolio-main .ai-flow-step",
       ".portfolio-main .ai-metric-card",
       ".portfolio-main .ai-artifact-chip",
@@ -1441,47 +1569,24 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
             />
             <div className="works-grid">
               {productCards.map((product, index) => (
-                <article
-                  className="portfolio-card work-card"
-                  id={`work-${slugifyId(product.name)}`}
+                <ProductCaseCard
+                  index={index}
                   key={product.name}
-                >
-                  <div className="work-case-kicker">
-                    <span>
-                      {portfolio.workCaseLabel} / {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <ThreeDIcon
-                      className="work-context-icon"
-                      name={getProductContextIcon(product.name)}
-                    />
-                  </div>
-                  <div className="work-card-media">
-                    <img
-                      alt=""
-                      aria-hidden="true"
-                      className="product-logo"
-                      loading="lazy"
-                      src={product.iconSrc}
-                    />
-                  </div>
-                  <span className="work-domain">{product.domain}</span>
-                  <h3>{product.name}</h3>
-                  <p>{product.copy}</p>
-                  <div className="work-meta">
-                    <span>{product.company}</span>
-                    <time>{product.date}</time>
-                  </div>
-                  <a
-                    className="work-link"
-                    href={product.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span>{portfolio.viewProject}</span>
-                    <Icon name="external" />
-                  </a>
-                </article>
+                  product={product}
+                  workCaseLabel={portfolio.workCaseLabel}
+                  viewProject={portfolio.viewProject}
+                />
               ))}
+            </div>
+            <div className="product-skills-section" id="product-skills">
+              <PortfolioHeading
+                eyebrow={portfolio.skillsEyebrow}
+                icon="shield"
+                id="product-skills-title"
+                title={portfolio.productSkillTitle}
+              />
+              <p className="page-section-lead">{portfolio.skillsLead}</p>
+              <SkillsGrid skillGroups={t.skillGroups} />
             </div>
           </section>
         ) : null}
@@ -1492,7 +1597,12 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
 
         {page === "contact" ? (
           <section className="portfolio-section contact-section page-section" id="contact">
-            <div className="contact-copy">
+            <article className="contact-profile-card">
+              <div className="contact-profile-icons" aria-hidden="true">
+                <ThreeDIcon name="shield" />
+                <ThreeDIcon name="lab" />
+                <ThreeDIcon name="chart" />
+              </div>
               <PortfolioHeading
                 eyebrow={portfolio.contactEyebrow}
                 icon="target"
@@ -1500,16 +1610,35 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
                 title={portfolio.contactTitle}
               />
               <p>{portfolio.contactLead}</p>
-              <div className="interest-strip" aria-label={t.interestsTitle}>
-                {t.interests.map((interest) => (
-                  <span key={interest}>{interest}</span>
+              <div className="contact-profile-person">
+                <img alt="" aria-hidden="true" src="/manh-profile.png" />
+                <span>
+                  <strong>{t.name}</strong>
+                  <em>{t.heroBadge}</em>
+                </span>
+              </div>
+            </article>
+            <div className="contact-info-panel">
+              <div className="contact-name-card">
+                <ThreeDIcon name="notebook" />
+                <div>
+                  <span>{portfolio.portfolioEdition}</span>
+                  <strong>{t.name}</strong>
+                  <em>{t.heroBadge}</em>
+                </div>
+              </div>
+              <div className="contact-grid">
+                {t.contact.map((item) => (
+                  <ContactRow key={`${item.label}-${item.value}`} {...item} />
                 ))}
               </div>
-            </div>
-            <div className="contact-grid">
-              {t.contact.map((item) => (
-                <ContactRow key={`${item.label}-${item.value}`} {...item} />
-              ))}
+              <div className="contact-interest-card">
+                <div className="contact-interest-title">
+                  <ThreeDIcon name="bulb" />
+                  <strong>{t.interestsTitle}</strong>
+                </div>
+                <InterestChips interests={t.interests} label={t.interestsTitle} />
+              </div>
             </div>
           </section>
         ) : null}
@@ -1646,7 +1775,7 @@ function ThreeDIcon({
       aria-hidden="true"
       className={["three-d-icon", className].filter(Boolean).join(" ")}
       loading="lazy"
-      src={`/3d-icons-clean/${name}.png`}
+      src={`/3d-icons-transparent/${name}.png`}
     />
   );
 }
@@ -1654,7 +1783,13 @@ function ThreeDIcon({
 function getPortfolioProducts(t: Content, locale: Locale) {
   const profiles: Record<
     string,
-    { readonly copy: string; readonly domain: string; readonly iconSrc: string }
+    {
+      readonly copy: string;
+      readonly domain: string;
+      readonly frame: "monitor" | "tablet";
+      readonly iconSrc: string;
+      readonly screenSrcs: readonly string[];
+    }
   > = productProfiles[locale];
 
   return t.experiences.flatMap((experience) => {
@@ -1666,7 +1801,9 @@ function getPortfolioProducts(t: Content, locale: Locale) {
       const profile = profiles[product.name] ?? {
         copy: "",
         domain: t.productLabel,
+        frame: "monitor" as const,
         iconSrc: "/product-icons/lms-pro.ico",
+        screenSrcs: [],
       };
 
       return {
@@ -1675,7 +1812,9 @@ function getPortfolioProducts(t: Content, locale: Locale) {
         copy: profile.copy,
         date: experience.date,
         domain: profile.domain,
+        frame: profile.frame,
         iconSrc: profile.iconSrc,
+        screenSrcs: profile.screenSrcs,
       };
     });
   });
@@ -1690,6 +1829,124 @@ function getProductContextIcon(productName: string): ThreeDIconName {
   };
 
   return iconMap[productName] ?? "computer";
+}
+
+function ProductCaseCard({
+  index,
+  product,
+  viewProject,
+  workCaseLabel,
+}: {
+  index: number;
+  product: ReturnType<typeof getPortfolioProducts>[number];
+  viewProject: string;
+  workCaseLabel: string;
+}) {
+  return (
+    <article
+      className="portfolio-card work-card product-case-card"
+      id={`work-${slugifyId(product.name)}`}
+    >
+      <div className="work-card-copy">
+        <div className="work-case-kicker">
+          <span>
+            {workCaseLabel} / {String(index + 1).padStart(2, "0")}
+          </span>
+          <ThreeDIcon
+            className="work-context-icon"
+            name={getProductContextIcon(product.name)}
+          />
+        </div>
+        <div className="work-card-brand">
+          <span className="work-card-media">
+            <img
+              alt=""
+              aria-hidden="true"
+              className="product-logo"
+              loading="lazy"
+              src={product.iconSrc}
+            />
+          </span>
+          <span className="work-domain">{product.domain}</span>
+        </div>
+        <h3>{product.name}</h3>
+        <p>{product.copy}</p>
+        <div className="work-meta">
+          <span>{product.company}</span>
+          <time>{product.date}</time>
+        </div>
+        <a
+          className="work-link"
+          href={product.href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>{viewProject}</span>
+          <Icon name="external" />
+        </a>
+      </div>
+      <ProductMonitor
+        frame={product.frame}
+        iconSrc={product.iconSrc}
+        name={product.name}
+        screenSrcs={product.screenSrcs}
+      />
+    </article>
+  );
+}
+
+function ProductMonitor({
+  frame,
+  iconSrc,
+  name,
+  screenSrcs,
+}: {
+  frame: "monitor" | "tablet";
+  iconSrc: string;
+  name: string;
+  screenSrcs: readonly string[];
+}) {
+  const slides = screenSrcs.length > 0 ? screenSrcs : [iconSrc];
+
+  return (
+    <div className={`product-monitor is-${frame}`} aria-label={`${name} preview`}>
+      <div className="product-monitor-frame">
+        {frame === "monitor" ? (
+          <div className="product-monitor-bar" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+        ) : null}
+        <div
+          className="product-screen-slider"
+          style={
+            {
+              "--slide-count": slides.length,
+              "--slide-duration": `${slides.length * 4}s`,
+            } as CSSProperties
+          }
+        >
+          {slides.map((screen, slideIndex) => (
+            <img
+              alt={`${name} screen ${slideIndex + 1}`}
+              className="product-screen-slide"
+              key={`${name}-${screen}`}
+              loading="lazy"
+              src={screen}
+              style={
+                {
+                  "--slide-index": slideIndex,
+                  "--slide-count": slides.length,
+                } as CSSProperties
+              }
+            />
+          ))}
+        </div>
+      </div>
+      <div className="product-monitor-stand" aria-hidden="true" />
+    </div>
+  );
 }
 
 function getPageMinimapItems(
@@ -1724,10 +1981,17 @@ function getPageMinimapItems(
   }
 
   if (page === "works") {
-    return productCards.map((product) => ({
-      id: `work-${slugifyId(product.name)}`,
-      label: product.name,
-    }));
+    return [
+      ...productCards.map((product) => ({
+        id: `work-${slugifyId(product.name)}`,
+        label: product.name,
+      })),
+      { id: "product-skills", label: portfolio.productSkillTitle },
+      ...t.skillGroups.map((group, index) => ({
+        id: `skill-group-${index}`,
+        label: group.title,
+      })),
+    ];
   }
 
   if (page === "ai") {
@@ -1851,55 +2115,122 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
 
   return (
     <section className="portfolio-section ai-section ai-workflow-page page-section" id="ai-workflow">
-      <div className="ai-copy">
-        <PortfolioHeading
-          eyebrow={portfolio.aiEyebrow}
-          icon="lab"
-          id="ai-title"
-          title={portfolio.aiTitle}
-        />
-        <p>{portfolio.aiLead}</p>
-      </div>
-
-      <article className="portfolio-card ai-operating-card" id="ai-operating-system">
-        <div className="compact-card-head">
-          <ThreeDIcon name="target" />
-          <h3>{workflow.operatingTitle}</h3>
+      <article className="portfolio-card ai-reference-hero">
+        <div className="ai-copy">
+          <PortfolioHeading
+            eyebrow={portfolio.aiEyebrow}
+            icon="lab"
+            id="ai-title"
+            title={portfolio.aiTitle}
+          />
+          <p>{portfolio.aiLead}</p>
         </div>
-        <div className="ai-phase-lane">
-          {workflow.phases.map((phase, index) => (
-            <div className="ai-phase-card" key={phase.label}>
-              <span>{phase.label}</span>
-              <strong>{phase.title}</strong>
-              <ul>
-                {phase.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              {index < workflow.phases.length - 1 ? (
-                <span className="ai-phase-arrow" aria-hidden="true">
-                  <Icon name="chevron" />
-                </span>
-              ) : null}
-            </div>
-          ))}
+        <div className="ai-hero-icons" aria-hidden="true">
+          <ThreeDIcon name="target" />
+          <ThreeDIcon name="shield" />
+          <ThreeDIcon name="computer" />
+          <ThreeDIcon name="chart" />
         </div>
       </article>
 
+      <section className="ai-overview-layout" id="ai-operating-system">
+        <article className="portfolio-card ai-overview-card">
+          <h3 className="ai-block-title">{workflow.overviewTitle}</h3>
+          {workflow.overviewBody.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <div className="ai-role-grid">
+            {workflow.roles.map((role) => (
+              <div className="ai-role-card" key={role.title}>
+                <ThreeDIcon name={role.icon} />
+                <strong>{role.title}</strong>
+                <span>{role.copy}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="portfolio-card ai-cycle-card" aria-label={workflow.operatingTitle}>
+          <h3 className="ai-block-title">{workflow.operatingTitle}</h3>
+          <div className="ai-cycle-diagram">
+            <div className="ai-cycle-center">
+              <ThreeDIcon name="lab" />
+              <span>{workflow.systemTitle}</span>
+            </div>
+            {workflow.phases.map((phase, index) => (
+              <div
+                className={`ai-cycle-node ai-cycle-node-${index + 1}`}
+                key={phase.label}
+              >
+                <span>{phase.label}</span>
+                <strong>{phase.title}</strong>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+
       <section className="ai-flow-section" id="ai-core-flow" aria-labelledby="ai-core-flow-title">
         <h3 className="ai-block-title" id="ai-core-flow-title">
-          {workflow.systemTitle}
+          {workflow.flowMapTitle}
         </h3>
-        <div className="ai-core-grid">
-          {workflow.steps.map((step, index) => (
-            <article className="ai-flow-step" key={step.title}>
-              <div className="ai-step-index">{String(index + 1).padStart(2, "0")}</div>
-              <ThreeDIcon name={step.icon} />
-              <h4>{step.title}</h4>
-              <p>{step.copy}</p>
-            </article>
-          ))}
+        <div className="portfolio-card ai-flow-map">
+          <div className="ai-flow-column">
+            <span>{workflow.inputTitle}</span>
+            <strong>{workflow.inputHeadline}</strong>
+            <p>{workflow.inputCopy}</p>
+          </div>
+          <div className="ai-flow-connector" aria-hidden="true">
+            <Icon name="chevron" />
+          </div>
+          <div className="ai-flow-workflow">
+            {workflow.steps.map((step, index) => (
+              <article className="ai-flow-step" key={step.title}>
+                <div className="ai-step-index">{String(index + 1).padStart(2, "0")}</div>
+                <ThreeDIcon name={step.icon} />
+                <h4>{step.title}</h4>
+                <p>{step.copy}</p>
+              </article>
+            ))}
+          </div>
+          <div className="ai-flow-connector" aria-hidden="true">
+            <Icon name="chevron" />
+          </div>
+          <div className="ai-flow-column">
+            <span>{workflow.outputTitle}</span>
+            <strong>{workflow.outputHeadline}</strong>
+            <p>{workflow.outputCopy}</p>
+          </div>
         </div>
+      </section>
+
+      <section className="ai-phase-detail-section" aria-label={workflow.operatingTitle}>
+        {workflow.phases.map((phase) => (
+          <article className="portfolio-card ai-phase-detail-card" key={phase.label}>
+            <div className="ai-phase-detail-head">
+              <span>{phase.label}</span>
+              <h3>{phase.title}</h3>
+            </div>
+            <div className="ai-phase-detail-grid">
+              <div>
+                <strong>{workflow.roleTitle}</strong>
+                <p>QA / BA / PO / AI Agent</p>
+              </div>
+              <div>
+                <strong>{workflow.aiActionTitle}</strong>
+                <ul>
+                  {phase.points.slice(0, 3).map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <strong>{workflow.outputItemTitle}</strong>
+                <p>{phase.points[phase.points.length - 1]}</p>
+              </div>
+            </div>
+          </article>
+        ))}
       </section>
 
       <section className="ai-guardrail-layout" id="ai-guardrails" aria-labelledby="ai-guardrails-title">
@@ -2206,12 +2537,11 @@ function renderModalBody(section: ModalKey, t: Content) {
         ))}
       </div>
       <div className="modal-interests">
-        <SectionTitle icon="spark">{t.interestsTitle}</SectionTitle>
-        <ul className="simple-list">
-          {t.interests.map((interest) => (
-            <li key={interest}>{interest}</li>
-          ))}
-        </ul>
+        <div className="modal-interest-heading">
+          <ThreeDIcon name="bulb" />
+          <h3>{t.interestsTitle}</h3>
+        </div>
+        <InterestChips compact interests={t.interests} label={t.interestsTitle} />
       </div>
     </div>
   );
@@ -2258,6 +2588,64 @@ function SectionTitle({
   );
 }
 
+function InterestChips({
+  compact = false,
+  interests,
+  label,
+}: {
+  compact?: boolean;
+  interests: readonly string[];
+  label: string;
+}) {
+  return (
+    <div
+      aria-label={label}
+      className={`interest-strip interest-chip-list${compact ? " is-compact" : ""}`}
+    >
+      {interests.map((interest, index) => (
+        <div className="interest-chip" key={interest}>
+          <ThreeDIcon name={interestThreeDIcons[index] ?? "bulb"} />
+          <strong>{interest}</strong>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function getContactThreeDIcon(icon: IconName, label: string): ThreeDIconName {
+  const normalizedLabel = label
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[đĐ]/g, "d")
+    .toLowerCase();
+
+  if (normalizedLabel.includes("linkedin")) {
+    return "chart";
+  }
+
+  if (normalizedLabel.includes("email") || icon === "mail") {
+    return "computer";
+  }
+
+  if (normalizedLabel.includes("dien thoai") || icon === "phone") {
+    return "target";
+  }
+
+  if (normalizedLabel.includes("dia chi") || normalizedLabel.includes("address")) {
+    return "shield";
+  }
+
+  if (normalizedLabel.includes("que") || normalizedLabel.includes("hometown")) {
+    return "target";
+  }
+
+  if (normalizedLabel.includes("ngay sinh") || normalizedLabel.includes("birthday")) {
+    return "notebook";
+  }
+
+  return "bulb";
+}
+
 function ContactRow({
   icon,
   label,
@@ -2269,10 +2657,11 @@ function ContactRow({
   value: string;
   href?: string;
 }) {
+  const threeDIcon = getContactThreeDIcon(icon, label);
   const body = (
     <>
-      <span className="contact-icon" aria-hidden="true">
-        <Icon name={icon} />
+      <span className="contact-icon contact-3d-icon" aria-hidden="true">
+        <ThreeDIcon name={threeDIcon} />
       </span>
       <span>
         <strong>{label}</strong>

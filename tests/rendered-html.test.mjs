@@ -9,7 +9,6 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /NGUYEN HUNG MANH/);
   assert.match(page, /AI Agent/);
   assert.match(page, /href: "\/journey"/);
-  assert.match(page, /href: "\/skills"/);
   assert.match(page, /href: "\/works"/);
   assert.match(page, /href: "\/ai-workflow"/);
   assert.match(page, /href: "\/contact"/);
@@ -19,10 +18,18 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /PORTFOLIO · 2026/);
   assert.match(page, /hero-icon-board/);
   assert.match(page, /work-case-kicker/);
+  assert.match(page, /product-case-card/);
+  assert.match(page, /product-monitor/);
+  assert.match(page, /product-skills/);
   assert.match(page, /skill-context-icon/);
+  assert.match(page, /ai-reference-hero/);
+  assert.match(page, /ai-flow-map/);
   assert.match(page, /preflight_gate/);
   assert.match(page, /Ambiguity Gate/);
   assert.match(page, /AI-led \/ Human-led/);
+  assert.match(page, /contact-profile-card/);
+  assert.match(page, /contact-3d-icon/);
+  assert.match(page, /interest-chip/);
   assert.match(page, /\/tool-logos\/jira\.svg/);
   assert.match(page, /\/tool-logos\/postman\.svg/);
   assert.match(page, /\/tool-logos\/codex\.svg/);
@@ -39,8 +46,12 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /atomisystems\.com\/activepresenter/);
   assert.match(page, /atomisystems\.com\/saola-animate/);
   assert.match(page, /upresenter\.ai\/vi/);
-  assert.match(page, /lms-pro\.sapp\.edu\.vn\/lms-pro-new-version\?tab=home/);
-  assert.match(page, /\/3d-icons-clean\/\$\{name\}\.png/);
+  assert.match(page, /uat-lms\.sapp\.edu\.vn\/lms-pro-new-version/);
+  assert.match(page, /\/3d-icons-transparent\/\$\{name\}\.png/);
+  assert.match(page, /\/product-screens\/lms-pro-1\.png/);
+  assert.match(page, /\/product-screens\/upresenter-1\.png/);
+  assert.match(page, /\/product-screens\/activepresenter-1\.webp/);
+  assert.match(page, /\/product-screens\/saola-animate-1\.webp/);
   assert.match(page, /\/product-icons\/activepresenter\.svg/);
   assert.match(page, /\/product-icons\/saola-animate\.png/);
   assert.match(page, /\/product-icons\/upresenter\.svg/);
@@ -67,10 +78,17 @@ test("ships the route pages, profile image, CV PDFs, and visual assets", async (
     access(new URL("../public/3d-icons/computer.webp", import.meta.url)),
     access(new URL("../public/3d-icons-clean/target.png", import.meta.url)),
     access(new URL("../public/3d-icons-clean/computer.png", import.meta.url)),
+    access(new URL("../public/3d-icons-transparent/target.png", import.meta.url)),
+    access(new URL("../public/3d-icons-transparent/computer.png", import.meta.url)),
+    access(new URL("../public/3d-icons-transparent/medal.png", import.meta.url)),
     access(new URL("../public/product-icons/activepresenter.svg", import.meta.url)),
     access(new URL("../public/product-icons/saola-animate.png", import.meta.url)),
     access(new URL("../public/product-icons/upresenter.svg", import.meta.url)),
     access(new URL("../public/product-icons/lms-pro.ico", import.meta.url)),
+    access(new URL("../public/product-screens/activepresenter-1.webp", import.meta.url)),
+    access(new URL("../public/product-screens/saola-animate-1.webp", import.meta.url)),
+    access(new URL("../public/product-screens/upresenter-1.png", import.meta.url)),
+    access(new URL("../public/product-screens/lms-pro-1.png", import.meta.url)),
     access(new URL("../public/tool-logos/jira.svg", import.meta.url)),
     access(new URL("../public/tool-logos/redmine.svg", import.meta.url)),
     access(new URL("../public/tool-logos/postman.svg", import.meta.url)),
