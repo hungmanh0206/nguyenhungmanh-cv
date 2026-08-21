@@ -87,7 +87,7 @@ const content = {
       {
         icon: "phone" as const,
         label: "Điện thoại",
-        value: "0862342696",
+        value: "086 234 2696",
         href: "tel:+84862342696",
       },
       {
@@ -135,9 +135,9 @@ const content = {
         company: "Định hướng cá nhân",
         date: "05/2025 - 01/2026",
         bullets: [
-          "Nghiên cứu Claude Code, Codex và mô hình AI Agent để thử nghiệm pipeline phân tích requirement, sinh testcase và tự kiểm tra output.",
-          "Chuẩn hóa cách dùng AI trong QA theo nguyên tắc có gate: AI đề xuất, QA duyệt scope, evidence và quyết định log bug.",
-          "Xây dựng bộ prompt, checklist và mẫu báo cáo thử nghiệm để chuẩn bị áp dụng vào workflow kiểm thử sản phẩm LMS/eLearning.",
+          "Tự học quy trình QA end-to-end từ phân tích requirement, thiết kế testcase, chuẩn bị dữ liệu, execution, log bug đến báo cáo chất lượng.",
+          "Thử nghiệm cách đưa AI Agent vào từng bước của quy trình để hình thành bộ kit hỗ trợ QA nhưng vẫn có gate kiểm soát của con người.",
+          "Xây dựng prompt, checklist, mẫu testcase và mẫu báo cáo nhằm chuẩn bị áp dụng trực tiếp vào công việc kiểm thử sản phẩm LMS/eLearning.",
         ],
       },
       {
@@ -347,7 +347,7 @@ const content = {
       {
         icon: "phone" as const,
         label: "Phone",
-        value: "0862342696",
+        value: "+84 862 342 696",
         href: "tel:+84862342696",
       },
       {
@@ -395,9 +395,9 @@ const content = {
         company: "Personal development track",
         date: "05/2025 - 01/2026",
         bullets: [
-          "Researched Claude Code, Codex, and AI Agent patterns to prototype requirement analysis, testcase generation, and output self-review pipelines.",
-          "Standardized AI usage in QA around a gated model: AI proposes, QA approves scope, evidence, and bug logging decisions.",
-          "Built prompt sets, checklists, and experimental report templates to prepare for LMS/eLearning testing workflows.",
+          "Self-studied the end-to-end QA process from requirement analysis, testcase design, test data preparation, execution, bug logging, to quality reporting.",
+          "Experimented with applying AI Agents to each QA step to form a practical toolkit while keeping human-controlled quality gates.",
+          "Built prompts, checklists, testcase templates, and report templates to prepare for direct use in LMS/eLearning testing work.",
         ],
       },
       {
@@ -632,32 +632,14 @@ const portfolioCopy = {
       journey: "Kinh nghiệm",
       skills: "Kỹ năng",
       works: "Dự án",
-      ai: "Quy trình AI",
+      ai: "AI Agent",
       contact: "Liên hệ",
     },
     minimapLabel: "Bản đồ trang",
-    portfolioEdition: "PORTFOLIO · 2026",
     greeting: "Xin chào, tôi là",
     headline: "",
     heroLead:
       "Tôi xây AI Agent hỗ trợ sinh testcase, kiểm tra evidence và rút ngắn vòng phản hồi; AI xử lý throughput, QA chịu trách nhiệm chất lượng cuối cùng.",
-    heroIconCards: [
-      {
-        icon: "shield" as const,
-        title: "QA Gates",
-        copy: "Chặn output thiếu cơ sở trước khi đi vào execution.",
-      },
-      {
-        icon: "lab" as const,
-        title: "AI Testing Lab",
-        copy: "Tự động hóa testcase, execution và re-run verification.",
-      },
-      {
-        icon: "chart" as const,
-        title: "Quality Metrics",
-        copy: "Theo dõi traceability, defect escape và rủi ro theo từng vòng release.",
-      },
-    ],
     aboutEyebrow: "GIỚI THIỆU",
     aboutTitle: "Một chút về tôi",
     aboutLead:
@@ -676,19 +658,19 @@ const portfolioCopy = {
     workCaseLabel: "Case",
     viewProject: "Xem sản phẩm",
     privateProjectLabel: "Sản phẩm nội bộ",
-    aiEyebrow: "QUY TRÌNH AI",
-    aiTitle: "AI Agent cho quy trình QA",
+    aiEyebrow: "AI AGENT",
+    aiTitle: "AI Agent cho kiểm thử phần mềm",
     aiLead:
-      "Mô hình AI Agent hỗ trợ QA từ đọc requirement, sinh testcase, execute, tổng hợp evidence đến re-run verify. AI xử lý phần lặp; QA duyệt scope, bug và trách nhiệm chất lượng.",
+      "Mô hình AI Agent hỗ trợ QA đọc requirement, sinh testcase, chuẩn bị dữ liệu, execute, tổng hợp evidence và re-run verify. AI tăng tốc các tác vụ lặp; QA giữ quyền duyệt scope, bug và quyết định chất lượng.",
     aiWorkflow: {
-      overviewTitle: "AI Workflow Overview",
+      overviewTitle: "AI Agent Workflow Overview",
       operatingTitle: "Luồng vận hành 3 pha",
       systemTitle: "QA Agent AI System",
-      flowMapTitle: "Input / Workflow / Output",
+      flowMapTitle: "Workflow",
       guardrailTitle: "Gate kiểm soát chất lượng",
       boundaryTitle: "AI-led / Human-led",
       expansionTitle: "5 trục mở rộng",
-      outcomeTitle: "Trước -> Sau",
+      outcomeTitle: "Kết quả sau cùng",
       artifactTitle: "Artifact mỗi vòng chạy",
       inputTitle: "Input",
       workflowTitle: "Workflow",
@@ -698,7 +680,7 @@ const portfolioCopy = {
       outputHeadline: "PASS Done",
       outputCopy: "Evidence, bug, traceability, sổ tri thức và vòng học tiếp theo.",
       outcomeScope:
-        "Các kết quả dưới đây mô tả thay đổi trong workflow thử nghiệm cá nhân, không phải KPI sản phẩm đã audit độc lập.",
+        "Kết quả kỳ vọng của bộ kit là quy trình QA có trace rõ hơn, ít thao tác lặp hơn và dễ kiểm soát evidence hơn. Đây là mô hình workflow cá nhân, không phải KPI sản phẩm đã audit độc lập.",
       principleTitle: "Nguyên tắc vận hành",
       principleCopy: "AI xử lý throughput. Con người chịu trách nhiệm chất lượng.",
       evidenceTitle: "Bằng chứng cần kiểm tra",
@@ -717,24 +699,24 @@ const portfolioCopy = {
       aiActionTitle: "What AI do?",
       outputItemTitle: "Deliverable",
       overviewBody: [
-        "Workflow bắt đầu từ requirement, tài liệu nghiệp vụ và rủi ro sản phẩm cần kiểm soát.",
-        "AI hỗ trợ phân tích, sinh testcase, kiểm tra gate và tổng hợp evidence; QA vẫn là người duyệt scope, quyết định bug và chịu trách nhiệm chất lượng cuối cùng.",
+        "Workflow bắt đầu từ requirement, business rule, acceptance criteria và các vùng rủi ro cần kiểm soát trước khi viết testcase.",
+        "AI Agent hỗ trợ phân rã yêu cầu, đề xuất testcase, checklist, dữ liệu kiểm thử, risk note và bản nháp báo cáo. QA kiểm tra gate, xác nhận evidence, quyết định bug và chịu trách nhiệm chất lượng cuối cùng.",
       ],
       roles: [
         {
           icon: "target" as const,
           title: "BA / PO",
-          copy: "Cung cấp requirement, business rule và ngữ cảnh sản phẩm.",
+          copy: "Cung cấp requirement, acceptance criteria, business rule, ngữ cảnh sản phẩm và mức ưu tiên nghiệp vụ.",
         },
         {
           icon: "shield" as const,
           title: "QA",
-          copy: "Duyệt gate, xác nhận coverage và quyết định kết quả kiểm thử.",
+          copy: "Làm rõ scope, duyệt testcase, xác nhận coverage/evidence, log bug và đưa ra quyết định pass/fail.",
         },
         {
           icon: "lab" as const,
           title: "AI Agent",
-          copy: "Xử lý tác vụ lặp, trace evidence và đề xuất mở rộng kiểm thử.",
+          copy: "Phân tích dữ liệu đầu vào, tạo draft testcase, đề xuất edge case, tổng hợp evidence và chuẩn bị report để QA duyệt.",
         },
       ],
       phases: [
@@ -754,7 +736,7 @@ const portfolioCopy = {
           points: [
             "Đồng bộ dữ liệu AIO",
             "Preflight Gate trước khi chạy",
-            "Execute + mở rộng 5 trục",
+            "Execute + mở rộng vùng rủi ro",
             "Output Gate trước khi cập nhật cycle",
           ],
         },
@@ -788,7 +770,7 @@ const portfolioCopy = {
         {
           icon: "lab" as const,
           title: "Execute & mở rộng",
-          copy: "Agent chạy preflight, thực thi test và mở rộng theo 5 trục chống lọt bug.",
+          copy: "Agent chạy preflight, thực thi checklist và đề xuất mở rộng test ở vùng rủi ro trước khi QA xác nhận.",
         },
         {
           icon: "shield" as const,
@@ -830,11 +812,19 @@ const portfolioCopy = {
       boundary: [
         {
           title: "AI-led",
-          points: ["Xử lý throughput", "Tổng hợp evidence", "Thao tác lặp có checklist"],
+          points: [
+            "Phân rã requirement thành scope, rule, risk và câu hỏi cần làm rõ",
+            "Sinh draft testcase, checklist, dữ liệu kiểm thử và edge case",
+            "Tổng hợp evidence, log, trạng thái AIO và bản nháp báo cáo",
+          ],
         },
         {
           title: "Human-led",
-          points: ["Duyệt gate", "Quyết định log bug", "Chịu trách nhiệm chất lượng"],
+          points: [
+            "Duyệt scope, acceptance criteria, coverage và tiêu chí pass/fail",
+            "Quyết định log bug, severity, priority và kết luận release risk",
+            "Chịu trách nhiệm cuối cùng về chất lượng và dữ liệu báo cáo",
+          ],
         },
       ],
       expansion: [
@@ -845,20 +835,25 @@ const portfolioCopy = {
         "Trạng thái kế cận",
       ],
       outcomes: [
-        { before: "Soạn testcase nhiều ngày", after: "1 phiên có QA Gate" },
-        { before: "Coverage cảm tính", after: "Trace rõ theo requirement" },
-        { before: "Pass-rate thủ công", after: "Theo dõi defect escape" },
-        { before: "Gate rời rạc", after: "6 gate vận hành thống nhất" },
+        { before: "Soạn testcase thủ công, dễ thiếu trace", after: "Testcase draft có trace về requirement để QA duyệt" },
+        { before: "Coverage phụ thuộc kinh nghiệm cá nhân", after: "Risk note và edge case được gợi ý có hệ thống" },
+        { before: "Evidence rời rạc sau execution", after: "Evidence pack gom theo testcase, bug và cycle" },
+        { before: "Báo cáo mất thời gian tổng hợp", after: "Draft report có dữ liệu, trạng thái và điểm cần QA xác nhận" },
       ],
       artifacts: [
+        "Requirement brief",
+        "Acceptance criteria map",
+        "Traceability matrix",
+        "Risk note",
         "Testcase Excel",
-        "Mirror AIO",
-        "Traceability & risk",
-        "Ambiguity Gate",
+        "Test data checklist",
         "AIO Tests + cycle",
-        "Evidence",
-        "Bug + sổ tri thức",
-        "Máy chống lọt bug",
+        "Evidence pack",
+        "Bug report draft",
+        "Regression checklist",
+        "Ambiguity Gate",
+        "QA Gate log",
+        "Knowledge note",
       ],
     },
     credentialsEyebrow: "HỒ SƠ",
@@ -880,32 +875,14 @@ const portfolioCopy = {
       journey: "Experience",
       skills: "Skills",
       works: "Projects",
-      ai: "AI Workflow",
+      ai: "AI Agent",
       contact: "Contact",
     },
     minimapLabel: "Page minimap",
-    portfolioEdition: "PORTFOLIO · 2026",
     greeting: "Hello, I am",
     headline: "AI improves throughput; QA owns the quality decision",
     heroLead:
       "I build AI Agent workflows that support testcase generation, evidence checks, and faster feedback while keeping QA accountable for the final quality decision.",
-    heroIconCards: [
-      {
-        icon: "shield" as const,
-        title: "QA Gates",
-        copy: "Block unsupported output before it reaches execution.",
-      },
-      {
-        icon: "lab" as const,
-        title: "AI Testing Lab",
-        copy: "Automate testcase generation, execution, and re-run verification.",
-      },
-      {
-        icon: "chart" as const,
-        title: "Quality Metrics",
-        copy: "Track traceability, defect escape, and risk across release loops.",
-      },
-    ],
     aboutEyebrow: "ABOUT ME",
     aboutTitle: "A little about me",
     aboutLead:
@@ -924,19 +901,19 @@ const portfolioCopy = {
     workCaseLabel: "Case",
     viewProject: "View project",
     privateProjectLabel: "Internal product",
-    aiEyebrow: "AI WORKFLOW",
-    aiTitle: "QA Automation AI Agent",
+    aiEyebrow: "AI AGENT",
+    aiTitle: "AI Agent for software testing",
     aiLead:
-      "An AI Agent workflow for QA: reading requirements, generating test cases, publishing AIO Tests, executing, triaging bugs, re-running verification, and closing the learning loop.",
+      "An AI Agent model that helps QA read requirements, generate test cases, prepare test data, execute checks, summarize evidence, and re-run verification. AI accelerates repetitive work while QA owns scope, bugs, and quality decisions.",
     aiWorkflow: {
-      overviewTitle: "AI Workflow Overview",
+      overviewTitle: "AI Agent Workflow Overview",
       operatingTitle: "Three-phase operation",
       systemTitle: "QA Agent AI System",
-      flowMapTitle: "Input / Workflow / Output",
+      flowMapTitle: "Workflow",
       guardrailTitle: "Quality gates",
       boundaryTitle: "AI-led / Human-led",
       expansionTitle: "Five expansion axes",
-      outcomeTitle: "Before -> After",
+      outcomeTitle: "Final outcomes",
       artifactTitle: "Artifacts per run",
       inputTitle: "Input",
       workflowTitle: "Workflow",
@@ -946,7 +923,7 @@ const portfolioCopy = {
       outputHeadline: "PASS Done",
       outputCopy: "Evidence, bugs, traceability, knowledge base, and next-loop learning.",
       outcomeScope:
-        "These outcomes describe a personal workflow prototype, not independently audited product KPIs.",
+        "The expected result of the toolkit is a QA workflow with clearer traceability, fewer repetitive operations, and more controllable evidence. This is a personal workflow model, not independently audited product KPI data.",
       principleTitle: "Operating principle",
       principleCopy: "AI handles throughput. Humans own quality accountability.",
       evidenceTitle: "Evidence to inspect",
@@ -965,24 +942,24 @@ const portfolioCopy = {
       aiActionTitle: "What AI does",
       outputItemTitle: "Deliverable",
       overviewBody: [
-        "The workflow starts from requirements, business documents, and product risks that need control.",
-        "AI assists with analysis, testcase generation, gate checks, and evidence synthesis; QA still approves scope, decides bug logging, and owns final quality.",
+        "The workflow starts from requirements, business rules, acceptance criteria, and risk areas that need control before test cases are written.",
+        "The AI Agent helps decompose requirements, propose test cases, checklists, test data, risk notes, and draft reports. QA reviews gates, confirms evidence, decides bug logging, and owns final quality.",
       ],
       roles: [
         {
           icon: "target" as const,
           title: "BA / PO",
-          copy: "Provides requirements, business rules, and product context.",
+          copy: "Provides requirements, acceptance criteria, business rules, product context, and business priority.",
         },
         {
           icon: "shield" as const,
           title: "QA",
-          copy: "Approves gates, confirms coverage, and decides testing outcomes.",
+          copy: "Clarifies scope, reviews test cases, confirms coverage/evidence, logs bugs, and makes pass/fail decisions.",
         },
         {
           icon: "lab" as const,
           title: "AI Agent",
-          copy: "Handles repetitive tasks, traces evidence, and proposes test expansion.",
+          copy: "Analyzes input, drafts test cases, proposes edge cases, summarizes evidence, and prepares reports for QA review.",
         },
       ],
       phases: [
@@ -1002,7 +979,7 @@ const portfolioCopy = {
           points: [
             "Sync AIO data",
             "Preflight Gate before execution",
-            "Execute + expand 5 axes",
+            "Execute + expand risk areas",
             "Output Gate before cycle update",
           ],
         },
@@ -1036,7 +1013,7 @@ const portfolioCopy = {
         {
           icon: "lab" as const,
           title: "Execute & expand",
-          copy: "The Agent runs preflight checks, executes tests, and expands coverage across five anti-leak axes.",
+          copy: "The Agent runs preflight checks, executes checklists, and proposes risky-area expansion before QA confirmation.",
         },
         {
           icon: "shield" as const,
@@ -1078,11 +1055,19 @@ const portfolioCopy = {
       boundary: [
         {
           title: "AI-led",
-          points: ["Handle throughput", "Summarize evidence", "Repeat checklist-based operations"],
+          points: [
+            "Break requirements into scope, rules, risks, and clarification questions",
+            "Draft test cases, checklists, test data, and edge cases",
+            "Summarize evidence, logs, AIO status, and draft reporting",
+          ],
         },
         {
           title: "Human-led",
-          points: ["Approve gates", "Decide bug logging", "Own quality accountability"],
+          points: [
+            "Approve scope, acceptance criteria, coverage, and pass/fail criteria",
+            "Decide bug logging, severity, priority, and release risk conclusions",
+            "Own final quality accountability and reporting data",
+          ],
         },
       ],
       expansion: [
@@ -1093,20 +1078,25 @@ const portfolioCopy = {
         "Adjacent states",
       ],
       outcomes: [
-        { before: "Testcase drafting takes days", after: "One QA-gated session" },
-        { before: "Coverage is subjective", after: "Requirement-level traceability" },
-        { before: "Manual pass-rate checks", after: "Defect escape tracking" },
-        { before: "Scattered gates", after: "6 unified gates" },
+        { before: "Manual testcase drafting with weak traceability", after: "Traceable testcase drafts ready for QA review" },
+        { before: "Coverage depends heavily on individual experience", after: "Risk notes and edge cases are suggested systematically" },
+        { before: "Evidence is scattered after execution", after: "Evidence packs are grouped by testcase, bug, and cycle" },
+        { before: "Reports take time to summarize", after: "Draft reports include data, status, and QA confirmation points" },
       ],
       artifacts: [
+        "Requirement brief",
+        "Acceptance criteria map",
+        "Traceability matrix",
+        "Risk note",
         "Testcase Excel",
-        "AIO mirror",
-        "Traceability & risk",
-        "Ambiguity Gate",
+        "Test data checklist",
         "AIO Tests + cycle",
-        "Evidence",
-        "Bug + knowledge base",
-        "Anti-leak machine",
+        "Evidence pack",
+        "Bug report draft",
+        "Regression checklist",
+        "Ambiguity Gate",
+        "QA Gate log",
+        "Knowledge note",
       ],
     },
     credentialsEyebrow: "RESUME",
@@ -1437,6 +1427,10 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
       label: portfolio.nav.contact,
     },
   ];
+  const activeTopNavIndex = Math.max(
+    topNavItems.findIndex((item) => item.key === page),
+    0,
+  );
   const dockItems = [
     { href: "/", icon: "user" as const, key: "resume" as const, label: portfolio.nav.resume },
     {
@@ -1533,6 +1527,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
 
   useEffect(() => {
     const selectors = [
+      ".portfolio-main .portfolio-section",
       ".portfolio-main .portfolio-card",
       ".portfolio-main .timeline-item",
       ".portfolio-main .skill-group",
@@ -1574,6 +1569,15 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
       observer.observe(element);
     });
 
+    window.requestAnimationFrame(() => {
+      elements.forEach((element) => {
+        if (element.getBoundingClientRect().top < window.innerHeight * 0.96) {
+          element.classList.add("is-visible");
+          observer.unobserve(element);
+        }
+      });
+    });
+
     return () => observer.disconnect();
   }, [locale, page]);
 
@@ -1596,7 +1600,17 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
         {portfolio.skipToContent}
       </a>
       <header className="site-header portfolio-header">
-        <nav className="nav-links portfolio-top-nav" aria-label={portfolio.primaryNavLabel}>
+        <nav
+          className="nav-links portfolio-top-nav"
+          aria-label={portfolio.primaryNavLabel}
+          style={
+            {
+              "--active-index": activeTopNavIndex,
+              "--nav-count": topNavItems.length,
+            } as CSSProperties
+          }
+        >
+          <span className="nav-active-indicator" aria-hidden="true" />
           {topNavItems.map((item) => (
             <a
               aria-current={page === item.key ? "page" : undefined}
@@ -1632,10 +1646,13 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
         {page === "resume" ? (
           <>
             <section className="portfolio-hero" id="resume" aria-labelledby="hero-title">
+              <div className="portfolio-hero-visual">
+                <div className="portfolio-portrait-frame">
+                  <img src="/manh-profile.png" alt={t.name} />
+                </div>
+              </div>
+
               <div className="portfolio-hero-copy">
-                <span className="portfolio-kicker">
-                  <span>{portfolio.portfolioEdition}</span>
-                </span>
                 <h1 id="hero-title">
                   <span>{t.name}</span>
                   {portfolio.headline ? <strong>{portfolio.headline}</strong> : null}
@@ -1670,23 +1687,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
                     <Icon name="linkedin" />
                     <span>{t.ctaSecondary}</span>
                   </a>
-                </div>
-              </div>
-
-              <div className="portfolio-hero-visual">
-                <div className="portfolio-portrait-frame">
-                  <img src="/manh-profile.png" alt={t.name} />
-                </div>
-                <div className="hero-icon-board" aria-label="QA focus areas">
-                  {portfolio.heroIconCards.map((card) => (
-                    <div className="hero-icon-card" key={card.title}>
-                      <ThreeDIcon name={card.icon} />
-                      <span>
-                        <strong>{card.title}</strong>
-                        <em>{card.copy}</em>
-                      </span>
-                    </div>
-                  ))}
                 </div>
               </div>
             </section>
@@ -1777,13 +1777,11 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
               title={portfolio.worksTitle}
             />
             <div className="works-grid">
-              {productCards.map((product, index) => (
+              {productCards.map((product) => (
                 <ProductCaseCard
-                  index={index}
                   key={product.name}
                   privateProjectLabel={portfolio.privateProjectLabel}
                   product={product}
-                  workCaseLabel={portfolio.workCaseLabel}
                   viewProject={portfolio.viewProject}
                 />
               ))}
@@ -2059,29 +2057,14 @@ function getPortfolioProducts(t: Content, locale: Locale) {
   });
 }
 
-function getProductContextIcon(productName: string): ThreeDIconName {
-  const iconMap: Record<string, ThreeDIconName> = {
-    ActivePresenter: "computer",
-    "LMS Pro": "shield",
-    "Saola Animate": "bulb",
-    uPresenter: "lab",
-  };
-
-  return iconMap[productName] ?? "computer";
-}
-
 function ProductCaseCard({
-  index,
   privateProjectLabel,
   product,
   viewProject,
-  workCaseLabel,
 }: {
-  index: number;
   privateProjectLabel: string;
   product: ReturnType<typeof getPortfolioProducts>[number];
   viewProject: string;
-  workCaseLabel: string;
 }) {
   return (
     <article
@@ -2089,15 +2072,6 @@ function ProductCaseCard({
       id={`work-${slugifyId(product.name)}`}
     >
       <div className="work-card-copy">
-        <div className="work-case-kicker">
-          <span>
-            {workCaseLabel} / {String(index + 1).padStart(2, "0")}
-          </span>
-          <ThreeDIcon
-            className="work-context-icon"
-            name={getProductContextIcon(product.name)}
-          />
-        </div>
         <div className="work-card-brand">
           <span className="work-card-media">
             <img
@@ -2243,8 +2217,8 @@ function getPageMinimapItems(
       { id: "ai-operating-system", label: portfolio.aiWorkflow.operatingTitle },
       { id: "ai-core-flow", label: portfolio.aiWorkflow.systemTitle },
       { id: "ai-guardrails", label: portfolio.aiWorkflow.guardrailTitle },
-      { id: "ai-outcomes", label: portfolio.aiWorkflow.outcomeTitle },
       { id: "ai-artifacts", label: portfolio.aiWorkflow.artifactTitle },
+      { id: "ai-outcomes", label: portfolio.aiWorkflow.outcomeTitle },
     ];
   }
 
@@ -2326,7 +2300,9 @@ function JourneyOverview({
   experiences: readonly Experience[];
   label: string;
 }) {
-  const milestones = experiences.map((experience, index) => ({ experience, index }));
+  const milestones = experiences
+    .map((experience, index) => ({ experience, index }))
+    .reverse();
 
   return (
     <article className="portfolio-card journey-overview" id="journey-overview" aria-label={label}>
@@ -2376,33 +2352,6 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
         </div>
       </article>
 
-      <section className="ai-outcome-layout" id="ai-outcomes" aria-labelledby="ai-outcomes-title">
-        <article className="portfolio-card ai-outcome-card">
-          <h3 className="ai-block-title" id="ai-outcomes-title">
-            {workflow.outcomeTitle}
-          </h3>
-          <p className="ai-scope-note">{workflow.outcomeScope}</p>
-          <div className="ai-metric-grid">
-            {workflow.outcomes.map((metric) => (
-              <div className="ai-metric-card" key={`${metric.before}-${metric.after}`}>
-                <span>{metric.before}</span>
-                <Icon name="progress" />
-                <strong>{metric.after}</strong>
-              </div>
-            ))}
-          </div>
-        </article>
-
-        <article className="portfolio-card ai-expansion-card">
-          <h3 className="ai-block-title">{workflow.expansionTitle}</h3>
-          <div className="ai-expansion-list">
-            {workflow.expansion.map((axis) => (
-              <span key={axis}>{axis}</span>
-            ))}
-          </div>
-        </article>
-      </section>
-
       <section className="ai-overview-layout" id="ai-operating-system">
         <article className="portfolio-card ai-overview-card">
           <h3 className="ai-block-title">{workflow.overviewTitle}</h3>
@@ -2444,15 +2393,7 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
         <h3 className="ai-block-title" id="ai-core-flow-title">
           {workflow.flowMapTitle}
         </h3>
-        <div className="portfolio-card ai-flow-map">
-          <div className="ai-flow-column">
-            <span>{workflow.inputTitle}</span>
-            <strong>{workflow.inputHeadline}</strong>
-            <p>{workflow.inputCopy}</p>
-          </div>
-          <div className="ai-flow-connector" aria-hidden="true">
-            <Icon name="chevron" />
-          </div>
+        <div className="portfolio-card ai-flow-map ai-flow-map-workflow-only">
           <div className="ai-flow-workflow">
             {workflow.steps.map((step, index) => (
               <article className="ai-flow-step" key={step.title}>
@@ -2462,14 +2403,6 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
                 <p>{step.copy}</p>
               </article>
             ))}
-          </div>
-          <div className="ai-flow-connector" aria-hidden="true">
-            <Icon name="chevron" />
-          </div>
-          <div className="ai-flow-column">
-            <span>{workflow.outputTitle}</span>
-            <strong>{workflow.outputHeadline}</strong>
-            <p>{workflow.outputCopy}</p>
           </div>
         </div>
       </section>
@@ -2545,6 +2478,27 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
           ))}
         </div>
       </article>
+
+      <section className="ai-final-results" id="ai-outcomes" aria-labelledby="ai-outcomes-title">
+        <article className="portfolio-card ai-outcome-card ai-final-card">
+          <div className="compact-card-head">
+            <ThreeDIcon name="chart" />
+            <h3 className="ai-block-title" id="ai-outcomes-title">
+              {workflow.outcomeTitle}
+            </h3>
+          </div>
+          <p className="ai-scope-note">{workflow.outcomeScope}</p>
+          <div className="ai-metric-grid">
+            {workflow.outcomes.map((metric) => (
+              <div className="ai-metric-card" key={`${metric.before}-${metric.after}`}>
+                <span>{metric.before}</span>
+                <Icon name="progress" />
+                <strong>{metric.after}</strong>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
     </section>
   );
 }

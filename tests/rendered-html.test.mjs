@@ -15,9 +15,9 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /scroll-minimap/);
   assert.match(page, /scroll-minimap-bar/);
   assert.match(page, /journey-overview/);
-  assert.match(page, /PORTFOLIO · 2026/);
-  assert.match(page, /hero-icon-board/);
-  assert.match(page, /work-case-kicker/);
+  assert.doesNotMatch(page, /PORTFOLIO · 2026/);
+  assert.doesNotMatch(page, /hero-icon-board/);
+  assert.doesNotMatch(page, /work-case-kicker/);
   assert.match(page, /product-case-card/);
   assert.match(page, /product-monitor/);
   assert.match(page, /product-skills/);
