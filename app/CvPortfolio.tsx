@@ -629,9 +629,9 @@ const portfolioCopy = {
     skipToContent: "Bỏ qua điều hướng",
     nav: {
       resume: "Hồ sơ",
-      journey: "Công việc",
+      journey: "Kinh nghiệm",
       skills: "Kỹ năng",
-      works: "Sản phẩm",
+      works: "Dự án",
       ai: "Quy trình AI",
       contact: "Liên hệ",
     },
@@ -640,7 +640,7 @@ const portfolioCopy = {
     greeting: "Xin chào, tôi là",
     headline: "",
     heroLead:
-      "Tôi kết hợp kiểm thử phần mềm, phân tích yêu cầu và AI-driven Testing để rút ngắn vòng viết testcase, tăng độ phủ kiểm thử và giữ QA là người quyết định chất lượng cuối cùng.",
+      "Tôi xây AI Agent hỗ trợ sinh testcase, kiểm tra evidence và rút ngắn vòng phản hồi; AI xử lý throughput, QA chịu trách nhiệm chất lượng cuối cùng.",
     heroIconCards: [
       {
         icon: "shield" as const,
@@ -655,7 +655,7 @@ const portfolioCopy = {
       {
         icon: "chart" as const,
         title: "Quality Metrics",
-        copy: "Đo coverage, pass-rate và rủi ro theo từng vòng release.",
+        copy: "Theo dõi traceability, defect escape và rủi ro theo từng vòng release.",
       },
     ],
     aboutEyebrow: "GIỚI THIỆU",
@@ -666,13 +666,13 @@ const portfolioCopy = {
     skillsEyebrow: "KỸ NĂNG",
     skillsLead:
       "Các nhóm kỹ năng QA, AI testing, công cụ và nền tảng tôi sử dụng trong công việc hằng ngày.",
-    journeyEyebrow: "CÔNG VIỆC",
-    journeyTitle: "Công việc",
+    journeyEyebrow: "KINH NGHIỆM",
+    journeyTitle: "Kinh nghiệm",
     journeyOverviewLabel: "Sơ đồ hành trình",
     journeyDetailTitle: "Chi tiết kinh nghiệm",
-    worksEyebrow: "SẢN PHẨM",
-    worksTitle: "Sản phẩm đã tham gia",
-    productSkillTitle: "Kỹ năng sử dụng trong sản phẩm",
+    worksEyebrow: "DỰ ÁN",
+    worksTitle: "Dự án sản phẩm",
+    productSkillTitle: "Kỹ năng theo dự án",
     workCaseLabel: "Case",
     viewProject: "Xem sản phẩm",
     privateProjectLabel: "Sản phẩm nội bộ",
@@ -696,7 +696,23 @@ const portfolioCopy = {
       inputHeadline: "Requirement",
       inputCopy: "Business rule, rủi ro, nguồn testcase và mirror AIO.",
       outputHeadline: "PASS Done",
-      outputCopy: "Evidence, bug, coverage, sổ tri thức và vòng học tiếp theo.",
+      outputCopy: "Evidence, bug, traceability, sổ tri thức và vòng học tiếp theo.",
+      outcomeScope:
+        "Các kết quả dưới đây mô tả thay đổi trong workflow thử nghiệm cá nhân, không phải KPI sản phẩm đã audit độc lập.",
+      principleTitle: "Nguyên tắc vận hành",
+      principleCopy: "AI xử lý throughput. Con người chịu trách nhiệm chất lượng.",
+      evidenceTitle: "Bằng chứng cần kiểm tra",
+      evidence: [
+        "Testcase Excel có trace về acceptance criteria",
+        "AIO Tests cycle kèm trạng thái và evidence",
+        "Bug report mẫu có step, actual, expected và log",
+      ],
+      riskTitle: "Giới hạn & rủi ro",
+      risks: [
+        "LLM có thể hallucinate testcase, nên mọi testcase phải trace được về requirement.",
+        "Output AI không được xem là pass nếu thiếu evidence, log hoặc tiêu chí xác nhận.",
+        "Defect escape và bug lọt release quan trọng hơn pass-rate cao.",
+      ],
       roleTitle: "Object",
       aiActionTitle: "What AI do?",
       outputItemTitle: "Deliverable",
@@ -831,13 +847,13 @@ const portfolioCopy = {
       outcomes: [
         { before: "Soạn testcase nhiều ngày", after: "1 phiên có QA Gate" },
         { before: "Coverage cảm tính", after: "Trace rõ theo requirement" },
-        { before: "Pass-rate thủ công", after: "Checklist output trước khi pass" },
+        { before: "Pass-rate thủ công", after: "Theo dõi defect escape" },
         { before: "Gate rời rạc", after: "6 gate vận hành thống nhất" },
       ],
       artifacts: [
         "Testcase Excel",
         "Mirror AIO",
-        "Coverage & risk",
+        "Traceability & risk",
         "Ambiguity Gate",
         "AIO Tests + cycle",
         "Evidence",
@@ -851,6 +867,8 @@ const portfolioCopy = {
     contactTitle: "Trao đổi với tôi",
     contactLead:
       "Sẵn sàng trao đổi về QA, AI Testing, eLearning và các sản phẩm cần chất lượng ổn định.",
+    contactChannelTitle: "Kênh liên hệ",
+    contactProfileInfoTitle: "Thông tin cá nhân",
   },
   en: {
     brand: "Nguyễn Hùng Mạnh",
@@ -859,18 +877,18 @@ const portfolioCopy = {
     skipToContent: "Skip to content",
     nav: {
       resume: "Resume",
-      journey: "Work",
+      journey: "Experience",
       skills: "Skills",
-      works: "Works",
+      works: "Projects",
       ai: "AI Workflow",
       contact: "Contact",
     },
     minimapLabel: "Page minimap",
     portfolioEdition: "PORTFOLIO · 2026",
     greeting: "Hello, I am",
-    headline: "QA Engineer building confidence for digital products",
+    headline: "AI improves throughput; QA owns the quality decision",
     heroLead:
-      "I combine software testing, requirement analysis, and AI-driven Testing to help LMS/eLearning products ship with greater stability.",
+      "I build AI Agent workflows that support testcase generation, evidence checks, and faster feedback while keeping QA accountable for the final quality decision.",
     heroIconCards: [
       {
         icon: "shield" as const,
@@ -885,7 +903,7 @@ const portfolioCopy = {
       {
         icon: "chart" as const,
         title: "Quality Metrics",
-        copy: "Track coverage, pass-rate, and risk across release loops.",
+        copy: "Track traceability, defect escape, and risk across release loops.",
       },
     ],
     aboutEyebrow: "ABOUT ME",
@@ -896,13 +914,13 @@ const portfolioCopy = {
     skillsEyebrow: "SKILLS",
     skillsLead:
       "The QA, AI testing, tools, and platform skills I use in daily product work.",
-    journeyEyebrow: "WORK",
-    journeyTitle: "Work & journey",
+    journeyEyebrow: "EXPERIENCE",
+    journeyTitle: "Experience",
     journeyOverviewLabel: "Journey map",
     journeyDetailTitle: "Detailed experience",
-    worksEyebrow: "PRODUCTS & SKILLS",
-    worksTitle: "Products I contributed to",
-    productSkillTitle: "Skills behind the products",
+    worksEyebrow: "PROJECTS",
+    worksTitle: "Product projects",
+    productSkillTitle: "Project skills",
     workCaseLabel: "Case",
     viewProject: "View project",
     privateProjectLabel: "Internal product",
@@ -926,7 +944,23 @@ const portfolioCopy = {
       inputHeadline: "Requirement",
       inputCopy: "Business rules, risks, testcase source, and AIO mirror.",
       outputHeadline: "PASS Done",
-      outputCopy: "Evidence, bugs, coverage, knowledge base, and next-loop learning.",
+      outputCopy: "Evidence, bugs, traceability, knowledge base, and next-loop learning.",
+      outcomeScope:
+        "These outcomes describe a personal workflow prototype, not independently audited product KPIs.",
+      principleTitle: "Operating principle",
+      principleCopy: "AI handles throughput. Humans own quality accountability.",
+      evidenceTitle: "Evidence to inspect",
+      evidence: [
+        "Testcase Excel traced to acceptance criteria",
+        "AIO Tests cycle with status and evidence",
+        "Sample bug report with steps, actual, expected, and logs",
+      ],
+      riskTitle: "Limits & risks",
+      risks: [
+        "LLMs can hallucinate test cases, so every case must trace back to requirements.",
+        "AI output cannot pass without evidence, logs, and confirmation criteria.",
+        "Defect escape and release leakage matter more than a high pass-rate.",
+      ],
       roleTitle: "Object",
       aiActionTitle: "What AI does",
       outputItemTitle: "Deliverable",
@@ -1061,13 +1095,13 @@ const portfolioCopy = {
       outcomes: [
         { before: "Testcase drafting takes days", after: "One QA-gated session" },
         { before: "Coverage is subjective", after: "Requirement-level traceability" },
-        { before: "Manual pass-rate checks", after: "Output checklist before pass" },
+        { before: "Manual pass-rate checks", after: "Defect escape tracking" },
         { before: "Scattered gates", after: "6 unified gates" },
       ],
       artifacts: [
         "Testcase Excel",
         "AIO mirror",
-        "Coverage & risk",
+        "Traceability & risk",
         "Ambiguity Gate",
         "AIO Tests + cycle",
         "Evidence",
@@ -1081,6 +1115,8 @@ const portfolioCopy = {
     contactTitle: "Let us talk",
     contactLead:
       "Open to conversations about QA, AI Testing, eLearning, and products that need stable quality.",
+    contactChannelTitle: "Contact channels",
+    contactProfileInfoTitle: "Personal information",
   },
 } as const satisfies Record<Locale, unknown>;
 
@@ -1363,6 +1399,12 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
   const t = content[locale];
   const portfolio = portfolioCopy[locale];
   const productCards = useMemo(() => getPortfolioProducts(t, locale), [locale, t]);
+  const contactChannels = t.contact.filter(
+    (item) => "href" in item && Boolean(item.href),
+  );
+  const contactProfileInfo = t.contact.filter(
+    (item) => !("href" in item) || !item.href,
+  );
   const minimapItems = useMemo(
     () => getPageMinimapItems(page, t, portfolio, productCards),
     [page, portfolio, productCards, t],
@@ -1500,6 +1542,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
       ".portfolio-main .ai-role-card",
       ".portfolio-main .ai-flow-step",
       ".portfolio-main .ai-metric-card",
+      ".portfolio-main .ai-proof-card",
       ".portfolio-main .ai-artifact-chip",
     ].join(",");
     const elements = Array.from(document.querySelectorAll<HTMLElement>(selectors));
@@ -1802,10 +1845,21 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
               </div>
             </article>
             <div className="contact-info-panel">
-              <div className="contact-grid">
-                {t.contact.map((item) => (
-                  <ContactRow key={`${item.label}-${item.value}`} {...item} />
-                ))}
+              <div className="contact-group contact-channel-group">
+                <h2>{portfolio.contactChannelTitle}</h2>
+                <div className="contact-grid">
+                  {contactChannels.map((item) => (
+                    <ContactRow key={`${item.label}-${item.value}`} {...item} />
+                  ))}
+                </div>
+              </div>
+              <div className="contact-group contact-profile-info-group">
+                <h2>{portfolio.contactProfileInfoTitle}</h2>
+                <div className="contact-grid">
+                  {contactProfileInfo.map((item) => (
+                    <ContactRow key={`${item.label}-${item.value}`} {...item} />
+                  ))}
+                </div>
               </div>
               <div className="contact-interest-card">
                 <div className="contact-interest-title">
@@ -2327,6 +2381,7 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
           <h3 className="ai-block-title" id="ai-outcomes-title">
             {workflow.outcomeTitle}
           </h3>
+          <p className="ai-scope-note">{workflow.outcomeScope}</p>
           <div className="ai-metric-grid">
             {workflow.outcomes.map((metric) => (
               <div className="ai-metric-card" key={`${metric.before}-${metric.after}`}>
@@ -2448,6 +2503,32 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
               </div>
             ))}
           </div>
+        </article>
+      </section>
+
+      <section className="ai-proof-layout" aria-label={workflow.principleTitle}>
+        <article className="portfolio-card ai-proof-card ai-principle-card">
+          <ThreeDIcon name="shield" />
+          <span>{workflow.principleTitle}</span>
+          <strong>{workflow.principleCopy}</strong>
+        </article>
+
+        <article className="portfolio-card ai-proof-card">
+          <h3 className="ai-block-title">{workflow.evidenceTitle}</h3>
+          <ul className="ai-proof-list">
+            {workflow.evidence.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="portfolio-card ai-proof-card">
+          <h3 className="ai-block-title">{workflow.riskTitle}</h3>
+          <ul className="ai-proof-list">
+            {workflow.risks.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </article>
       </section>
 
