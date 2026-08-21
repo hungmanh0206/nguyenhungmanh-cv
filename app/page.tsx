@@ -41,7 +41,6 @@ type IconName =
 const modalSections = ["experience", "skills", "certificates", "contact"] as const;
 type ModalKey = (typeof modalSections)[number];
 
-const navIcons: readonly IconName[] = ["progress", "layers", "certificate", "user"];
 const skillGroupIcons: readonly IconName[] = [
   "shield",
   "settings",
@@ -526,11 +525,189 @@ type Product = {
   readonly name: string;
   readonly href: string;
 };
+type ThreeDIconName =
+  | "bulb"
+  | "chart"
+  | "computer"
+  | "lab"
+  | "medal"
+  | "notebook"
+  | "shield"
+  | "target";
 
 const languageOptions = [
   { value: "vi", label: content.vi.languageName },
   { value: "en", label: content.en.languageName },
 ] as const satisfies readonly { value: Locale; label: string }[];
+
+const portfolioCopy = {
+  vi: {
+    brand: "Nguyễn Hùng Mạnh",
+    primaryNavLabel: "Điều hướng chính",
+    bottomNavLabel: "Điều hướng nhanh",
+    nav: {
+      resume: "Hồ sơ",
+      journey: "Hành trình",
+      works: "Sản phẩm",
+      ai: "AI Workflow",
+      contact: "Liên hệ",
+    },
+    greeting: "Xin chào, tôi là",
+    headline: "QA Engineer xây độ tin cậy cho sản phẩm số",
+    heroLead:
+      "Tôi kết hợp kiểm thử phần mềm, phân tích yêu cầu và AI-driven Testing để giúp sản phẩm LMS/eLearning phát hành ổn định hơn.",
+    aboutEyebrow: "ABOUT ME",
+    aboutTitle: "Một chút về tôi",
+    aboutLead:
+      "Tôi tập trung vào chất lượng sản phẩm từ lúc làm rõ yêu cầu đến khi xác nhận bản phát hành, đặc biệt với các nền tảng học tập số và luồng nghiệp vụ có AI hỗ trợ.",
+    toolkitTitle: "Bộ kỹ năng sử dụng thường xuyên",
+    journeyEyebrow: "JOURNEY",
+    journeyTitle: "Hành trình phát triển",
+    worksEyebrow: "FAVOURITE WORKS",
+    worksTitle: "Sản phẩm đã tham gia",
+    viewProject: "Xem sản phẩm",
+    aiEyebrow: "AI WORKFLOW",
+    aiTitle: "Quy trình QA có AI hỗ trợ",
+    aiLead:
+      "Ứng dụng kinh nghiệm xây dựng AI Agent vào QA workflow để giảm thao tác lặp lại, tăng độ phủ kiểm thử và rút ngắn vòng phản hồi chất lượng.",
+    aiSteps: [
+      {
+        icon: "target" as const,
+        title: "Phân tích yêu cầu",
+        copy: "Tóm tắt phạm vi, xác định rủi ro và điểm cần làm rõ.",
+      },
+      {
+        icon: "notebook" as const,
+        title: "Thiết kế test case",
+        copy: "Sinh gợi ý testcase, checklist và dữ liệu kiểm thử.",
+      },
+      {
+        icon: "lab" as const,
+        title: "Thực thi kiểm thử",
+        copy: "Hỗ trợ API, regression và kiểm tra luồng nghiệp vụ trọng yếu.",
+      },
+      {
+        icon: "chart" as const,
+        title: "Báo cáo chất lượng",
+        copy: "Chuẩn hóa kết quả, defect summary và đề xuất ưu tiên xử lý.",
+      },
+    ],
+    credentialsEyebrow: "RESUME",
+    credentialsTitle: "Học vấn, chứng chỉ và hoạt động",
+    contactEyebrow: "CONTACT",
+    contactTitle: "Trao đổi với tôi",
+    contactLead:
+      "Sẵn sàng trao đổi về QA, AI Testing, eLearning và các sản phẩm cần chất lượng ổn định.",
+  },
+  en: {
+    brand: "Nguyễn Hùng Mạnh",
+    primaryNavLabel: "Primary navigation",
+    bottomNavLabel: "Quick navigation",
+    nav: {
+      resume: "Resume",
+      journey: "Journey",
+      works: "Works",
+      ai: "AI Workflow",
+      contact: "Contact",
+    },
+    greeting: "Hello, I am",
+    headline: "QA Engineer building confidence for digital products",
+    heroLead:
+      "I combine software testing, requirement analysis, and AI-driven Testing to help LMS/eLearning products ship with greater stability.",
+    aboutEyebrow: "ABOUT ME",
+    aboutTitle: "A little about me",
+    aboutLead:
+      "I focus on product quality from requirement clarification through release validation, especially for digital learning platforms and AI-assisted workflows.",
+    toolkitTitle: "Toolkit I use often",
+    journeyEyebrow: "JOURNEY",
+    journeyTitle: "My development journey",
+    worksEyebrow: "FAVOURITE WORKS",
+    worksTitle: "Products I contributed to",
+    viewProject: "View project",
+    aiEyebrow: "AI WORKFLOW",
+    aiTitle: "AI-assisted QA workflow",
+    aiLead:
+      "I apply hands-on AI Agent experience to QA workflows to reduce repetitive tasks, increase test coverage, and shorten the product quality feedback loop.",
+    aiSteps: [
+      {
+        icon: "target" as const,
+        title: "Requirement analysis",
+        copy: "Summarize scope, identify risks, and capture open questions.",
+      },
+      {
+        icon: "notebook" as const,
+        title: "Test case design",
+        copy: "Generate testcase ideas, checklists, and test data.",
+      },
+      {
+        icon: "lab" as const,
+        title: "Test execution",
+        copy: "Support API, regression, and critical business workflow testing.",
+      },
+      {
+        icon: "chart" as const,
+        title: "Quality reporting",
+        copy: "Standardize results, defect summaries, and priority suggestions.",
+      },
+    ],
+    credentialsEyebrow: "RESUME",
+    credentialsTitle: "Education, certificates and activities",
+    contactEyebrow: "CONTACT",
+    contactTitle: "Let us talk",
+    contactLead:
+      "Open to conversations about QA, AI Testing, eLearning, and products that need stable quality.",
+  },
+} as const satisfies Record<Locale, unknown>;
+
+const productProfiles = {
+  vi: {
+    "LMS Pro": {
+      icon: "computer" as const,
+      domain: "Learning Management System",
+      copy: "Nền tảng quản lý học tập tại SAPP với luồng học, vận hành lớp và báo cáo đào tạo.",
+    },
+    uPresenter: {
+      icon: "bulb" as const,
+      domain: "AI eLearning",
+      copy: "Nền tảng tạo nội dung học tập có AI hỗ trợ cho slide, giọng đọc và quản lý học liệu.",
+    },
+    ActivePresenter: {
+      icon: "notebook" as const,
+      domain: "eLearning Authoring",
+      copy: "Công cụ tạo bài giảng, quay màn hình, mô phỏng phần mềm và nội dung tương tác.",
+    },
+    "Saola Animate": {
+      icon: "chart" as const,
+      domain: "HTML5 Animation",
+      copy: "Công cụ thiết kế animation HTML5 và nội dung tương tác chạy trên web.",
+    },
+  },
+  en: {
+    "LMS Pro": {
+      icon: "computer" as const,
+      domain: "Learning Management System",
+      copy: "A SAPP learning management platform covering learning flows, class operations, and training reports.",
+    },
+    uPresenter: {
+      icon: "bulb" as const,
+      domain: "AI eLearning",
+      copy: "An AI-assisted learning content platform for slides, voice generation, and learning asset management.",
+    },
+    ActivePresenter: {
+      icon: "notebook" as const,
+      domain: "eLearning Authoring",
+      copy: "An authoring tool for courses, screen recording, software simulation, and interactive content.",
+    },
+    "Saola Animate": {
+      icon: "chart" as const,
+      domain: "HTML5 Animation",
+      copy: "A tool for designing HTML5 animation and interactive web content.",
+    },
+  },
+} as const satisfies Record<
+  Locale,
+  Record<string, { readonly copy: string; readonly domain: string; readonly icon: ThreeDIconName }>
+>;
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("vi");
@@ -539,6 +716,22 @@ export default function Home() {
   const [isModalClosing, setIsModalClosing] = useState(false);
   const languageComboboxRef = useRef<HTMLDivElement>(null);
   const t = content[locale];
+  const portfolio = portfolioCopy[locale];
+  const productCards = getPortfolioProducts(t, locale);
+  const topNavItems = [
+    { href: "#resume", icon: "user" as const, label: portfolio.nav.resume },
+    { href: "#journey", icon: "progress" as const, label: portfolio.nav.journey },
+    { href: "#works", icon: "layers" as const, label: portfolio.nav.works },
+    { href: "#ai-workflow", icon: "spark" as const, label: portfolio.nav.ai },
+    { href: "#contact", icon: "mail" as const, label: portfolio.nav.contact },
+  ];
+  const dockItems = [
+    { href: "#resume", icon: "user" as const, label: portfolio.nav.resume },
+    { href: "#works", icon: "layers" as const, label: portfolio.nav.works },
+    { href: "#ai-workflow", icon: "spark" as const, label: portfolio.nav.ai },
+    { href: "#contact", icon: "mail" as const, label: portfolio.nav.contact },
+  ];
+  const statIcons: readonly ThreeDIconName[] = ["shield", "lab", "computer"];
 
   useEffect(() => {
     if (!activeModal) {
@@ -644,26 +837,18 @@ export default function Home() {
   }
 
   return (
-    <div className="site-shell" id="top">
-      <header className="site-header">
-        <a className="wordmark" href="#top" aria-label={t.name}>
+    <div className="site-shell portfolio-shell" id="top">
+      <header className="site-header portfolio-header">
+        <a className="wordmark portfolio-wordmark" href="#top" aria-label={t.name}>
           <span className="wordmark-mark">M</span>
-          <span>{t.name}</span>
+          <span>{portfolio.brand}</span>
         </a>
-        <nav className="nav-links" aria-label="Primary navigation">
-          {t.nav.map((item, index) => (
-            <button
-              aria-controls={activeModal ? "section-modal" : undefined}
-              aria-expanded={activeModal === modalSections[index]}
-              aria-pressed={activeModal === modalSections[index]}
-              className={activeModal === modalSections[index] ? "is-active" : undefined}
-              key={item}
-              onClick={() => openModal(modalSections[index])}
-              type="button"
-            >
-              <Icon name={navIcons[index]} />
-              <span>{item}</span>
-            </button>
+        <nav className="nav-links portfolio-top-nav" aria-label={portfolio.primaryNavLabel}>
+          {topNavItems.map((item) => (
+            <a href={item.href} key={item.href}>
+              <Icon name={item.icon} />
+              <span>{item.label}</span>
+            </a>
           ))}
         </nav>
         <div className="language-select" ref={languageComboboxRef}>
@@ -719,27 +904,28 @@ export default function Home() {
         </div>
       </header>
 
-      <main>
-        <section className="hero-section" aria-labelledby="hero-title">
-          <div className="hero-media">
-            <div className="hero-portrait">
-              <img src="/manh-profile.png" alt={t.name} />
-            </div>
-          </div>
-          <div className="hero-copy">
-            <h1 id="hero-title">{t.name}</h1>
+      <main className="portfolio-main">
+        <section className="portfolio-hero" id="resume" aria-labelledby="hero-title">
+          <div className="portfolio-hero-copy">
+            <span className="portfolio-kicker">
+              <ThreeDIcon name="target" />
+              <span>{portfolio.greeting}</span>
+            </span>
+            <h1 id="hero-title">
+              <span>{t.name}</span>
+              <strong>{portfolio.headline}</strong>
+            </h1>
             <span className="hero-role">{t.heroBadge}</span>
-            <ul className="hero-intro">
+            <p>{portfolio.heroLead}</p>
+            <div className="hero-signal-list" aria-label="Profile focus">
               {t.intro.map((item) => (
-                <li key={item.title}>
-                  <span className="hero-intro-title">{item.title}</span>
-                  <span className="hero-intro-copy">{item.copy}</span>
-                </li>
+                <span key={item.title}>{item.title}</span>
               ))}
-            </ul>
-            <div className="hero-stats" aria-label="Profile highlights">
-              {t.stats.map((stat) => (
-                <div key={stat.label}>
+            </div>
+            <div className="portfolio-stats-grid" aria-label="Profile highlights">
+              {t.stats.map((stat, index) => (
+                <div className="portfolio-stat-card" key={stat.label}>
+                  <ThreeDIcon name={statIcons[index] ?? "target"} />
                   <strong>{stat.value}</strong>
                   <span>{stat.label}</span>
                 </div>
@@ -761,92 +947,170 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          <div className="portfolio-hero-visual">
+            <ThreeDIcon className="floating-3d floating-3d-one" name="shield" />
+            <ThreeDIcon className="floating-3d floating-3d-two" name="bulb" />
+            <div className="portfolio-portrait-frame">
+              <img src="/manh-profile.png" alt={t.name} />
+            </div>
+          </div>
         </section>
 
-        <section className="cv-layout">
-          <aside className="profile-panel" id="contact" aria-labelledby="contact-title">
-            <SectionTitle icon="user" id="contact-title">{t.contactTitle}</SectionTitle>
-            <div className="contact-list">
-              {t.contact.map((item) => (
-                <ContactRow key={`${item.label}-${item.value}`} {...item} />
-              ))}
-            </div>
-            <div className="divider" />
-            <SectionTitle icon="spark">{t.interestsTitle}</SectionTitle>
-            <ul className="simple-list">
-              {t.interests.map((interest) => (
-                <li key={interest}>{interest}</li>
-              ))}
-            </ul>
-          </aside>
-
-          <div className="content-stack">
-            <section className="section-card focus-card" aria-labelledby="focus-title">
-              <SectionTitle icon="target" id="focus-title">{t.focusTitle}</SectionTitle>
+        <section className="portfolio-section about-section" id="about">
+          <PortfolioHeading
+            eyebrow={portfolio.aboutEyebrow}
+            icon="bulb"
+            id="about-title"
+            title={portfolio.aboutTitle}
+          />
+          <div className="about-layout">
+            <article className="portfolio-card about-copy-card" aria-labelledby="about-title">
+              <p>{portfolio.aboutLead}</p>
               <p>{t.focus}</p>
-            </section>
+            </article>
+            <article className="portfolio-card toolkit-card">
+              <div className="compact-card-head">
+                <ThreeDIcon name="shield" />
+                <h3>{portfolio.toolkitTitle}</h3>
+              </div>
+              <div className="toolkit-list">
+                {t.skillGroups.slice(0, 3).map((group) => (
+                  <div key={group.title}>
+                    <strong>{group.title}</strong>
+                    <span>{group.items.slice(0, 3).join(" / ")}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
+        </section>
 
-            <section id="experience" aria-labelledby="experience-title">
-              <SectionTitle icon="progress" id="experience-title">{t.experienceTitle}</SectionTitle>
-              <ExperienceList
-                experiences={t.experiences}
-                productLabel={t.productLabel}
-              />
-            </section>
+        <section className="portfolio-section journey-section" id="journey">
+          <PortfolioHeading
+            eyebrow={portfolio.journeyEyebrow}
+            icon="medal"
+            id="journey-title"
+            title={portfolio.journeyTitle}
+          />
+          <ExperienceList experiences={t.experiences} productLabel={t.productLabel} />
+        </section>
 
-            <section id="skills" aria-labelledby="skills-title">
-              <SectionTitle icon="layers" id="skills-title">{t.skillsTitle}</SectionTitle>
-              <SkillsGrid skillGroups={t.skillGroups} />
-            </section>
+        <section className="portfolio-section works-section" id="works">
+          <PortfolioHeading
+            eyebrow={portfolio.worksEyebrow}
+            icon="computer"
+            id="works-title"
+            title={portfolio.worksTitle}
+          />
+          <div className="works-grid">
+            {productCards.map((product) => (
+              <article className="portfolio-card work-card" key={product.name}>
+                <div className="work-card-media">
+                  <ThreeDIcon name={product.icon} />
+                </div>
+                <span className="work-domain">{product.domain}</span>
+                <h3>{product.name}</h3>
+                <p>{product.copy}</p>
+                <div className="work-meta">
+                  <span>{product.company}</span>
+                  <time>{product.date}</time>
+                </div>
+                <a
+                  className="work-link"
+                  href={product.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>{portfolio.viewProject}</span>
+                  <Icon name="external" />
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
 
-            <section className="split-section">
-              <article
-                className="section-card education-card"
-                aria-labelledby="education-title"
-              >
-                <SectionTitle icon="academy" id="education-title">{t.educationTitle}</SectionTitle>
-                <div className="education-credential">
-                  <div className="education-content">
-                    <h3>{t.education.school}</h3>
-                    <time className="education-date">{t.education.date}</time>
-                    <div className="education-details" aria-label={t.education.note}>
-                      <p>
-                        <span className="education-detail-icon" aria-hidden="true">
-                          <Icon name="layers" />
-                        </span>
-                        <span>{t.education.faculty}</span>
-                      </p>
-                      <p>
-                        <span className="education-detail-icon" aria-hidden="true">
-                          <Icon name="database" />
-                        </span>
-                        <span>{t.education.major}</span>
-                      </p>
-                    </div>
-                    <div className="education-meta">
-                      <span className="education-status-badge">{t.education.note}</span>
-                    </div>
+        <section className="portfolio-section ai-section" id="ai-workflow">
+          <div className="ai-copy">
+            <PortfolioHeading
+              eyebrow={portfolio.aiEyebrow}
+              icon="lab"
+              id="ai-title"
+              title={portfolio.aiTitle}
+            />
+            <p>{portfolio.aiLead}</p>
+          </div>
+          <div className="ai-steps-grid">
+            {portfolio.aiSteps.map((step) => (
+              <article className="portfolio-card ai-step-card" key={step.title}>
+                <ThreeDIcon name={step.icon} />
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="portfolio-section credentials-section" id="credentials">
+          <PortfolioHeading
+            eyebrow={portfolio.credentialsEyebrow}
+            icon="notebook"
+            id="credentials-title"
+            title={portfolio.credentialsTitle}
+          />
+          <div className="credentials-grid">
+            <article
+              className="portfolio-card education-card"
+              aria-labelledby="education-title"
+            >
+              <SectionTitle icon="academy" id="education-title">
+                {t.educationTitle}
+              </SectionTitle>
+              <div className="education-credential">
+                <div className="education-content">
+                  <h3>{t.education.school}</h3>
+                  <time className="education-date">{t.education.date}</time>
+                  <div className="education-details" aria-label={t.education.note}>
+                    <p>
+                      <span className="education-detail-icon" aria-hidden="true">
+                        <Icon name="layers" />
+                      </span>
+                      <span>{t.education.faculty}</span>
+                    </p>
+                    <p>
+                      <span className="education-detail-icon" aria-hidden="true">
+                        <Icon name="database" />
+                      </span>
+                      <span>{t.education.major}</span>
+                    </p>
+                  </div>
+                  <div className="education-meta">
+                    <span className="education-status-badge">{t.education.note}</span>
                   </div>
                 </div>
-              </article>
+              </div>
+            </article>
 
-              <article
-                className="section-card certificates-card"
-                id="certificates"
-                aria-labelledby="certificates-title"
-              >
-                <SectionTitle icon="certificate" id="certificates-title">{t.certTitle}</SectionTitle>
-                <CertificateList
-                  certs={t.certs}
-                  mode="page"
-                  onOpenModal={() => openModal("certificates")}
-                  verifyLabel={t.verifyLabel}
-                />
-              </article>
-            </section>
+            <article
+              className="portfolio-card certificates-card"
+              id="certificates"
+              aria-labelledby="certificates-title"
+            >
+              <SectionTitle icon="certificate" id="certificates-title">
+                {t.certTitle}
+              </SectionTitle>
+              <CertificateList
+                certs={t.certs}
+                mode="page"
+                onOpenModal={() => openModal("certificates")}
+                verifyLabel={t.verifyLabel}
+              />
+            </article>
 
-            <section className="section-card awards-card" aria-labelledby="awards-title">
-              <SectionTitle icon="star" id="awards-title">{t.awardsTitle}</SectionTitle>
+            <article className="portfolio-card awards-card" aria-labelledby="awards-title">
+              <SectionTitle icon="star" id="awards-title">
+                {t.awardsTitle}
+              </SectionTitle>
               <div className="awards-list">
                 {t.awards.map((award) => (
                   <article className="award-item" key={`${award.year}-${award.title}`}>
@@ -855,10 +1119,41 @@ export default function Home() {
                   </article>
                 ))}
               </div>
-            </section>
+            </article>
+          </div>
+        </section>
+
+        <section className="portfolio-section contact-section" id="contact">
+          <div className="contact-copy">
+            <PortfolioHeading
+              eyebrow={portfolio.contactEyebrow}
+              icon="target"
+              id="contact-title"
+              title={portfolio.contactTitle}
+            />
+            <p>{portfolio.contactLead}</p>
+            <div className="interest-strip" aria-label={t.interestsTitle}>
+              {t.interests.map((interest) => (
+                <span key={interest}>{interest}</span>
+              ))}
+            </div>
+          </div>
+          <div className="contact-grid">
+            {t.contact.map((item) => (
+              <ContactRow key={`${item.label}-${item.value}`} {...item} />
+            ))}
           </div>
         </section>
       </main>
+
+      <nav className="portfolio-dock" aria-label={portfolio.bottomNavLabel}>
+        {dockItems.map((item) => (
+          <a href={item.href} key={item.href}>
+            <Icon name={item.icon} />
+            <span>{item.label}</span>
+          </a>
+        ))}
+      </nav>
 
       {activeModal ? (
         <div
@@ -897,6 +1192,77 @@ export default function Home() {
       ) : null}
     </div>
   );
+}
+
+function PortfolioHeading({
+  eyebrow,
+  icon,
+  id,
+  title,
+}: {
+  eyebrow: string;
+  icon: ThreeDIconName;
+  id: string;
+  title: string;
+}) {
+  return (
+    <div className="portfolio-section-heading">
+      <ThreeDIcon name={icon} />
+      <div>
+        <span>{eyebrow}</span>
+        <h2 id={id}>{title}</h2>
+      </div>
+      <span aria-hidden="true" />
+    </div>
+  );
+}
+
+function ThreeDIcon({
+  className,
+  name,
+}: {
+  className?: string;
+  name: ThreeDIconName;
+}) {
+  return (
+    <img
+      alt=""
+      aria-hidden="true"
+      className={["three-d-icon", className].filter(Boolean).join(" ")}
+      loading="lazy"
+      src={`/3d-icons/${name}.webp`}
+    />
+  );
+}
+
+function getPortfolioProducts(t: Content, locale: Locale) {
+  const profiles: Record<
+    string,
+    { readonly copy: string; readonly domain: string; readonly icon: ThreeDIconName }
+  > = productProfiles[locale];
+
+  return t.experiences.flatMap((experience) => {
+    if (!hasProducts(experience)) {
+      return [];
+    }
+
+    return experience.products.map((product) => {
+      const profile = profiles[product.name] ?? {
+        copy: "",
+        domain: t.productLabel,
+        icon: "computer" as const,
+      };
+
+      return {
+        ...product,
+        company: experience.company,
+        copy: profile.copy,
+        date: experience.date,
+        domain: profile.domain,
+        icon: profile.icon,
+      };
+    });
+  });
 }
 
 function ExperienceList({

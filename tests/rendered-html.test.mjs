@@ -21,6 +21,7 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /atomisystems\.com\/saola-animate/);
   assert.match(page, /upresenter\.ai\/vi/);
   assert.match(page, /lms-pro\.sapp\.edu\.vn\/lms-pro-new-version\?tab=home/);
+  assert.match(page, /\/3d-icons\/\$\{name\}\.webp/);
   assert.match(page, /Xem chứng chỉ/);
   assert.match(page, /View certificate/);
   assert.doesNotMatch(page, /logo-sapp|assets\/logo-sapp/i);
@@ -33,5 +34,7 @@ test("ships the profile image and both CV PDF assets", async () => {
     access(new URL("../public/nguyen-hung-manh-cv-en.pdf", import.meta.url)),
     access(new URL("../public/data-analysis-certificate.pdf", import.meta.url)),
     access(new URL("../public/stage-icons.svg", import.meta.url)),
+    access(new URL("../public/3d-icons/target.webp", import.meta.url)),
+    access(new URL("../public/3d-icons/computer.webp", import.meta.url)),
   ]);
 });
