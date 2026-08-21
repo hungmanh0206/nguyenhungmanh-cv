@@ -570,6 +570,7 @@ p {
   border-radius: calc(var(--radius-xl) - 10px);
   background: #fbf7ff;
   object-fit: cover;
+  object-position: 50% 18%;
   box-shadow: 0 0 0 1px rgba(234, 200, 254, 0.24) inset;
   filter: saturate(0.98) contrast(0.99);
 }
