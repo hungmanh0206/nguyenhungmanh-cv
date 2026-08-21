@@ -589,6 +589,7 @@ type MinimapItem = {
   readonly label: string;
 };
 type ThreeDIconName =
+  | "ai-spark"
   | "books"
   | "bulb"
   | "chart"
@@ -606,7 +607,7 @@ type ThreeDIconName =
 const skillGroupThreeDIcons: readonly ThreeDIconName[] = [
   "shield",
   "target",
-  "lab",
+  "ai-spark",
   "computer",
   "chart",
 ];
@@ -661,17 +662,17 @@ const portfolioCopy = {
     aiEyebrow: "AI AGENT",
     aiTitle: "AI Agent cho kiểm thử phần mềm",
     aiLead:
-      "Mô hình AI Agent hỗ trợ QA đọc requirement, sinh testcase, chuẩn bị dữ liệu, execute, tổng hợp evidence và re-run verify. AI tăng tốc các tác vụ lặp; QA giữ quyền duyệt scope, bug và quyết định chất lượng.",
+      "Bộ kit QA Automation AI Agent vận hành theo 3 phase: sinh testcase, execute có gate và re-run verify. Agent lo throughput, tổng hợp và thao tác lặp; QA giữ mọi cửa quyết định về coverage, oracle, risk và bug.",
     aiWorkflow: {
-      overviewTitle: "AI Agent Workflow Overview",
-      operatingTitle: "Luồng vận hành 3 pha",
-      systemTitle: "QA Agent AI System",
-      flowMapTitle: "Workflow",
-      guardrailTitle: "Gate kiểm soát chất lượng",
-      boundaryTitle: "AI-led / Human-led",
+      overviewTitle: "AI Agent Operating System",
+      operatingTitle: "Sơ đồ vận hành theo phase",
+      systemTitle: "QA Automation AI Agent",
+      flowMapTitle: "Quy trình lõi",
+      guardrailTitle: "Máy gác chất lượng",
+      boundaryTitle: "Phân định AI-led / Human-led",
       expansionTitle: "5 trục mở rộng",
-      outcomeTitle: "Kết quả sau cùng",
-      artifactTitle: "Artifact mỗi vòng chạy",
+      outcomeTitle: "Outcome — Before → After",
+      artifactTitle: "Artifact Agent tạo ra mỗi vòng chạy",
       inputTitle: "Input",
       workflowTitle: "Workflow",
       outputTitle: "Output",
@@ -680,43 +681,43 @@ const portfolioCopy = {
       outputHeadline: "PASS Done",
       outputCopy: "Evidence, bug, traceability, sổ tri thức và vòng học tiếp theo.",
       outcomeScope:
-        "Kết quả kỳ vọng của bộ kit là quy trình QA có trace rõ hơn, ít thao tác lặp hơn và dễ kiểm soát evidence hơn. Đây là mô hình workflow cá nhân, không phải KPI sản phẩm đã audit độc lập.",
+        "Các số liệu thể hiện activity report của bộ kit: testcase, coverage, pass-rate, bug và run được tổng hợp từ outputs/reports trong quá trình vận hành thử nghiệm.",
       principleTitle: "Nguyên tắc vận hành",
-      principleCopy: "AI xử lý throughput. Con người chịu trách nhiệm chất lượng.",
+      principleCopy: "Rule không phải lời dặn. Sai chuẩn thì gate phải có quyền chặn.",
       evidenceTitle: "Bằng chứng cần kiểm tra",
       evidence: [
-        "Testcase Excel có trace về acceptance criteria",
-        "AIO Tests cycle kèm trạng thái và evidence",
-        "Bug report mẫu có step, actual, expected và log",
+        "Excel canonical 10 cột có Case Type, tag chiều, coverage matrix và dimension manifest.",
+        "AIO mirror phải tươi ≤ 12h trước khi execute; cycle chỉ push sau khi QA duyệt.",
+        "Evidence ảnh/video có highlight element, mask PII và gắn theo từng step/testcase.",
       ],
       riskTitle: "Giới hạn & rủi ro",
       risks: [
-        "LLM có thể hallucinate testcase, nên mọi testcase phải trace được về requirement.",
-        "Output AI không được xem là pass nếu thiếu evidence, log hoặc tiêu chí xác nhận.",
-        "Defect escape và bug lọt release quan trọng hơn pass-rate cao.",
+        "Agent không tự đổi expected nếu chưa có nguồn; không skip case để làm đẹp pass-rate.",
+        "Không chấm PASS nếu thiếu oracle_ref; không có neo thì chỉ là OBSERVATION.",
+        "Bug do người ngoài tìm ra là lỗi của máy: leak:report phải chỉ ra máy lẽ ra bắt được.",
       ],
       roleTitle: "Object",
       aiActionTitle: "What AI do?",
       outputItemTitle: "Deliverable",
       overviewBody: [
-        "Workflow bắt đầu từ requirement, business rule, acceptance criteria và các vùng rủi ro cần kiểm soát trước khi viết testcase.",
-        "AI Agent hỗ trợ phân rã yêu cầu, đề xuất testcase, checklist, dữ liệu kiểm thử, risk note và bản nháp báo cáo. QA kiểm tra gate, xác nhận evidence, quyết định bug và chịu trách nhiệm chất lượng cuối cùng.",
+        "Bộ kit vận hành quanh 4 mảnh chính: quy trình lõi, máy gác chất lượng, phân định AI-led/Human-led và cơ chế chống lọt bug.",
+        "Mỗi chặng đều có artifact thật và gate có quyền chặn: từ Ambiguity Gate, Design Gate, Preflight Gate, Output Gate đến self-review và gate:policy một nguồn.",
       ],
       roles: [
         {
           icon: "target" as const,
-          title: "BA / PO",
-          copy: "Cung cấp requirement, acceptance criteria, business rule, ngữ cảnh sản phẩm và mức ưu tiên nghiệp vụ.",
+          title: "Nguồn requirement",
+          copy: "Jira, Confluence, Figma, Swagger, Google Docs/Sheet là input; điểm mờ Blocking phải dừng để BA/QA chốt expected.",
+        },
+        {
+          icon: "ai-spark" as const,
+          title: "AI Agent chủ trì",
+          copy: "Đọc requirement, sinh testcase Excel 10 cột, publish AIO, execute Playwright/API, tổng hợp evidence và draft bug.",
         },
         {
           icon: "shield" as const,
-          title: "QA",
-          copy: "Làm rõ scope, duyệt testcase, xác nhận coverage/evidence, log bug và đưa ra quyết định pass/fail.",
-        },
-        {
-          icon: "lab" as const,
-          title: "AI Agent",
-          copy: "Phân tích dữ liệu đầu vào, tạo draft testcase, đề xuất edge case, tổng hợp evidence và chuẩn bị report để QA duyệt.",
+          title: "QA quyết định",
+          copy: "Chốt scope, coverage, oracle, mutation trên UAT, quyết định log bug, approve publish/push và xác nhận Done.",
         },
       ],
       phases: [
@@ -724,30 +725,30 @@ const portfolioCopy = {
           label: "Phase 1",
           title: "Sinh & publish testcase",
           points: [
-            "Requirement -> chốt điểm mơ hồ",
-            "Excel testcase 10 cột",
-            "QA confirmation",
-            "Publish AIO Tests",
+            "Requirement từ Jira/Confluence/Figma/Swagger/Docs",
+            "Ambiguity Gate: Blocking thì DỪNG",
+            "Sinh Excel 10 cột + Case Type + coverage matrix",
+            "QA confirmation: coverage ≥ 80% rồi publish AIO",
           ],
         },
         {
           label: "Phase 2",
           title: "Execute có kiểm soát",
           points: [
-            "Đồng bộ dữ liệu AIO",
-            "Preflight Gate trước khi chạy",
-            "Execute + mở rộng vùng rủi ro",
-            "Output Gate trước khi cập nhật cycle",
+            "Pull mirror AIO và chứng minh tươi ≤ 12h",
+            "preflight_gate chặn thiếu input/config/canonical",
+            "Precondition Pass bằng UI/API/factory/hook, không đụng DB",
+            "Execute Playwright/API + 5 trục + output_gate",
           ],
         },
         {
           label: "Phase 3",
           title: "Re-run, verify & close",
           points: [
-            "Triage FE/BE",
-            "Log bug QA duyệt",
-            "Dev fix re-run 2-3 lần",
-            "PASS Done -> đóng vòng học",
+            "Triage FE/BE bằng response API thật",
+            "Bug 4 phần + evidence, QA duyệt trước khi log",
+            "Dev fix rồi re-run 2-3 lần để loại flaky/setup",
+            "PASS → Done, learn:bugs và leak:report",
           ],
         },
       ],
@@ -755,75 +756,75 @@ const portfolioCopy = {
         {
           icon: "target" as const,
           title: "Phân tích & sinh testcase",
-          copy: "AI đọc requirement, tách scope/risk và đề xuất testcase có trace để QA duyệt.",
+          copy: "AI đọc Jira/Confluence/Figma/Swagger/Docs, sinh 36-563 testcase/story kèm coverage matrix, Case Type và tag chiều.",
         },
         {
           icon: "notebook" as const,
           title: "Review & QA Gate",
-          copy: "QA xử lý Ambiguity Gate, xác nhận phạm vi và chặn output thiếu cơ sở.",
+          copy: "AI tổng hợp coverage %, gap Critical/High và Final Decision; QA duyệt coverage ≥ 80% và phán PASS/COND/FAIL/BLOCK.",
         },
         {
           icon: "computer" as const,
           title: "Publish AIO Tests",
-          copy: "Chuẩn hóa folder, testcase, cycle và mirror dữ liệu giữa Excel và AIO.",
+          copy: "Publisher dry-run, folder theo nhóm chức năng, Case Type/Ưu tiên lấy từ Excel và link coverage về Story/Task.",
         },
         {
-          icon: "lab" as const,
+          icon: "ai-spark" as const,
           title: "Execute & mở rộng",
-          copy: "Agent chạy preflight, thực thi checklist và đề xuất mở rộng test ở vùng rủi ro trước khi QA xác nhận.",
+          copy: "Pull mirror, precondition pass, chạy Playwright/API và mở rộng 5 trục quanh case; tập execute đạt pass-rate 90-100%.",
         },
         {
           icon: "shield" as const,
           title: "Triage & log bug",
-          copy: "Phân tầng FE/BE, gom evidence và chỉ tạo bug sau khi QA duyệt.",
+          copy: "Phân tầng FE/BE bằng response API thật, soạn bug 4 phần, mask PII, dry-run; QA duyệt để tránh noise cho Dev.",
         },
         {
           icon: "chart" as const,
           title: "Re-run verify & học lại",
-          copy: "Re-run 2-3 vòng, cập nhật sổ tri thức và chuẩn hóa điều kiện PASS Done.",
+          copy: "Chạy lại đúng subset, re-run 2-3 vòng, thu evidence PASS, cập nhật Jira/AIO và đóng vòng học với 2.103 run khớp.",
         },
       ],
       gates: [
         {
-          term: "Ambiguity Gate",
-          copy: "Dừng lại khi requirement còn mơ hồ, thay vì đoán rồi viết testcase sai từ đầu.",
+          term: "preflight_gate",
+          copy: "Thiếu input, config hỏng, chưa có testcase canonical hoặc mirror AIO quá 12 giờ thì chặn Phase 2.",
         },
         {
-          term: "Design Gate",
-          copy: "Kiểm tra testcase có đủ scope, rule và trace trước khi publish sang AIO Tests.",
+          term: "design_gate · gate:gen-testcase",
+          copy: "Thiếu Loại case, tag chiều không có bằng chứng, tiêu đề nhồi tag hoặc expected gộp range thì chặn.",
         },
         {
-          term: "Preflight Gate",
-          copy: "Soát dữ liệu, môi trường và điều kiện chạy trước khi execute để tránh lỗi giả.",
+          term: "output_gate",
+          copy: "FAIL thiếu failureLayer, evidence sai định dạng hoặc comment dán debug thì không được push cycle.",
         },
         {
-          term: "Output Gate",
-          copy: "Chặn kết quả pass khi thiếu evidence, thiếu log hoặc chưa đủ điều kiện xác nhận.",
+          term: "risk_gate · expansion:plan",
+          copy: "Module high-risk thiếu testcase hoặc thiếu chiều negative/boundary/security thì báo CRITICAL.",
         },
         {
-          term: "Risk Gate",
-          copy: "Buộc AI/QA mở rộng test ở vùng rủi ro thay vì chỉ chạy happy path.",
+          term: "self-review --enforce",
+          copy: "Checklist gộp preflight, design, row-quality, execution và attestation; không đạt thì không publish.",
         },
         {
-          term: "Policy Gate",
-          copy: "Giữ một nguồn quy tắc duy nhất để AI không tự diễn giải theo nhiều kiểu khác nhau.",
+          term: "gate:policy · một nguồn",
+          copy: "verdict_taxonomy.json và case_types.json giữ rule duy nhất để Agent không tự diễn giải luật ngầm.",
         },
       ],
       boundary: [
         {
           title: "AI-led",
           points: [
-            "Phân rã requirement thành scope, rule, risk và câu hỏi cần làm rõ",
-            "Sinh draft testcase, checklist, dữ liệu kiểm thử và edge case",
-            "Tổng hợp evidence, log, trạng thái AIO và bản nháp báo cáo",
+            "Đọc và tổng hợp requirement từ nhiều nguồn, kể cả tab ẩn và ghi chú.",
+            "Sinh testcase, Excel canonical, coverage matrix, dimension manifest và publish AIO.",
+            "Pull mirror, resolve precondition, execute Playwright/API, evidence, triage, draft bug và re-run verify.",
           ],
         },
         {
           title: "Human-led",
           points: [
-            "Duyệt scope, acceptance criteria, coverage và tiêu chí pass/fail",
-            "Quyết định log bug, severity, priority và kết luận release risk",
-            "Chịu trách nhiệm cuối cùng về chất lượng và dữ liệu báo cáo",
+            "Chốt TASK_KEY, module, nguồn requirement, scope và trả lời Ambiguity Gate.",
+            "Approve publish/push, curate oracle, duyệt mutation UAT và cấp account/data/route khi Agent bị chặn.",
+            "Quyết định log bug, review coverage/risk cuối cùng và xác nhận Done.",
           ],
         },
       ],
@@ -835,25 +836,21 @@ const portfolioCopy = {
         "Trạng thái kế cận",
       ],
       outcomes: [
-        { before: "Soạn testcase thủ công, dễ thiếu trace", after: "Testcase draft có trace về requirement để QA duyệt" },
-        { before: "Coverage phụ thuộc kinh nghiệm cá nhân", after: "Risk note và edge case được gợi ý có hệ thống" },
-        { before: "Evidence rời rạc sau execution", after: "Evidence pack gom theo testcase, bug và cycle" },
-        { before: "Báo cáo mất thời gian tổng hợp", after: "Draft report có dữ liệu, trạng thái và điểm cần QA xác nhận" },
+        { before: "Soạn testcase nhiều ngày", after: "1 phiên · 36-563 TC/story" },
+        { before: "Trace coverage cảm tính", after: "Coverage ≥ 80-100% đo được" },
+        { before: "Execute chạy tay", after: "Playwright/API · pass-rate 90-100%" },
+        { before: "Gate bằng lời dặn", after: "6 gate chặn ở lệnh tay, hook và CI" },
       ],
       artifacts: [
-        "Requirement brief",
-        "Acceptance criteria map",
-        "Traceability matrix",
-        "Risk note",
-        "Testcase Excel",
-        "Test data checklist",
-        "AIO Tests + cycle",
-        "Evidence pack",
-        "Bug report draft",
-        "Regression checklist",
-        "Ambiguity Gate",
-        "QA Gate log",
-        "Knowledge note",
+        "Testcase Excel 10 cột",
+        "Mirror AIO ≤ 12h",
+        "Coverage & risk",
+        "Ambiguity Gate Q&A",
+        "AIO Tests + folder",
+        "Execution + cycle",
+        "Evidence ảnh/video",
+        "Bug 4 phần + sổ tri thức",
+        "Máy chống lọt bug",
       ],
     },
     credentialsEyebrow: "HỒ SƠ",
@@ -904,16 +901,16 @@ const portfolioCopy = {
     aiEyebrow: "AI AGENT",
     aiTitle: "AI Agent for software testing",
     aiLead:
-      "An AI Agent model that helps QA read requirements, generate test cases, prepare test data, execute checks, summarize evidence, and re-run verification. AI accelerates repetitive work while QA owns scope, bugs, and quality decisions.",
+      "A QA Automation AI Agent kit operated across three phases: testcase generation, gated execution, and re-run verification. The Agent owns throughput, synthesis, and repetitive operations; QA owns coverage, oracle, risk, and bug decisions.",
     aiWorkflow: {
-      overviewTitle: "AI Agent Workflow Overview",
-      operatingTitle: "Three-phase operation",
-      systemTitle: "QA Agent AI System",
-      flowMapTitle: "Workflow",
-      guardrailTitle: "Quality gates",
-      boundaryTitle: "AI-led / Human-led",
+      overviewTitle: "AI Agent Operating System",
+      operatingTitle: "Phase-based operating map",
+      systemTitle: "QA Automation AI Agent",
+      flowMapTitle: "Core workflow",
+      guardrailTitle: "Quality gate machines",
+      boundaryTitle: "AI-led / Human-led boundary",
       expansionTitle: "Five expansion axes",
-      outcomeTitle: "Final outcomes",
+      outcomeTitle: "Outcome — Before → After",
       artifactTitle: "Artifacts per run",
       inputTitle: "Input",
       workflowTitle: "Workflow",
@@ -923,43 +920,43 @@ const portfolioCopy = {
       outputHeadline: "PASS Done",
       outputCopy: "Evidence, bugs, traceability, knowledge base, and next-loop learning.",
       outcomeScope:
-        "The expected result of the toolkit is a QA workflow with clearer traceability, fewer repetitive operations, and more controllable evidence. This is a personal workflow model, not independently audited product KPI data.",
+        "The numbers summarize the kit activity report: test cases, coverage, pass-rate, bugs, and runs were gathered from outputs/reports during pilot operation.",
       principleTitle: "Operating principle",
-      principleCopy: "AI handles throughput. Humans own quality accountability.",
+      principleCopy: "Rules are not reminders. If the standard is broken, gates must be able to block.",
       evidenceTitle: "Evidence to inspect",
       evidence: [
-        "Testcase Excel traced to acceptance criteria",
-        "AIO Tests cycle with status and evidence",
-        "Sample bug report with steps, actual, expected, and logs",
+        "10-column canonical Excel with Case Type, dimension tags, coverage matrix, and dimension manifest.",
+        "AIO mirror must prove freshness within 12 hours before execution; cycles are pushed only after QA approval.",
+        "Image/video evidence highlights the element, masks PII, and attaches to each step/test case.",
       ],
       riskTitle: "Limits & risks",
       risks: [
-        "LLMs can hallucinate test cases, so every case must trace back to requirements.",
-        "AI output cannot pass without evidence, logs, and confirmation criteria.",
-        "Defect escape and release leakage matter more than a high pass-rate.",
+        "The Agent cannot change expected results without a source and cannot skip cases to improve pass-rate.",
+        "No PASS without oracle_ref; without an anchor, the result is only an OBSERVATION.",
+        "A bug found outside the machine is a machine failure: leak:report must name which machine should have caught it.",
       ],
       roleTitle: "Object",
       aiActionTitle: "What AI does",
       outputItemTitle: "Deliverable",
       overviewBody: [
-        "The workflow starts from requirements, business rules, acceptance criteria, and risk areas that need control before test cases are written.",
-        "The AI Agent helps decompose requirements, propose test cases, checklists, test data, risk notes, and draft reports. QA reviews gates, confirms evidence, decides bug logging, and owns final quality.",
+        "The kit operates around four pieces: core workflow, quality gate machines, AI-led/Human-led boundary, and anti-leak expansion.",
+        "Every stage has real artifacts and gates that can block: from Ambiguity Gate, Design Gate, Preflight Gate, Output Gate to self-review and a single-source gate:policy.",
       ],
       roles: [
         {
           icon: "target" as const,
-          title: "BA / PO",
-          copy: "Provides requirements, acceptance criteria, business rules, product context, and business priority.",
+          title: "Requirement sources",
+          copy: "Jira, Confluence, Figma, Swagger, and Google Docs/Sheets feed the kit; Blocking ambiguity stops until BA/QA confirms expected behavior.",
+        },
+        {
+          icon: "ai-spark" as const,
+          title: "AI Agent-led",
+          copy: "Reads requirements, generates 10-column Excel cases, publishes AIO, executes Playwright/API, synthesizes evidence, and drafts bugs.",
         },
         {
           icon: "shield" as const,
-          title: "QA",
-          copy: "Clarifies scope, reviews test cases, confirms coverage/evidence, logs bugs, and makes pass/fail decisions.",
-        },
-        {
-          icon: "lab" as const,
-          title: "AI Agent",
-          copy: "Analyzes input, drafts test cases, proposes edge cases, summarizes evidence, and prepares reports for QA review.",
+          title: "QA decision-led",
+          copy: "Approves scope, coverage, oracle, UAT mutation, bug logging, publish/push actions, and final Done confirmation.",
         },
       ],
       phases: [
@@ -967,30 +964,30 @@ const portfolioCopy = {
           label: "Phase 1",
           title: "Generate & publish test cases",
           points: [
-            "Requirement -> clarify ambiguity",
-            "10-column testcase Excel",
-            "QA confirmation",
-            "Publish AIO Tests",
+            "Requirements from Jira/Confluence/Figma/Swagger/Docs",
+            "Ambiguity Gate: Blocking means STOP",
+            "Generate 10-column Excel + Case Type + coverage matrix",
+            "QA confirmation: coverage ≥ 80%, then publish AIO",
           ],
         },
         {
           label: "Phase 2",
           title: "Controlled execution",
           points: [
-            "Sync AIO data",
-            "Preflight Gate before execution",
-            "Execute + expand risk areas",
-            "Output Gate before cycle update",
+            "Pull AIO mirror and prove freshness ≤ 12h",
+            "preflight_gate blocks missing input/config/canonical",
+            "Precondition Pass via UI/API/factory/hook, no DB setup",
+            "Execute Playwright/API + 5 axes + output_gate",
           ],
         },
         {
           label: "Phase 3",
           title: "Re-run, verify & close",
           points: [
-            "FE/BE triage",
-            "QA-approved bug logging",
-            "Dev fix re-run 2-3 times",
-            "PASS Done -> learning loop",
+            "FE/BE triage using real API responses",
+            "4-part bug + evidence, QA-approved before logging",
+            "Dev fix then re-run 2-3 times to eliminate flaky/setup",
+            "PASS → Done, learn:bugs and leak:report",
           ],
         },
       ],
@@ -998,75 +995,75 @@ const portfolioCopy = {
         {
           icon: "target" as const,
           title: "Analyze & generate",
-          copy: "AI reads requirements, separates scope/risk, and proposes traceable test cases for QA approval.",
+          copy: "AI reads Jira/Confluence/Figma/Swagger/Docs and creates 36-563 cases/story with coverage matrix, Case Type, and dimension tags.",
         },
         {
           icon: "notebook" as const,
           title: "Review & QA Gate",
-          copy: "QA resolves the Ambiguity Gate, confirms scope, and blocks weak or unsupported output.",
+          copy: "AI summarizes coverage %, Critical/High gaps, and Final Decision; QA approves coverage ≥ 80% and decides PASS/COND/FAIL/BLOCK.",
         },
         {
           icon: "computer" as const,
           title: "Publish AIO Tests",
-          copy: "Standardize folders, test cases, cycles, and mirrored data between Excel and AIO.",
+          copy: "Publisher dry-runs, groups folders by function, takes Case Type/Priority from Excel, and links coverage back to Story/Task.",
         },
         {
-          icon: "lab" as const,
+          icon: "ai-spark" as const,
           title: "Execute & expand",
-          copy: "The Agent runs preflight checks, executes checklists, and proposes risky-area expansion before QA confirmation.",
+          copy: "Pull mirror, resolve preconditions, run Playwright/API, and expand five axes around each case; executed sets reached 90-100% pass-rate.",
         },
         {
           icon: "shield" as const,
           title: "Triage & log bugs",
-          copy: "Classify FE/BE issues, collect evidence, and create defects only after QA approval.",
+          copy: "Classify FE/BE with real API responses, draft 4-part bugs, mask PII, dry-run, then wait for QA approval to avoid Dev noise.",
         },
         {
           icon: "chart" as const,
           title: "Re-run verify & learn",
-          copy: "Re-run 2-3 rounds, update the knowledge base, and standardize PASS Done conditions.",
+          copy: "Re-run exact subsets 2-3 times, gather PASS evidence, update Jira/AIO, and close the learning loop with 2,103 matched runs.",
         },
       ],
       gates: [
         {
-          term: "Ambiguity Gate",
-          copy: "Pause when a requirement is unclear instead of guessing and writing the wrong test cases.",
+          term: "preflight_gate",
+          copy: "Missing input, broken config, no canonical test case, or AIO mirror older than 12 hours blocks Phase 2.",
         },
         {
-          term: "Design Gate",
-          copy: "Check scope, rules, and traceability before publishing test cases to AIO Tests.",
+          term: "design_gate · gate:gen-testcase",
+          copy: "Missing Case Type, unsupported dimension tags, tag-stuffed titles, or range-like expected results are blocked.",
         },
         {
-          term: "Preflight Gate",
-          copy: "Verify data, environment, and run conditions before execution to avoid false failures.",
+          term: "output_gate",
+          copy: "FAIL without failureLayer, wrong evidence format, or debug comments cannot be pushed to the cycle.",
         },
         {
-          term: "Output Gate",
-          copy: "Block pass results when evidence, logs, or confirmation criteria are incomplete.",
+          term: "risk_gate · expansion:plan",
+          copy: "High-risk modules missing cases or negative/boundary/security dimensions are marked CRITICAL.",
         },
         {
-          term: "Risk Gate",
-          copy: "Force AI/QA to expand tests around risky areas instead of only running the happy path.",
+          term: "self-review --enforce",
+          copy: "Combined checklist for preflight, design, row-quality, execution, and attestation; failures cannot publish.",
         },
         {
-          term: "Policy Gate",
-          copy: "Keep one source of rules so AI does not interpret QA policy in multiple ways.",
+          term: "gate:policy · single source",
+          copy: "verdict_taxonomy.json and case_types.json keep rules centralized so the Agent cannot invent hidden policy.",
         },
       ],
       boundary: [
         {
           title: "AI-led",
           points: [
-            "Break requirements into scope, rules, risks, and clarification questions",
-            "Draft test cases, checklists, test data, and edge cases",
-            "Summarize evidence, logs, AIO status, and draft reporting",
+            "Read and synthesize requirements from multiple sources, including hidden tabs and notes.",
+            "Generate test cases, canonical Excel, coverage matrix, dimension manifest, and publish AIO.",
+            "Pull mirror, resolve preconditions, execute Playwright/API, collect evidence, triage, draft bugs, and re-run verify.",
           ],
         },
         {
           title: "Human-led",
           points: [
-            "Approve scope, acceptance criteria, coverage, and pass/fail criteria",
-            "Decide bug logging, severity, priority, and release risk conclusions",
-            "Own final quality accountability and reporting data",
+            "Confirm TASK_KEY, module, requirement sources, scope, and answer Ambiguity Gate.",
+            "Approve publish/push, curate oracle, approve UAT mutation, and provide account/data/route when blocked.",
+            "Decide bug logging, review final coverage/risk, and confirm Done.",
           ],
         },
       ],
@@ -1078,25 +1075,21 @@ const portfolioCopy = {
         "Adjacent states",
       ],
       outcomes: [
-        { before: "Manual testcase drafting with weak traceability", after: "Traceable testcase drafts ready for QA review" },
-        { before: "Coverage depends heavily on individual experience", after: "Risk notes and edge cases are suggested systematically" },
-        { before: "Evidence is scattered after execution", after: "Evidence packs are grouped by testcase, bug, and cycle" },
-        { before: "Reports take time to summarize", after: "Draft reports include data, status, and QA confirmation points" },
+        { before: "Testcase drafting takes days", after: "1 session · 36-563 cases/story" },
+        { before: "Trace coverage is subjective", after: "Measured coverage ≥ 80-100%" },
+        { before: "Execution is manual", after: "Playwright/API · 90-100% pass-rate" },
+        { before: "Gates are reminders", after: "6 blocking gates in commands, hooks, and CI" },
       ],
       artifacts: [
-        "Requirement brief",
-        "Acceptance criteria map",
-        "Traceability matrix",
-        "Risk note",
-        "Testcase Excel",
-        "Test data checklist",
-        "AIO Tests + cycle",
-        "Evidence pack",
-        "Bug report draft",
-        "Regression checklist",
-        "Ambiguity Gate",
-        "QA Gate log",
-        "Knowledge note",
+        "10-column Testcase Excel",
+        "AIO mirror ≤ 12h",
+        "Coverage & risk",
+        "Ambiguity Gate Q&A",
+        "AIO Tests + folders",
+        "Execution + cycle",
+        "Image/video evidence",
+        "4-part bug + knowledge base",
+        "Anti-leak machines",
       ],
     },
     credentialsEyebrow: "RESUME",
@@ -1458,7 +1451,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
       label: portfolio.nav.contact,
     },
   ];
-  const statIcons: readonly ThreeDIconName[] = ["shield", "lab", "computer"];
+  const statIcons: readonly ThreeDIconName[] = ["shield", "ai-spark", "computer"];
 
   useEffect(() => {
     if (!activeModal) {
@@ -2338,14 +2331,14 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
           <PortfolioHeading
             as="h1"
             eyebrow={portfolio.aiEyebrow}
-            icon="lab"
+            icon="ai-spark"
             id="ai-title"
             title={portfolio.aiTitle}
           />
           <p>{portfolio.aiLead}</p>
         </div>
         <div className="ai-hero-icons" aria-hidden="true">
-          <ThreeDIcon name="target" />
+          <ThreeDIcon name="ai-spark" />
           <ThreeDIcon name="shield" />
           <ThreeDIcon name="computer" />
           <ThreeDIcon name="chart" />
@@ -2373,7 +2366,7 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
           <h3 className="ai-block-title">{workflow.operatingTitle}</h3>
           <div className="ai-cycle-diagram">
             <div className="ai-cycle-center">
-              <ThreeDIcon name="lab" />
+              <ThreeDIcon name="ai-spark" />
               <span>{workflow.systemTitle}</span>
             </div>
             {workflow.phases.map((phase, index) => (

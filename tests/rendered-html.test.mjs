@@ -83,6 +83,7 @@ test("ships the route pages, profile image, CV PDFs, and visual assets", async (
     access(new URL("../public/3d-icons-transparent/computer.png", import.meta.url)),
     access(new URL("../public/3d-icons-transparent/medal.png", import.meta.url)),
     access(new URL("../public/3d-icons-figma/target.png", import.meta.url)),
+    access(new URL("../public/3d-icons-figma/ai-spark.png", import.meta.url)),
     access(new URL("../public/3d-icons-figma/shield.png", import.meta.url)),
     access(new URL("../public/3d-icons-figma/lab.png", import.meta.url)),
     access(new URL("../public/3d-icons-figma/books.png", import.meta.url)),
