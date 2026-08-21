@@ -3,11 +3,21 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 test("defines the bilingual CV content and external links", async () => {
-  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const page = await readFile(new URL("../app/CvPortfolio.tsx", import.meta.url), "utf8");
 
   assert.match(page, /NGUYỄN HÙNG MẠNH/);
   assert.match(page, /NGUYEN HUNG MANH/);
   assert.match(page, /AI Agent/);
+  assert.match(page, /href: "\/journey"/);
+  assert.match(page, /href: "\/skills"/);
+  assert.match(page, /href: "\/works"/);
+  assert.match(page, /href: "\/ai-workflow"/);
+  assert.match(page, /href: "\/contact"/);
+  assert.match(page, /scroll-minimap/);
+  assert.match(page, /\/tool-logos\/jira\.svg/);
+  assert.match(page, /\/tool-logos\/postman\.svg/);
+  assert.match(page, /\/tool-logos\/codex\.svg/);
+  assert.match(page, /\/tool-logos\/vscode\.svg/);
   assert.match(page, /08\/2014-01\/2019/);
   assert.match(page, /Khoa Công nghệ thông tin/);
   assert.match(page, /Chuyên ngành Hệ thống thông tin/);
@@ -21,14 +31,23 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /atomisystems\.com\/saola-animate/);
   assert.match(page, /upresenter\.ai\/vi/);
   assert.match(page, /lms-pro\.sapp\.edu\.vn\/lms-pro-new-version\?tab=home/);
-  assert.match(page, /\/3d-icons\/\$\{name\}\.webp/);
+  assert.match(page, /\/3d-icons-clean\/\$\{name\}\.png/);
+  assert.match(page, /\/product-icons\/activepresenter\.svg/);
+  assert.match(page, /\/product-icons\/saola-animate\.png/);
+  assert.match(page, /\/product-icons\/upresenter\.svg/);
+  assert.match(page, /\/product-icons\/lms-pro\.ico/);
   assert.match(page, /Xem chứng chỉ/);
   assert.match(page, /View certificate/);
   assert.doesNotMatch(page, /logo-sapp|assets\/logo-sapp/i);
 });
 
-test("ships the profile image and both CV PDF assets", async () => {
+test("ships the route pages, profile image, CV PDFs, and visual assets", async () => {
   await Promise.all([
+    access(new URL("../app/journey/page.tsx", import.meta.url)),
+    access(new URL("../app/skills/page.tsx", import.meta.url)),
+    access(new URL("../app/works/page.tsx", import.meta.url)),
+    access(new URL("../app/ai-workflow/page.tsx", import.meta.url)),
+    access(new URL("../app/contact/page.tsx", import.meta.url)),
     access(new URL("../public/manh-profile.png", import.meta.url)),
     access(new URL("../public/nguyen-hung-manh-cv-vi.pdf", import.meta.url)),
     access(new URL("../public/nguyen-hung-manh-cv-en.pdf", import.meta.url)),
@@ -36,5 +55,20 @@ test("ships the profile image and both CV PDF assets", async () => {
     access(new URL("../public/stage-icons.svg", import.meta.url)),
     access(new URL("../public/3d-icons/target.webp", import.meta.url)),
     access(new URL("../public/3d-icons/computer.webp", import.meta.url)),
+    access(new URL("../public/3d-icons-clean/target.png", import.meta.url)),
+    access(new URL("../public/3d-icons-clean/computer.png", import.meta.url)),
+    access(new URL("../public/product-icons/activepresenter.svg", import.meta.url)),
+    access(new URL("../public/product-icons/saola-animate.png", import.meta.url)),
+    access(new URL("../public/product-icons/upresenter.svg", import.meta.url)),
+    access(new URL("../public/product-icons/lms-pro.ico", import.meta.url)),
+    access(new URL("../public/tool-logos/jira.svg", import.meta.url)),
+    access(new URL("../public/tool-logos/redmine.svg", import.meta.url)),
+    access(new URL("../public/tool-logos/postman.svg", import.meta.url)),
+    access(new URL("../public/tool-logos/claude-code.svg", import.meta.url)),
+    access(new URL("../public/tool-logos/codex.svg", import.meta.url)),
+    access(new URL("../public/tool-logos/vscode.svg", import.meta.url)),
+    access(new URL("../public/tool-logos/excel.svg", import.meta.url)),
+    access(new URL("../public/tool-logos/google-sheets.svg", import.meta.url)),
+    access(new URL("../public/tool-logos/github.svg", import.meta.url)),
   ]);
 });
