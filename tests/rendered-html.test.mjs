@@ -24,11 +24,11 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /skill-context-icon/);
   assert.match(page, /ai-reference-hero/);
   assert.match(page, /ai-flow-map/);
-  assert.match(page, /preflight_gate/);
+  assert.match(page, /Preflight Gate/);
   assert.match(page, /Ambiguity Gate/);
   assert.match(page, /AI-led \/ Human-led/);
   assert.match(page, /contact-profile-card/);
-  assert.match(page, /contact-3d-icon/);
+  assert.match(page, /contact-action-row/);
   assert.match(page, /interest-chip/);
   assert.match(page, /\/tool-logos\/jira\.svg/);
   assert.match(page, /\/tool-logos\/postman\.svg/);
@@ -46,8 +46,9 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /atomisystems\.com\/activepresenter/);
   assert.match(page, /atomisystems\.com\/saola-animate/);
   assert.match(page, /upresenter\.ai\/vi/);
-  assert.match(page, /uat-lms\.sapp\.edu\.vn\/lms-pro-new-version/);
-  assert.match(page, /\/3d-icons-transparent\/\$\{name\}\.png/);
+  assert.match(page, /Sản phẩm nội bộ/);
+  assert.doesNotMatch(page, /uat-lms\.sapp\.edu\.vn\/lms-pro-new-version/);
+  assert.match(page, /\/3d-icons-figma\/\$\{name\}\.png/);
   assert.match(page, /\/product-screens\/lms-pro-1\.png/);
   assert.match(page, /\/product-screens\/upresenter-1\.png/);
   assert.match(page, /\/product-screens\/activepresenter-1\.webp/);
@@ -81,6 +82,10 @@ test("ships the route pages, profile image, CV PDFs, and visual assets", async (
     access(new URL("../public/3d-icons-transparent/target.png", import.meta.url)),
     access(new URL("../public/3d-icons-transparent/computer.png", import.meta.url)),
     access(new URL("../public/3d-icons-transparent/medal.png", import.meta.url)),
+    access(new URL("../public/3d-icons-figma/target.png", import.meta.url)),
+    access(new URL("../public/3d-icons-figma/shield.png", import.meta.url)),
+    access(new URL("../public/3d-icons-figma/lab.png", import.meta.url)),
+    access(new URL("../public/3d-icons-figma/books.png", import.meta.url)),
     access(new URL("../public/product-icons/activepresenter.svg", import.meta.url)),
     access(new URL("../public/product-icons/saola-animate.png", import.meta.url)),
     access(new URL("../public/product-icons/upresenter.svg", import.meta.url)),

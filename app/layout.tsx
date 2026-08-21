@@ -11,6 +11,22 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Nguyễn Hùng Mạnh",
+  alternateName: "Nguyen Hung Manh",
+  jobTitle: "QA Engineer",
+  email: "mailto:hungmanh0206@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Hanoi",
+    addressCountry: "VN",
+  },
+  sameAs: ["https://www.linkedin.com/in/nguyen-hung-manh-97316117b/"],
+  url: "https://nguyenhungmanh-cv.vercel.app",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,7 +34,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

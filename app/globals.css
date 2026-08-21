@@ -8837,3 +8837,408 @@ body {
     height: 12px;
   }
 }
+
+/* Portfolio QA polish from UX/QA review. */
+.skip-link {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 120;
+  padding: 10px 14px;
+  border: 1px solid rgba(79, 51, 89, 0.22);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #392340;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 12px 30px rgba(37, 22, 42, 0.14);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.skip-link:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.portfolio-section-heading h1 {
+  color: #1f1724;
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.portfolio-section-heading h1,
+.portfolio-section-heading h2 {
+  max-width: 780px;
+}
+
+.portfolio-main .portfolio-section {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.journey-overview {
+  min-height: 372px;
+}
+
+.journey-overview-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+  padding-top: 154px;
+}
+
+.journey-milestone {
+  min-height: 154px;
+}
+
+.journey-milestone strong {
+  font-size: 18px;
+}
+
+.journey-milestone > span:last-child {
+  font-size: 12px;
+}
+
+.journey-milestone:nth-child(1) .journey-dot {
+  top: -64px;
+}
+
+.journey-milestone:nth-child(2) .journey-dot {
+  top: -92px;
+}
+
+.journey-milestone:nth-child(3) .journey-dot {
+  top: -104px;
+}
+
+.journey-milestone:nth-child(4) .journey-dot {
+  top: -88px;
+}
+
+.journey-milestone:nth-child(5) .journey-dot {
+  top: -74px;
+}
+
+.ai-reference-hero .ai-copy {
+  position: relative;
+  z-index: 3;
+  max-width: 720px;
+}
+
+.ai-reference-hero .portfolio-section-heading h1 {
+  max-width: 650px;
+}
+
+.ai-hero-icons {
+  z-index: 1;
+  inset: 12px 34px 18px auto;
+  width: min(38%, 430px);
+  pointer-events: none;
+}
+
+.ai-hero-icons .three-d-icon:first-child {
+  top: 8%;
+  left: 38%;
+}
+
+.ai-hero-icons .three-d-icon:nth-child(2) {
+  top: 14%;
+  right: 6%;
+}
+
+.ai-hero-icons .three-d-icon:nth-child(3) {
+  right: 28%;
+  bottom: 10%;
+  left: auto;
+}
+
+.ai-hero-icons .three-d-icon:nth-child(4) {
+  top: auto;
+  right: 62%;
+  bottom: 22%;
+}
+
+.language-toggle-wrap {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-self: end;
+  min-width: 0;
+  padding: 6px;
+  border: 1px solid rgba(79, 51, 89, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 10px 24px rgba(37, 22, 42, 0.08);
+}
+
+.language-toggle-wrap > .language-icon {
+  width: 18px;
+  height: 18px;
+  color: #684074;
+}
+
+.language-toggle {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(40px, 1fr));
+  gap: 4px;
+}
+
+.language-toggle button {
+  min-width: 42px;
+  min-height: 34px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #514957;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.language-toggle button.is-active,
+.language-toggle button[aria-pressed="true"] {
+  background: linear-gradient(135deg, #4f3359, #8f42a6);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(79, 51, 89, 0.2);
+}
+
+.language-toggle button:focus-visible {
+  outline: 2px solid #8f42a6;
+  outline-offset: 2px;
+}
+
+.product-qa-case {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+.product-qa-case div {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  padding: 10px 12px;
+  border: 1px solid rgba(79, 51, 89, 0.11);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.product-qa-case dt {
+  color: #8b2ca0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.product-qa-case dd {
+  margin: 0;
+  color: #514957;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.work-link-static,
+.product-chip-static {
+  cursor: default;
+}
+
+.work-link-static:hover,
+.product-chip-static:hover {
+  transform: none;
+}
+
+.work-link-static {
+  width: fit-content;
+  border-color: rgba(79, 51, 89, 0.16);
+  background: rgba(255, 255, 255, 0.78);
+  color: #514957;
+  box-shadow: none;
+}
+
+.product-chip-static {
+  border-color: rgba(79, 51, 89, 0.16);
+  background: rgba(255, 255, 255, 0.76);
+  color: #514957;
+}
+
+.skill-tier-core:not(.tool-skill-group) div > span {
+  border-color: rgba(143, 66, 166, 0.28);
+  background: linear-gradient(135deg, rgba(143, 66, 166, 0.13), rgba(209, 125, 254, 0.12));
+  color: #392340;
+  font-weight: 700;
+}
+
+.skill-tier-strong:not(.tool-skill-group) div > span {
+  border-color: rgba(79, 51, 89, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+  color: #514957;
+}
+
+.skill-tier-learning:not(.tool-skill-group) div > span {
+  border-style: dashed;
+  border-color: rgba(18, 100, 163, 0.24);
+  background: rgba(232, 245, 250, 0.66);
+  color: #41515f;
+}
+
+.ai-gate-list {
+  display: grid;
+  gap: 10px;
+}
+
+.ai-gate-list span {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid rgba(79, 51, 89, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.ai-gate-list strong {
+  color: #392340;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.ai-gate-list em {
+  color: #5d5462;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.contact-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.contact-action-row .button {
+  min-height: 44px;
+  padding-inline: 16px;
+}
+
+.contact-section .contact-info-panel {
+  align-content: start;
+}
+
+.contact-section .contact-grid {
+  grid-template-columns: 1fr;
+}
+
+.contact-section .contact-row,
+.modal-contact .contact-row,
+.profile-panel .contact-row {
+  grid-template-columns: minmax(0, 1fr) !important;
+  min-height: 68px;
+}
+
+.contact-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.contact-section .contact-icon,
+.modal-contact .contact-icon,
+.profile-panel .contact-icon {
+  display: none !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+.scroll-minimap-bar:focus-visible,
+.product-chip:focus-visible,
+.work-link:focus-visible {
+  outline: 2px solid #8f42a6;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .portfolio-section-heading h1 {
+    font-size: 30px;
+    line-height: 1.08;
+  }
+
+  .language-toggle-wrap {
+    padding: 4px;
+  }
+
+  .language-toggle {
+    grid-template-columns: repeat(2, 38px);
+  }
+
+  .language-toggle button {
+    min-width: 38px;
+    min-height: 32px;
+    font-size: 12px;
+  }
+
+  .product-qa-case div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .contact-action-row .button {
+    flex: 1 1 140px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .journey-overview {
+    min-height: 0;
+  }
+
+  .journey-curve {
+    display: none;
+  }
+
+  .journey-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding-top: 0;
+  }
+
+  .journey-milestone {
+    min-height: 0;
+    padding: 16px 16px 16px 42px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .journey-dot,
+  .journey-milestone:nth-child(1) .journey-dot,
+  .journey-milestone:nth-child(2) .journey-dot,
+  .journey-milestone:nth-child(3) .journey-dot,
+  .journey-milestone:nth-child(4) .journey-dot,
+  .journey-milestone:nth-child(5) .journey-dot {
+    top: 18px;
+    left: 16px;
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
+  }
+
+  .journey-dot::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .journey-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,11 +2,9 @@
 
 import {
   type CSSProperties,
-  type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 
@@ -70,23 +68,16 @@ const content = {
         copy: "tập trung vào sản phẩm học tập số và nền tảng đào tạo.",
       },
     ],
-    ctaPrimary: "Tải CV tiếng Việt",
-    ctaSecondary: "LinkedIn",
+    ctaPrimary: "Tải CV (PDF, tiếng Việt)",
+    ctaSecondary: "Xem hồ sơ LinkedIn",
     pdf: "/nguyen-hung-manh-cv-vi.pdf",
     stats: [
-      { value: "6+ năm", label: "kinh nghiệm QA" },
+      { value: "6+ năm", label: "kinh nghiệm QA thực chiến" },
       { value: "AI", label: "định hướng kiểm thử" },
       { value: "LMS/eLearning", label: "sản phẩm trọng tâm" },
     ],
-    contactTitle: "Thông tin cá nhân",
+    contactTitle: "Kênh liên hệ",
     contact: [
-      { icon: "calendar" as const, label: "Ngày sinh", value: "02/06/1996" },
-      {
-        icon: "map" as const,
-        label: "Quê quán",
-        value: "Quảng Chính, Thanh Hoá",
-      },
-      { icon: "phone" as const, label: "Điện thoại", value: "0862342696" },
       {
         icon: "mail" as const,
         label: "Email",
@@ -94,15 +85,15 @@ const content = {
         href: "mailto:hungmanh0206@gmail.com",
       },
       {
-        icon: "map" as const,
-        label: "Địa chỉ",
-        value: "ICID Complex, Lê Trọng Tấn, Dương Nội, Hà Nội",
-      },
-      {
         icon: "linkedin" as const,
         label: "LinkedIn",
         value: "nguyen-hung-manh",
         href: linkedinUrl,
+      },
+      {
+        icon: "map" as const,
+        label: "Khu vực làm việc",
+        value: "Hà Nội, Việt Nam",
       },
     ],
     focusTitle: "Mục tiêu nghề nghiệp",
@@ -118,14 +109,23 @@ const content = {
         products: [
           {
             name: "LMS Pro",
-            href: "https://uat-lms.sapp.edu.vn/lms-pro-new-version",
           },
         ],
         bullets: [
-          "Phân tích yêu cầu nghiệp vụ, xây dựng Test Design và Test Case cho hệ thống quản lý học tập LMS PRO.",
-          "Thực hiện Functional Testing, UI Testing, API Testing, Integration Testing và Regression Testing nhằm đảm bảo chất lượng và tính ổn định của sản phẩm.",
-          "Quản lý lỗi trên Jira, phối hợp với PM, BA, UI/UX và Developer để làm rõ yêu cầu, đánh giá rủi ro và đảm bảo độ phủ kiểm thử.",
-          "Nghiên cứu, phát triển và triển khai AI Test Automation Kit cho phân tích yêu cầu, thiết kế test case, thực thi kiểm thử và báo cáo kết quả.",
+          "Phân tích yêu cầu nghiệp vụ LMS PRO, chuyển luồng học, lớp học, báo cáo và phân quyền thành Test Design có trace theo vai trò người dùng.",
+          "Thực hiện Functional, UI, API, Integration và Regression Testing cho các luồng trọng yếu, tập trung phát hiện lỗi sớm trước vòng nghiệm thu.",
+          "Quản lý bug trên Jira với evidence rõ ràng, phối hợp PM, BA, UI/UX và Developer để chốt scope, mức rủi ro và tiêu chí pass/fail.",
+          "Xây dựng AI Test Automation Kit hỗ trợ phân tích yêu cầu, sinh test case, thực thi kiểm thử và tổng hợp báo cáo nhưng vẫn giữ QA Gate trước mọi quyết định chất lượng.",
+        ],
+      },
+      {
+        role: "Tự học & xây dựng AI QA Toolkit",
+        company: "Định hướng cá nhân",
+        date: "05/2025 - 01/2026",
+        bullets: [
+          "Nghiên cứu Claude Code, Codex và mô hình AI Agent để thử nghiệm pipeline phân tích requirement, sinh testcase và tự kiểm tra output.",
+          "Chuẩn hóa cách dùng AI trong QA theo nguyên tắc có gate: AI đề xuất, QA duyệt scope, evidence và quyết định log bug.",
+          "Xây dựng bộ prompt, checklist và mẫu báo cáo thử nghiệm để chuẩn bị áp dụng vào workflow kiểm thử sản phẩm LMS/eLearning.",
         ],
       },
       {
@@ -139,16 +139,16 @@ const content = {
           },
         ],
         bullets: [
-          "Xây dựng Test Plan và Test Case cho nền tảng eLearning ứng dụng AI, bao gồm AI Content Generation, Text-to-Speech, Slide Recognition và Learning Management.",
-          "Đảm bảo chất lượng cho các tính năng AI và luồng nghiệp vụ trọng yếu của hệ thống.",
-          "Theo dõi lỗi trên Redmine, phối hợp với Product Owner, Developer và AI Engineer để làm rõ yêu cầu, đánh giá rủi ro và xác nhận kết quả sửa lỗi.",
-          "Thực hiện kiểm thử hồi quy, đánh giá chất lượng phiên bản phát hành và đề xuất cải tiến quy trình QA.",
+          "Xây dựng Test Plan và Test Case cho nền tảng eLearning có AI, bao gồm AI Content Generation, Text-to-Speech, Slide Recognition và Learning Management.",
+          "Thiết kế cách kiểm thử output AI không xác định bằng tiêu chí chấp nhận về ngôn ngữ, cấu trúc, thời lượng và dữ liệu biên thay vì so khớp kết quả cứng.",
+          "Theo dõi lỗi trên Redmine, phối hợp Product Owner, Developer và AI Engineer để làm rõ requirement, đánh giá rủi ro và xác nhận fix.",
+          "Thực hiện regression, đánh giá chất lượng bản phát hành và đề xuất cải tiến quy trình QA cho các vòng release sau.",
         ],
       },
       {
         role: "Kiểm thử phần mềm",
         company: "Công ty Cổ phần Hệ thống ATOMI",
-        date: "04/2019 - 04/2024",
+        date: "07/2019 - 04/2024",
         products: [
           {
             name: "ActivePresenter",
@@ -160,10 +160,10 @@ const content = {
           },
         ],
         bullets: [
-          "Phân tích yêu cầu, xây dựng Test Plan và Test Case cho ActivePresenter và Saola Animate.",
-          "Thực hiện kiểm thử chức năng, giao diện, tương thích đa nền tảng Windows/macOS và kiểm thử hồi quy.",
-          "Quản lý lỗi trên Redmine, phối hợp với đội phát triển để xác minh, theo dõi và đảm bảo chất lượng các phiên bản phát hành.",
-          "Hướng dẫn thành viên QA mới và tham gia cải tiến quy trình QA nhằm nâng cao hiệu quả kiểm thử.",
+          "Phân tích yêu cầu, xây dựng Test Plan và Test Case cho ActivePresenter và Saola Animate trong môi trường sản phẩm desktop đa nền tảng.",
+          "Kiểm thử chức năng, giao diện, tương thích Windows/macOS, regression và các luồng xuất bản nội dung eLearning/HTML5.",
+          "Quản lý lỗi trên Redmine, phối hợp đội phát triển để xác minh fix và duy trì chất lượng qua nhiều phiên bản phát hành.",
+          "Hướng dẫn QA mới, chia sẻ kinh nghiệm test sản phẩm desktop phức tạp và tham gia cải tiến quy trình kiểm thử nội bộ.",
         ],
       },
       {
@@ -180,6 +180,7 @@ const content = {
     skillGroups: [
       {
         title: "Kiểm thử phần mềm",
+        tier: "core",
         items: [
           "Test Planning",
           "Test Design",
@@ -190,6 +191,7 @@ const content = {
       },
       {
         title: "Kỹ thuật kiểm thử",
+        tier: "core",
         items: [
           "Functional Testing",
           "Regression Testing",
@@ -201,6 +203,7 @@ const content = {
       },
       {
         title: "AI & tự động hóa",
+        tier: "strong",
         items: [
           "AI-driven Testing",
           "AI-assisted Test Design",
@@ -210,6 +213,7 @@ const content = {
       },
       {
         title: "Công cụ & nền tảng",
+        tier: "strong",
         items: [
           "Jira",
           "Redmine",
@@ -224,6 +228,7 @@ const content = {
       },
       {
         title: "Cơ sở dữ liệu & kỹ năng mềm",
+        tier: "strong",
         items: [
           "SQL",
           "Data Validation",
@@ -232,6 +237,16 @@ const content = {
           "Problem Solving",
           "Communication",
           "Mentoring",
+        ],
+      },
+      {
+        title: "Đang học / lộ trình 6 tháng",
+        tier: "learning",
+        items: [
+          "Playwright basics",
+          "GitHub Actions for QA",
+          "Performance Testing basics",
+          "API automation strategy",
         ],
       },
     ],
@@ -249,11 +264,12 @@ const content = {
     certificateDownloadLabel: "Tải PDF chứng chỉ",
     certificateFallback: "Mở trang xác thực",
     certs: [
-      { year: "2020", title: "TOEIC 600" },
       {
         year: "2026",
         title:
           "Data Analysis - Khóa học Data Analysis giảng dạy bởi Đại học Bách Khoa và Rikkeisoft",
+        description:
+          "Ứng dụng vào data validation, viết SQL đối chiếu dữ liệu và kiểm tra tính đúng đắn sau các luồng nghiệp vụ.",
         href: certificateUrl,
       },
     ],
@@ -300,23 +316,16 @@ const content = {
         copy: "focused on digital learning products and training platforms.",
       },
     ],
-    ctaPrimary: "Download English CV",
-    ctaSecondary: "LinkedIn",
+    ctaPrimary: "Download CV (PDF, English)",
+    ctaSecondary: "View LinkedIn profile",
     pdf: "/nguyen-hung-manh-cv-en.pdf",
     stats: [
-      { value: "6+ years", label: "QA experience" },
+      { value: "6+ years", label: "hands-on QA experience" },
       { value: "AI", label: "testing direction" },
       { value: "LMS/eLearning", label: "core product domain" },
     ],
-    contactTitle: "Personal information",
+    contactTitle: "Contact channels",
     contact: [
-      { icon: "calendar" as const, label: "Date of birth", value: "June 2, 1996" },
-      {
-        icon: "map" as const,
-        label: "Hometown",
-        value: "Quang Chinh, Thanh Hoa, Vietnam",
-      },
-      { icon: "phone" as const, label: "Phone", value: "0862342696" },
       {
         icon: "mail" as const,
         label: "Email",
@@ -324,15 +333,15 @@ const content = {
         href: "mailto:hungmanh0206@gmail.com",
       },
       {
-        icon: "map" as const,
-        label: "Address",
-        value: "ICID Complex, Le Trong Tan Street, Duong Noi Ward, Hanoi",
-      },
-      {
         icon: "linkedin" as const,
         label: "LinkedIn",
         value: "nguyen-hung-manh",
         href: linkedinUrl,
+      },
+      {
+        icon: "map" as const,
+        label: "Working location",
+        value: "Hanoi, Vietnam",
       },
     ],
     focusTitle: "Career objective",
@@ -348,14 +357,23 @@ const content = {
         products: [
           {
             name: "LMS Pro",
-            href: "https://uat-lms.sapp.edu.vn/lms-pro-new-version",
           },
         ],
         bullets: [
-          "Analyzed business requirements and developed Test Designs and Test Cases for the LMS PRO Learning Management System.",
-          "Performed Functional, UI, API, Integration, and Regression Testing to ensure product quality and system stability.",
-          "Managed defects in Jira and collaborated with PMs, BAs, UI/UX Designers, and Developers to clarify requirements, assess risks, and ensure test coverage.",
-          "Researched, developed, and implemented an AI Test Automation Kit for requirement analysis, test case generation, test execution, and reporting.",
+          "Analyzed LMS PRO requirements and converted learning flows, class operations, reports, and permissions into role-based traceable Test Designs.",
+          "Performed Functional, UI, API, Integration, and Regression Testing for critical workflows with a focus on detecting defects before acceptance rounds.",
+          "Managed defects in Jira with clear evidence while collaborating with PMs, BAs, UI/UX Designers, and Developers on scope, risk, and pass/fail criteria.",
+          "Built an AI Test Automation Kit for requirement analysis, testcase generation, execution, and reporting while keeping QA Gate approval before quality decisions.",
+        ],
+      },
+      {
+        role: "Self-study & AI QA Toolkit building",
+        company: "Personal development track",
+        date: "05/2025 - 01/2026",
+        bullets: [
+          "Researched Claude Code, Codex, and AI Agent patterns to prototype requirement analysis, testcase generation, and output self-review pipelines.",
+          "Standardized AI usage in QA around a gated model: AI proposes, QA approves scope, evidence, and bug logging decisions.",
+          "Built prompt sets, checklists, and experimental report templates to prepare for LMS/eLearning testing workflows.",
         ],
       },
       {
@@ -370,15 +388,15 @@ const content = {
         ],
         bullets: [
           "Developed Test Plans and Test Cases for an AI-powered eLearning platform covering AI Content Generation, Text-to-Speech, Slide Recognition, and Learning Management.",
-          "Performed testing and quality assurance for AI-driven features and core business workflows.",
-          "Identified and managed defects using Redmine while collaborating with Product Owners, Developers, and AI Engineers to clarify requirements, assess risks, and validate fixes.",
+          "Designed acceptance-criteria-based testing for non-deterministic AI output, checking language, structure, duration, and edge-case inputs instead of exact output matching.",
+          "Managed defects using Redmine while collaborating with Product Owners, Developers, and AI Engineers to clarify requirements, assess risks, and validate fixes.",
           "Conducted regression testing, assessed release quality, and contributed to continuous QA process improvement.",
         ],
       },
       {
         role: "Quality Assurance Tester",
         company: "ATOMI SYSTEMS INC.",
-        date: "04/2019 - 04/2024",
+        date: "07/2019 - 04/2024",
         products: [
           {
             name: "ActivePresenter",
@@ -390,10 +408,10 @@ const content = {
           },
         ],
         bullets: [
-          "Analyzed requirements and developed Test Plans and Test Cases for ActivePresenter and Saola Animate desktop applications.",
-          "Performed functional, UI, cross-platform Windows/macOS, and regression testing to ensure product quality and stability.",
-          "Managed defects using Redmine and collaborated with developers to validate fixes and maintain release quality.",
-          "Mentored junior QA members and contributed to QA process improvements.",
+          "Analyzed requirements and developed Test Plans and Test Cases for ActivePresenter and Saola Animate in a cross-platform desktop product environment.",
+          "Performed functional, UI, Windows/macOS compatibility, regression, and eLearning/HTML5 publishing workflow testing.",
+          "Managed defects using Redmine and collaborated with developers to verify fixes and maintain release quality across multiple versions.",
+          "Mentored new QA members, shared desktop testing experience, and contributed to internal QA process improvements.",
         ],
       },
       {
@@ -410,6 +428,7 @@ const content = {
     skillGroups: [
       {
         title: "Software testing",
+        tier: "core",
         items: [
           "Test Planning",
           "Test Design",
@@ -420,6 +439,7 @@ const content = {
       },
       {
         title: "Testing techniques",
+        tier: "core",
         items: [
           "Functional Testing",
           "Regression Testing",
@@ -431,6 +451,7 @@ const content = {
       },
       {
         title: "AI & automation",
+        tier: "strong",
         items: [
           "AI-driven Testing",
           "AI-assisted Test Design",
@@ -440,6 +461,7 @@ const content = {
       },
       {
         title: "Tools & platforms",
+        tier: "strong",
         items: [
           "Jira",
           "Redmine",
@@ -454,6 +476,7 @@ const content = {
       },
       {
         title: "Database & soft skills",
+        tier: "strong",
         items: [
           "SQL",
           "Data Validation",
@@ -462,6 +485,16 @@ const content = {
           "Problem Solving",
           "Communication",
           "Mentoring",
+        ],
+      },
+      {
+        title: "Learning / 6-month roadmap",
+        tier: "learning",
+        items: [
+          "Playwright basics",
+          "GitHub Actions for QA",
+          "Performance Testing basics",
+          "API automation strategy",
         ],
       },
     ],
@@ -479,11 +512,12 @@ const content = {
     certificateDownloadLabel: "Download PDF",
     certificateFallback: "Open verification page",
     certs: [
-      { year: "2020", title: "TOEIC 600" },
       {
         year: "2026",
         title:
           "Data Analysis - Hanoi University of Science and Technology (HUST) & Rikkeisoft",
+        description:
+          "Applied to data validation, SQL-based data checks, and verification after business workflows.",
         href: certificateUrl,
       },
     ],
@@ -517,7 +551,7 @@ type SkillGroup = Content["skillGroups"][number];
 type Certificate = Content["certs"][number];
 type Product = {
   readonly name: string;
-  readonly href: string;
+  readonly href?: string;
 };
 export type PortfolioPageKey =
   | "resume"
@@ -531,14 +565,19 @@ type MinimapItem = {
   readonly label: string;
 };
 type ThreeDIconName =
+  | "books"
   | "bulb"
   | "chart"
   | "computer"
   | "lab"
+  | "linkedin"
+  | "location"
+  | "mail"
   | "medal"
   | "notebook"
   | "shield"
-  | "target";
+  | "target"
+  | "tv";
 
 const skillGroupThreeDIcons: readonly ThreeDIconName[] = [
   "shield",
@@ -549,8 +588,8 @@ const skillGroupThreeDIcons: readonly ThreeDIconName[] = [
 ];
 const interestThreeDIcons: readonly ThreeDIconName[] = [
   "medal",
-  "computer",
-  "notebook",
+  "tv",
+  "books",
 ];
 
 const languageOptions = [
@@ -563,20 +602,21 @@ const portfolioCopy = {
     brand: "Nguyễn Hùng Mạnh",
     primaryNavLabel: "Điều hướng chính",
     bottomNavLabel: "Điều hướng nhanh",
+    skipToContent: "Bỏ qua điều hướng",
     nav: {
       resume: "Hồ sơ",
       journey: "Công việc",
       skills: "Kỹ năng",
       works: "Sản phẩm",
-      ai: "AI Workflow",
+      ai: "Quy trình AI",
       contact: "Liên hệ",
     },
     minimapLabel: "Bản đồ trang",
     portfolioEdition: "PORTFOLIO · 2026",
     greeting: "Xin chào, tôi là",
-    headline: "QA Engineer xây độ tin cậy cho sản phẩm số",
+    headline: "QA cho LMS/eLearning với AI Test Kit có kiểm soát",
     heroLead:
-      "Tôi kết hợp kiểm thử phần mềm, phân tích yêu cầu và AI-driven Testing để giúp sản phẩm LMS/eLearning phát hành ổn định hơn.",
+      "Tôi kết hợp kiểm thử phần mềm, phân tích yêu cầu và AI-driven Testing để rút ngắn vòng viết testcase, tăng độ phủ kiểm thử và giữ QA là người quyết định chất lượng cuối cùng.",
     heroIconCards: [
       {
         icon: "shield" as const,
@@ -594,27 +634,28 @@ const portfolioCopy = {
         copy: "Đo coverage, pass-rate và rủi ro theo từng vòng release.",
       },
     ],
-    aboutEyebrow: "ABOUT ME",
+    aboutEyebrow: "GIỚI THIỆU",
     aboutTitle: "Một chút về tôi",
     aboutLead:
       "Tôi tập trung vào chất lượng sản phẩm từ lúc làm rõ yêu cầu đến khi xác nhận bản phát hành, đặc biệt với các nền tảng học tập số và luồng nghiệp vụ có AI hỗ trợ.",
     toolkitTitle: "Bộ kỹ năng sử dụng thường xuyên",
-    skillsEyebrow: "SKILLS",
+    skillsEyebrow: "KỸ NĂNG",
     skillsLead:
       "Các nhóm kỹ năng QA, AI testing, công cụ và nền tảng tôi sử dụng trong công việc hằng ngày.",
-    journeyEyebrow: "WORK",
-    journeyTitle: "Công việc & hành trình",
+    journeyEyebrow: "CÔNG VIỆC",
+    journeyTitle: "Công việc",
     journeyOverviewLabel: "Sơ đồ hành trình",
     journeyDetailTitle: "Chi tiết kinh nghiệm",
-    worksEyebrow: "PRODUCTS & SKILLS",
+    worksEyebrow: "SẢN PHẨM",
     worksTitle: "Sản phẩm đã tham gia",
     productSkillTitle: "Kỹ năng sử dụng trong sản phẩm",
     workCaseLabel: "Case",
     viewProject: "Xem sản phẩm",
-    aiEyebrow: "AI WORKFLOW",
-    aiTitle: "QA Automation AI Agent",
+    privateProjectLabel: "Sản phẩm nội bộ",
+    aiEyebrow: "QUY TRÌNH AI",
+    aiTitle: "AI Agent cho quy trình QA",
     aiLead:
-      "Một workflow AI Agent cho QA: từ đọc requirement, sinh testcase, publish AIO Tests, execute, triage bug đến re-run verify và đóng vòng học.",
+      "Mô hình AI Agent hỗ trợ QA từ đọc requirement, sinh testcase, execute, tổng hợp evidence đến re-run verify. AI xử lý phần lặp; QA duyệt scope, bug và trách nhiệm chất lượng.",
     aiWorkflow: {
       overviewTitle: "AI Workflow Overview",
       operatingTitle: "Luồng vận hành 3 pha",
@@ -623,7 +664,7 @@ const portfolioCopy = {
       guardrailTitle: "Gate kiểm soát chất lượng",
       boundaryTitle: "AI-led / Human-led",
       expansionTitle: "5 trục mở rộng",
-      outcomeTitle: "Before -> After",
+      outcomeTitle: "Trước -> Sau",
       artifactTitle: "Artifact mỗi vòng chạy",
       inputTitle: "Input",
       workflowTitle: "Workflow",
@@ -661,7 +702,7 @@ const portfolioCopy = {
           label: "Phase 1",
           title: "Sinh & publish testcase",
           points: [
-            "Requirement -> Ambiguity Gate",
+            "Requirement -> chốt điểm mơ hồ",
             "Excel testcase 10 cột",
             "QA confirmation",
             "Publish AIO Tests",
@@ -671,10 +712,10 @@ const portfolioCopy = {
           label: "Phase 2",
           title: "Execute có kiểm soát",
           points: [
-            "Pull mirror AIO",
-            "preflight_gate",
+            "Đồng bộ dữ liệu AIO",
+            "Preflight Gate trước khi chạy",
             "Execute + mở rộng 5 trục",
-            "output_gate -> push cycle",
+            "Output Gate trước khi cập nhật cycle",
           ],
         },
         {
@@ -721,12 +762,30 @@ const portfolioCopy = {
         },
       ],
       gates: [
-        "preflight_gate",
-        "design_gate / gate:gen-testcase",
-        "output_gate",
-        "risk_gate / expansion:plan",
-        "self-review --enforce",
-        "gate:policy một nguồn",
+        {
+          term: "Ambiguity Gate",
+          copy: "Dừng lại khi requirement còn mơ hồ, thay vì đoán rồi viết testcase sai từ đầu.",
+        },
+        {
+          term: "Design Gate",
+          copy: "Kiểm tra testcase có đủ scope, rule và trace trước khi publish sang AIO Tests.",
+        },
+        {
+          term: "Preflight Gate",
+          copy: "Soát dữ liệu, môi trường và điều kiện chạy trước khi execute để tránh lỗi giả.",
+        },
+        {
+          term: "Output Gate",
+          copy: "Chặn kết quả pass khi thiếu evidence, thiếu log hoặc chưa đủ điều kiện xác nhận.",
+        },
+        {
+          term: "Risk Gate",
+          copy: "Buộc AI/QA mở rộng test ở vùng rủi ro thay vì chỉ chạy happy path.",
+        },
+        {
+          term: "Policy Gate",
+          copy: "Giữ một nguồn quy tắc duy nhất để AI không tự diễn giải theo nhiều kiểu khác nhau.",
+        },
       ],
       boundary: [
         {
@@ -747,8 +806,8 @@ const portfolioCopy = {
       ],
       outcomes: [
         { before: "Soạn testcase nhiều ngày", after: "1 phiên có QA Gate" },
-        { before: "Coverage cảm tính", after: "Trace coverage 80-100%" },
-        { before: "Pass-rate thủ công", after: "90-100% có output_gate" },
+        { before: "Coverage cảm tính", after: "Trace rõ theo requirement" },
+        { before: "Pass-rate thủ công", after: "Checklist output trước khi pass" },
         { before: "Gate rời rạc", after: "6 gate vận hành thống nhất" },
       ],
       artifacts: [
@@ -762,9 +821,9 @@ const portfolioCopy = {
         "Máy chống lọt bug",
       ],
     },
-    credentialsEyebrow: "RESUME",
+    credentialsEyebrow: "HỒ SƠ",
     credentialsTitle: "Học vấn, chứng chỉ và hoạt động",
-    contactEyebrow: "CONTACT",
+    contactEyebrow: "LIÊN HỆ",
     contactTitle: "Trao đổi với tôi",
     contactLead:
       "Sẵn sàng trao đổi về QA, AI Testing, eLearning và các sản phẩm cần chất lượng ổn định.",
@@ -773,6 +832,7 @@ const portfolioCopy = {
     brand: "Nguyễn Hùng Mạnh",
     primaryNavLabel: "Primary navigation",
     bottomNavLabel: "Quick navigation",
+    skipToContent: "Skip to content",
     nav: {
       resume: "Resume",
       journey: "Work",
@@ -821,6 +881,7 @@ const portfolioCopy = {
     productSkillTitle: "Skills behind the products",
     workCaseLabel: "Case",
     viewProject: "View project",
+    privateProjectLabel: "Internal product",
     aiEyebrow: "AI WORKFLOW",
     aiTitle: "QA Automation AI Agent",
     aiLead:
@@ -871,7 +932,7 @@ const portfolioCopy = {
           label: "Phase 1",
           title: "Generate & publish test cases",
           points: [
-            "Requirement -> Ambiguity Gate",
+            "Requirement -> clarify ambiguity",
             "10-column testcase Excel",
             "QA confirmation",
             "Publish AIO Tests",
@@ -881,10 +942,10 @@ const portfolioCopy = {
           label: "Phase 2",
           title: "Controlled execution",
           points: [
-            "Pull AIO mirror",
-            "preflight_gate",
+            "Sync AIO data",
+            "Preflight Gate before execution",
             "Execute + expand 5 axes",
-            "output_gate -> push cycle",
+            "Output Gate before cycle update",
           ],
         },
         {
@@ -931,12 +992,30 @@ const portfolioCopy = {
         },
       ],
       gates: [
-        "preflight_gate",
-        "design_gate / gate:gen-testcase",
-        "output_gate",
-        "risk_gate / expansion:plan",
-        "self-review --enforce",
-        "gate:policy single source",
+        {
+          term: "Ambiguity Gate",
+          copy: "Pause when a requirement is unclear instead of guessing and writing the wrong test cases.",
+        },
+        {
+          term: "Design Gate",
+          copy: "Check scope, rules, and traceability before publishing test cases to AIO Tests.",
+        },
+        {
+          term: "Preflight Gate",
+          copy: "Verify data, environment, and run conditions before execution to avoid false failures.",
+        },
+        {
+          term: "Output Gate",
+          copy: "Block pass results when evidence, logs, or confirmation criteria are incomplete.",
+        },
+        {
+          term: "Risk Gate",
+          copy: "Force AI/QA to expand tests around risky areas instead of only running the happy path.",
+        },
+        {
+          term: "Policy Gate",
+          copy: "Keep one source of rules so AI does not interpret QA policy in multiple ways.",
+        },
       ],
       boundary: [
         {
@@ -957,8 +1036,8 @@ const portfolioCopy = {
       ],
       outcomes: [
         { before: "Testcase drafting takes days", after: "One QA-gated session" },
-        { before: "Coverage is subjective", after: "80-100% trace coverage" },
-        { before: "Manual pass-rate checks", after: "90-100% with output_gate" },
+        { before: "Coverage is subjective", after: "Requirement-level traceability" },
+        { before: "Manual pass-rate checks", after: "Output checklist before pass" },
         { before: "Scattered gates", after: "6 unified gates" },
       ],
       artifacts: [
@@ -992,7 +1071,25 @@ const productProfiles = {
         "/product-screens/lms-pro-2.png",
         "/product-screens/lms-pro-3.png",
       ],
-      copy: "Nền tảng quản lý học tập tại SAPP với luồng học, vận hành lớp và báo cáo đào tạo.",
+      copy: "Case QA cho hệ thống quản lý học tập với luồng học, lớp học, phân quyền và báo cáo đào tạo.",
+      qaCase: [
+        {
+          label: "Vai trò",
+          value: "QA cho các luồng LMS trọng yếu: học tập, vận hành lớp, báo cáo và phân quyền.",
+        },
+        {
+          label: "Thách thức",
+          value: "Nhiều vai trò người dùng và trạng thái dữ liệu khiến lỗi dễ xuất hiện ở các nhánh nghiệp vụ giao nhau.",
+        },
+        {
+          label: "Cách làm",
+          value: "Thiết kế test theo role-flow-data, kết hợp UI/API/regression và evidence rõ ràng trên Jira.",
+        },
+        {
+          label: "Kết quả",
+          value: "Tạo nền regression có thể tái sử dụng và hỗ trợ phát hiện lỗi sớm trước vòng nghiệm thu.",
+        },
+      ],
     },
     uPresenter: {
       domain: "AI eLearning",
@@ -1003,7 +1100,25 @@ const productProfiles = {
         "/product-screens/upresenter-2.svg",
         "/product-screens/upresenter-3.svg",
       ],
-      copy: "Nền tảng tạo nội dung học tập có AI hỗ trợ cho slide, giọng đọc và quản lý học liệu.",
+      copy: "Case QA cho nền tảng eLearning có AI hỗ trợ sinh nội dung, giọng đọc và quản lý học liệu.",
+      qaCase: [
+        {
+          label: "Vai trò",
+          value: "QA cho AI Content Generation, Text-to-Speech, Slide Recognition và Learning Management.",
+        },
+        {
+          label: "Thách thức",
+          value: "Output AI không cố định nên không thể kiểm thử bằng expected result cứng như tính năng truyền thống.",
+        },
+        {
+          label: "Cách làm",
+          value: "Dùng oracle theo tiêu chí chấp nhận: ngôn ngữ, cấu trúc slide, độ dài nội dung, thời lượng audio và dữ liệu biên tiếng Việt.",
+        },
+        {
+          label: "Kết quả",
+          value: "Tăng khả năng bắt lỗi AI non-deterministic và tạo nền regression cho các vòng release sau.",
+        },
+      ],
     },
     ActivePresenter: {
       domain: "eLearning Authoring",
@@ -1014,7 +1129,25 @@ const productProfiles = {
         "/product-screens/activepresenter-2.webp",
         "/product-screens/activepresenter-3.webp",
       ],
-      copy: "Công cụ tạo bài giảng, quay màn hình, mô phỏng phần mềm và nội dung tương tác.",
+      copy: "Case QA cho sản phẩm desktop tạo bài giảng, quay màn hình, mô phỏng phần mềm và nội dung tương tác.",
+      qaCase: [
+        {
+          label: "Vai trò",
+          value: "QA cho sản phẩm desktop eLearning authoring trên Windows/macOS.",
+        },
+        {
+          label: "Thách thức",
+          value: "Nhiều luồng editor, recorder, export và playback cần kiểm tra ổn định trên đa nền tảng.",
+        },
+        {
+          label: "Cách làm",
+          value: "Kết hợp test plan theo module, compatibility testing, regression và xác minh lỗi qua Redmine.",
+        },
+        {
+          label: "Kết quả",
+          value: "Duy trì chất lượng release cho sản phẩm desktop phức tạp trong thời gian dài.",
+        },
+      ],
     },
     "Saola Animate": {
       domain: "HTML5 Animation",
@@ -1026,7 +1159,25 @@ const productProfiles = {
         "/product-screens/saola-animate-3.webp",
         "/product-screens/saola-animate-4.webp",
       ],
-      copy: "Công cụ thiết kế animation HTML5 và nội dung tương tác chạy trên web.",
+      copy: "Case QA cho công cụ thiết kế animation HTML5 và nội dung tương tác chạy trên web.",
+      qaCase: [
+        {
+          label: "Vai trò",
+          value: "QA cho timeline animation, scene, interaction và output HTML5.",
+        },
+        {
+          label: "Thách thức",
+          value: "Sản phẩm phụ thuộc nhiều vào trạng thái timeline, trình duyệt và cách render nội dung tương tác.",
+        },
+        {
+          label: "Cách làm",
+          value: "Kiểm thử theo scenario animation, trạng thái timeline, export output và regression trên các trình duyệt phổ biến.",
+        },
+        {
+          label: "Kết quả",
+          value: "Giảm rủi ro lỗi hiển thị/tương tác sau export và hỗ trợ release ổn định hơn.",
+        },
+      ],
     },
   },
   en: {
@@ -1039,7 +1190,25 @@ const productProfiles = {
         "/product-screens/lms-pro-2.png",
         "/product-screens/lms-pro-3.png",
       ],
-      copy: "A SAPP learning management platform covering learning flows, class operations, and training reports.",
+      copy: "A QA case for a learning management system covering learning flows, class operations, permissions, and training reports.",
+      qaCase: [
+        {
+          label: "Role",
+          value: "QA for critical LMS workflows: learning, class operations, reports, and permissions.",
+        },
+        {
+          label: "Challenge",
+          value: "Multiple user roles and data states create defects at intersections between business flows.",
+        },
+        {
+          label: "Approach",
+          value: "Designed tests around role-flow-data coverage, combining UI/API/regression checks with clear Jira evidence.",
+        },
+        {
+          label: "Result",
+          value: "Built a reusable regression base and supported earlier defect detection before acceptance rounds.",
+        },
+      ],
     },
     uPresenter: {
       domain: "AI eLearning",
@@ -1050,7 +1219,25 @@ const productProfiles = {
         "/product-screens/upresenter-2.svg",
         "/product-screens/upresenter-3.svg",
       ],
-      copy: "An AI-assisted learning content platform for slides, voice generation, and learning asset management.",
+      copy: "A QA case for an AI-assisted eLearning platform for content generation, voice, and learning assets.",
+      qaCase: [
+        {
+          label: "Role",
+          value: "QA for AI Content Generation, Text-to-Speech, Slide Recognition, and Learning Management.",
+        },
+        {
+          label: "Challenge",
+          value: "AI output is non-deterministic, so exact expected-result matching is not enough.",
+        },
+        {
+          label: "Approach",
+          value: "Used acceptance-criteria oracles: language, slide structure, content length, audio duration, and Vietnamese edge-case inputs.",
+        },
+        {
+          label: "Result",
+          value: "Improved defect discovery for non-deterministic AI features and shaped reusable regression coverage for later releases.",
+        },
+      ],
     },
     ActivePresenter: {
       domain: "eLearning Authoring",
@@ -1061,7 +1248,25 @@ const productProfiles = {
         "/product-screens/activepresenter-2.webp",
         "/product-screens/activepresenter-3.webp",
       ],
-      copy: "An authoring tool for courses, screen recording, software simulation, and interactive content.",
+      copy: "A QA case for a desktop authoring product for courses, screen recording, software simulation, and interactive content.",
+      qaCase: [
+        {
+          label: "Role",
+          value: "QA for a cross-platform desktop eLearning authoring product on Windows/macOS.",
+        },
+        {
+          label: "Challenge",
+          value: "Editor, recorder, export, and playback flows need stable behavior across platforms.",
+        },
+        {
+          label: "Approach",
+          value: "Combined module-based test plans, compatibility testing, regression, and defect verification in Redmine.",
+        },
+        {
+          label: "Result",
+          value: "Supported long-term release quality for a complex desktop product.",
+        },
+      ],
     },
     "Saola Animate": {
       domain: "HTML5 Animation",
@@ -1073,7 +1278,25 @@ const productProfiles = {
         "/product-screens/saola-animate-3.webp",
         "/product-screens/saola-animate-4.webp",
       ],
-      copy: "A tool for designing HTML5 animation and interactive web content.",
+      copy: "A QA case for an HTML5 animation and interactive web content design tool.",
+      qaCase: [
+        {
+          label: "Role",
+          value: "QA for animation timelines, scenes, interactions, and HTML5 output.",
+        },
+        {
+          label: "Challenge",
+          value: "Quality depends on timeline states, browser behavior, and how interactive output renders after export.",
+        },
+        {
+          label: "Approach",
+          value: "Tested animation scenarios, timeline states, exported output, and regression across common browsers.",
+        },
+        {
+          label: "Result",
+          value: "Reduced visual/interaction risks after export and supported more stable releases.",
+        },
+      ],
     },
   },
 } as const satisfies Record<
@@ -1085,6 +1308,10 @@ const productProfiles = {
       readonly domain: string;
       readonly frame: "monitor" | "tablet";
       readonly iconSrc: string;
+      readonly qaCase: readonly {
+        readonly label: string;
+        readonly value: string;
+      }[];
       readonly screenSrcs: readonly string[];
     }
   >
@@ -1107,10 +1334,8 @@ const toolLogoProfiles: Record<
 
 export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
   const [locale, setLocale] = useState<Locale>("vi");
-  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [activeModal, setActiveModal] = useState<ModalKey | null>(null);
   const [isModalClosing, setIsModalClosing] = useState(false);
-  const languageComboboxRef = useRef<HTMLDivElement>(null);
   const t = content[locale];
   const portfolio = portfolioCopy[locale];
   const productCards = useMemo(() => getPortfolioProducts(t, locale), [locale, t]);
@@ -1197,32 +1422,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
   }, [activeModal]);
 
   useEffect(() => {
-    if (!isLanguageOpen) {
-      return;
-    }
-
-    const handlePointerDown = (event: PointerEvent) => {
-      if (!languageComboboxRef.current?.contains(event.target as Node)) {
-        setIsLanguageOpen(false);
-      }
-    };
-
-    const handleKeyDown = (event: globalThis.KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsLanguageOpen(false);
-      }
-    };
-
-    window.addEventListener("pointerdown", handlePointerDown);
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("pointerdown", handlePointerDown);
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isLanguageOpen]);
-
-  useEffect(() => {
     if (!isModalClosing) {
       return;
     }
@@ -1268,7 +1467,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
 
   useEffect(() => {
     const selectors = [
-      ".portfolio-main .portfolio-section",
       ".portfolio-main .portfolio-card",
       ".portfolio-main .timeline-item",
       ".portfolio-main .skill-group",
@@ -1312,34 +1510,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
     return () => observer.disconnect();
   }, [locale, page]);
 
-  function handleLocaleSelect(nextLocale: Locale) {
-    setLocale(nextLocale);
-    setIsLanguageOpen(false);
-  }
-
-  function handleLanguageKeyDown(event: ReactKeyboardEvent<HTMLButtonElement>) {
-    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-      event.preventDefault();
-      setIsLanguageOpen(true);
-      setLocale((currentLocale) => {
-        const direction = event.key === "ArrowDown" ? 1 : -1;
-        const currentIndex = languageOptions.findIndex(
-          (option) => option.value === currentLocale,
-        );
-        const nextIndex =
-          (currentIndex + direction + languageOptions.length) % languageOptions.length;
-
-        return languageOptions[nextIndex].value;
-      });
-      return;
-    }
-
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      setIsLanguageOpen((open) => !open);
-    }
-  }
-
   function openModal(section: ModalKey) {
     setIsModalClosing(false);
     setActiveModal(section);
@@ -1355,6 +1525,9 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
 
   return (
     <div className="site-shell portfolio-shell" id="top">
+      <a className="skip-link" href="#main-content">
+        {portfolio.skipToContent}
+      </a>
       <header className="site-header portfolio-header">
         <nav className="nav-links portfolio-top-nav" aria-label={portfolio.primaryNavLabel}>
           {topNavItems.map((item) => (
@@ -1369,60 +1542,26 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
             </a>
           ))}
         </nav>
-        <div className="language-select" ref={languageComboboxRef}>
-          <span id="language-label">{t.languageLabel}</span>
-          <div className="language-combobox">
-            <button
-              aria-activedescendant={
-                isLanguageOpen ? `language-option-${locale}` : undefined
-              }
-              aria-controls="language-options"
-              aria-expanded={isLanguageOpen}
-              aria-haspopup="listbox"
-              aria-labelledby="language-label language-combobox-value"
-              className="language-trigger"
-              id="language-combobox"
-              onClick={() => setIsLanguageOpen((open) => !open)}
-              onKeyDown={handleLanguageKeyDown}
-              role="combobox"
-              type="button"
-            >
-              <Icon className="language-icon" name="globe" />
-              <span id="language-combobox-value">{t.languageName}</span>
-              <Icon className="language-chevron" name="chevron" />
-            </button>
-            {isLanguageOpen ? (
-              <div
-                aria-labelledby="language-label"
-                className="language-options"
-                id="language-options"
-                role="listbox"
+        <div className="language-select language-toggle-wrap" aria-label={t.languageLabel}>
+          <Icon className="language-icon" name="globe" />
+          <div className="language-toggle" role="group" aria-label={t.languageLabel}>
+            {languageOptions.map((option) => (
+              <button
+                aria-label={option.label}
+                aria-pressed={locale === option.value}
+                className={locale === option.value ? "is-active" : undefined}
+                key={option.value}
+                onClick={() => setLocale(option.value)}
+                type="button"
               >
-                {languageOptions.map((option) => (
-                  <button
-                    aria-selected={locale === option.value}
-                    className={`language-option${
-                      locale === option.value ? " is-selected" : ""
-                    }`}
-                    id={`language-option-${option.value}`}
-                    key={option.value}
-                    onClick={() => handleLocaleSelect(option.value)}
-                    role="option"
-                    type="button"
-                  >
-                    <span>{option.label}</span>
-                    <span className="language-option-check" aria-hidden="true">
-                      {locale === option.value ? <Icon name="check" /> : null}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            ) : null}
+                {option.value.toUpperCase()}
+              </button>
+            ))}
           </div>
         </div>
       </header>
 
-      <main className={`portfolio-main portfolio-main-${page}`}>
+      <main className={`portfolio-main portfolio-main-${page}`} id="main-content">
         {page === "resume" ? (
           <>
             <section className="portfolio-hero" id="resume" aria-labelledby="hero-title">
@@ -1532,6 +1671,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
         {page === "journey" ? (
           <section className="portfolio-section journey-section page-section" id="journey">
             <PortfolioHeading
+              as="h1"
               eyebrow={portfolio.journeyEyebrow}
               icon="medal"
               id="journey-title"
@@ -1549,6 +1689,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
         {page === "skills" ? (
           <section className="portfolio-section skills-section page-section" id="skills">
             <PortfolioHeading
+              as="h1"
               eyebrow={portfolio.skillsEyebrow}
               icon="shield"
               id="skills-title"
@@ -1562,6 +1703,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
         {page === "works" ? (
           <section className="portfolio-section works-section page-section" id="works">
             <PortfolioHeading
+              as="h1"
               eyebrow={portfolio.worksEyebrow}
               icon="computer"
               id="works-title"
@@ -1572,6 +1714,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
                 <ProductCaseCard
                   index={index}
                   key={product.name}
+                  privateProjectLabel={portfolio.privateProjectLabel}
                   product={product}
                   workCaseLabel={portfolio.workCaseLabel}
                   viewProject={portfolio.viewProject}
@@ -1604,14 +1747,30 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
                 <ThreeDIcon name="chart" />
               </div>
               <PortfolioHeading
+                as="h1"
                 eyebrow={portfolio.contactEyebrow}
                 icon="target"
                 id="contact-title"
                 title={portfolio.contactTitle}
               />
               <p>{portfolio.contactLead}</p>
+              <div className="contact-action-row">
+                <a className="button button-primary" href="mailto:hungmanh0206@gmail.com">
+                  <Icon name="mail" />
+                  <span>Email</span>
+                </a>
+                <a
+                  className="button button-outline"
+                  href={linkedinUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon name="linkedin" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
               <div className="contact-profile-person">
-                <img alt="" aria-hidden="true" src="/manh-profile.png" />
+                <img alt={`${t.name} portrait`} src="/manh-profile.png" />
                 <span>
                   <strong>{t.name}</strong>
                   <em>{t.heroBadge}</em>
@@ -1619,14 +1778,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
               </div>
             </article>
             <div className="contact-info-panel">
-              <div className="contact-name-card">
-                <ThreeDIcon name="notebook" />
-                <div>
-                  <span>{portfolio.portfolioEdition}</span>
-                  <strong>{t.name}</strong>
-                  <em>{t.heroBadge}</em>
-                </div>
-              </div>
               <div className="contact-grid">
                 {t.contact.map((item) => (
                   <ContactRow key={`${item.label}-${item.value}`} {...item} />
@@ -1704,22 +1855,26 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
 }
 
 function PortfolioHeading({
+  as = "h2",
   eyebrow,
   icon,
   id,
   title,
 }: {
+  as?: "h1" | "h2";
   eyebrow: string;
   icon: ThreeDIconName;
   id: string;
   title: string;
 }) {
+  const HeadingTag = as;
+
   return (
     <div className="portfolio-section-heading">
       <ThreeDIcon name={icon} />
       <div>
         <span>{eyebrow}</span>
-        <h2 id={id}>{title}</h2>
+        <HeadingTag id={id}>{title}</HeadingTag>
       </div>
       <span aria-hidden="true" />
     </div>
@@ -1775,7 +1930,7 @@ function ThreeDIcon({
       aria-hidden="true"
       className={["three-d-icon", className].filter(Boolean).join(" ")}
       loading="lazy"
-      src={`/3d-icons-transparent/${name}.png`}
+      src={`/3d-icons-figma/${name}.png`}
     />
   );
 }
@@ -1788,6 +1943,10 @@ function getPortfolioProducts(t: Content, locale: Locale) {
       readonly domain: string;
       readonly frame: "monitor" | "tablet";
       readonly iconSrc: string;
+      readonly qaCase: readonly {
+        readonly label: string;
+        readonly value: string;
+      }[];
       readonly screenSrcs: readonly string[];
     }
   > = productProfiles[locale];
@@ -1803,6 +1962,7 @@ function getPortfolioProducts(t: Content, locale: Locale) {
         domain: t.productLabel,
         frame: "monitor" as const,
         iconSrc: "/product-icons/lms-pro.ico",
+        qaCase: [],
         screenSrcs: [],
       };
 
@@ -1814,6 +1974,7 @@ function getPortfolioProducts(t: Content, locale: Locale) {
         domain: profile.domain,
         frame: profile.frame,
         iconSrc: profile.iconSrc,
+        qaCase: profile.qaCase,
         screenSrcs: profile.screenSrcs,
       };
     });
@@ -1833,11 +1994,13 @@ function getProductContextIcon(productName: string): ThreeDIconName {
 
 function ProductCaseCard({
   index,
+  privateProjectLabel,
   product,
   viewProject,
   workCaseLabel,
 }: {
   index: number;
+  privateProjectLabel: string;
   product: ReturnType<typeof getPortfolioProducts>[number];
   viewProject: string;
   workCaseLabel: string;
@@ -1860,8 +2023,7 @@ function ProductCaseCard({
         <div className="work-card-brand">
           <span className="work-card-media">
             <img
-              alt=""
-              aria-hidden="true"
+              alt={`${product.name} logo`}
               className="product-logo"
               loading="lazy"
               src={product.iconSrc}
@@ -1871,19 +2033,34 @@ function ProductCaseCard({
         </div>
         <h3>{product.name}</h3>
         <p>{product.copy}</p>
+        <dl className="product-qa-case">
+          {product.qaCase.map((item) => (
+            <div key={`${product.name}-${item.label}`}>
+              <dt>{item.label}</dt>
+              <dd>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
         <div className="work-meta">
           <span>{product.company}</span>
           <time>{product.date}</time>
         </div>
-        <a
-          className="work-link"
-          href={product.href}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span>{viewProject}</span>
-          <Icon name="external" />
-        </a>
+        {product.href ? (
+          <a
+            className="work-link"
+            href={product.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>{viewProject}</span>
+            <Icon name="external" />
+          </a>
+        ) : (
+          <span className="work-link work-link-static">
+            <Icon name="shield" />
+            <span>{privateProjectLabel}</span>
+          </span>
+        )}
       </div>
       <ProductMonitor
         frame={product.frame}
@@ -1980,10 +2157,6 @@ function getPageMinimapItems(
         label: product.name,
       })),
       { id: "product-skills", label: portfolio.productSkillTitle },
-      ...t.skillGroups.map((group, index) => ({
-        id: `skill-group-${index}`,
-        label: group.title,
-      })),
     ];
   }
 
@@ -1997,7 +2170,7 @@ function getPageMinimapItems(
     ];
   }
 
-  return [{ id: "contact", label: portfolio.nav.contact }];
+  return [];
 }
 
 function slugifyId(value: string) {
@@ -2075,9 +2248,7 @@ function JourneyOverview({
   experiences: readonly Experience[];
   label: string;
 }) {
-  const milestones = experiences
-    .map((experience, index) => ({ experience, index }))
-    .reverse();
+  const milestones = experiences.map((experience, index) => ({ experience, index }));
 
   return (
     <article className="portfolio-card journey-overview" id="journey-overview" aria-label={label}>
@@ -2111,6 +2282,7 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
       <article className="portfolio-card ai-reference-hero">
         <div className="ai-copy">
           <PortfolioHeading
+            as="h1"
             eyebrow={portfolio.aiEyebrow}
             icon="lab"
             id="ai-title"
@@ -2125,6 +2297,32 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
           <ThreeDIcon name="chart" />
         </div>
       </article>
+
+      <section className="ai-outcome-layout" id="ai-outcomes" aria-labelledby="ai-outcomes-title">
+        <article className="portfolio-card ai-outcome-card">
+          <h3 className="ai-block-title" id="ai-outcomes-title">
+            {workflow.outcomeTitle}
+          </h3>
+          <div className="ai-metric-grid">
+            {workflow.outcomes.map((metric) => (
+              <div className="ai-metric-card" key={`${metric.before}-${metric.after}`}>
+                <span>{metric.before}</span>
+                <Icon name="progress" />
+                <strong>{metric.after}</strong>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="portfolio-card ai-expansion-card">
+          <h3 className="ai-block-title">{workflow.expansionTitle}</h3>
+          <div className="ai-expansion-list">
+            {workflow.expansion.map((axis) => (
+              <span key={axis}>{axis}</span>
+            ))}
+          </div>
+        </article>
+      </section>
 
       <section className="ai-overview-layout" id="ai-operating-system">
         <article className="portfolio-card ai-overview-card">
@@ -2197,35 +2395,6 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
         </div>
       </section>
 
-      <section className="ai-phase-detail-section" aria-label={workflow.operatingTitle}>
-        {workflow.phases.map((phase) => (
-          <article className="portfolio-card ai-phase-detail-card" key={phase.label}>
-            <div className="ai-phase-detail-head">
-              <span>{phase.label}</span>
-              <h3>{phase.title}</h3>
-            </div>
-            <div className="ai-phase-detail-grid">
-              <div>
-                <strong>{workflow.roleTitle}</strong>
-                <p>QA / BA / PO / AI Agent</p>
-              </div>
-              <div>
-                <strong>{workflow.aiActionTitle}</strong>
-                <ul>
-                  {phase.points.slice(0, 3).map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <strong>{workflow.outputItemTitle}</strong>
-                <p>{phase.points[phase.points.length - 1]}</p>
-              </div>
-            </div>
-          </article>
-        ))}
-      </section>
-
       <section className="ai-guardrail-layout" id="ai-guardrails" aria-labelledby="ai-guardrails-title">
         <article className="portfolio-card ai-guardrail-card">
           <h3 className="ai-block-title" id="ai-guardrails-title">
@@ -2233,7 +2402,10 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
           </h3>
           <div className="ai-gate-list">
             {workflow.gates.map((gate) => (
-              <span key={gate}>{gate}</span>
+              <span key={gate.term}>
+                <strong>{gate.term}</strong>
+                <em>{gate.copy}</em>
+              </span>
             ))}
           </div>
         </article>
@@ -2250,32 +2422,6 @@ function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Local
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
-        </article>
-      </section>
-
-      <section className="ai-outcome-layout" id="ai-outcomes" aria-labelledby="ai-outcomes-title">
-        <article className="portfolio-card ai-outcome-card">
-          <h3 className="ai-block-title" id="ai-outcomes-title">
-            {workflow.outcomeTitle}
-          </h3>
-          <div className="ai-metric-grid">
-            {workflow.outcomes.map((metric) => (
-              <div className="ai-metric-card" key={`${metric.before}-${metric.after}`}>
-                <span>{metric.before}</span>
-                <Icon name="progress" />
-                <strong>{metric.after}</strong>
-              </div>
-            ))}
-          </div>
-        </article>
-
-        <article className="portfolio-card ai-expansion-card">
-          <h3 className="ai-block-title">{workflow.expansionTitle}</h3>
-          <div className="ai-expansion-list">
-            {workflow.expansion.map((axis) => (
-              <span key={axis}>{axis}</span>
             ))}
           </div>
         </article>
@@ -2351,18 +2497,25 @@ function ProductLinks({
         <span>{label}</span>
       </strong>
       <div>
-        {products.map((product) => (
-          <a
-            className="product-chip"
-            href={product.href}
-            key={product.name}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>{product.name}</span>
-            <Icon name="external" />
-          </a>
-        ))}
+        {products.map((product) =>
+          product.href ? (
+            <a
+              className="product-chip"
+              href={product.href}
+              key={product.name}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>{product.name}</span>
+              <Icon name="external" />
+            </a>
+          ) : (
+            <span className="product-chip product-chip-static" key={product.name}>
+              <span>{product.name}</span>
+              <Icon name="shield" />
+            </span>
+          ),
+        )}
       </div>
     </div>
   );
@@ -2373,7 +2526,13 @@ function SkillsGrid({ skillGroups }: { skillGroups: readonly SkillGroup[] }) {
     <div className="skills-grid">
       {skillGroups.map((group, index) => (
         <article
-          className={`skill-group${isToolGroup(index) ? " tool-skill-group" : ""}`}
+          className={[
+            "skill-group",
+            `skill-tier-${group.tier}`,
+            isToolGroup(index) ? "tool-skill-group" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           id={`skill-group-${index}`}
           key={group.title}
         >
@@ -2446,6 +2605,7 @@ function CertificateList({
             <time className="year-pill">{cert.year}</time>
             <div className="certificate-copy">
               <h3>{cert.title}</h3>
+              {"description" in cert ? <p>{cert.description}</p> : null}
               {hasHref(cert) ? (
                 mode === "page" ? (
                   <button
@@ -2605,42 +2765,7 @@ function InterestChips({
   );
 }
 
-function getContactThreeDIcon(icon: IconName, label: string): ThreeDIconName {
-  const normalizedLabel = label
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[đĐ]/g, "d")
-    .toLowerCase();
-
-  if (normalizedLabel.includes("linkedin")) {
-    return "chart";
-  }
-
-  if (normalizedLabel.includes("email") || icon === "mail") {
-    return "computer";
-  }
-
-  if (normalizedLabel.includes("dien thoai") || icon === "phone") {
-    return "target";
-  }
-
-  if (normalizedLabel.includes("dia chi") || normalizedLabel.includes("address")) {
-    return "shield";
-  }
-
-  if (normalizedLabel.includes("que") || normalizedLabel.includes("hometown")) {
-    return "target";
-  }
-
-  if (normalizedLabel.includes("ngay sinh") || normalizedLabel.includes("birthday")) {
-    return "notebook";
-  }
-
-  return "bulb";
-}
-
 function ContactRow({
-  icon,
   label,
   value,
   href,
@@ -2650,17 +2775,11 @@ function ContactRow({
   value: string;
   href?: string;
 }) {
-  const threeDIcon = getContactThreeDIcon(icon, label);
   const body = (
-    <>
-      <span className="contact-icon contact-3d-icon" aria-hidden="true">
-        <ThreeDIcon name={threeDIcon} />
-      </span>
-      <span>
+    <span className="contact-copy">
         <strong>{label}</strong>
         <em>{value}</em>
-      </span>
-    </>
+    </span>
   );
   const rowClassName = `contact-row${
     href?.startsWith("mailto") ? " contact-row-email" : ""
