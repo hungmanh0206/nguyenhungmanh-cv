@@ -14,6 +14,11 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /href: "\/ai-workflow"/);
   assert.match(page, /href: "\/contact"/);
   assert.match(page, /scroll-minimap/);
+  assert.match(page, /scroll-minimap-bar/);
+  assert.match(page, /journey-overview/);
+  assert.match(page, /preflight_gate/);
+  assert.match(page, /Ambiguity Gate/);
+  assert.match(page, /AI-led \/ Human-led/);
   assert.match(page, /\/tool-logos\/jira\.svg/);
   assert.match(page, /\/tool-logos\/postman\.svg/);
   assert.match(page, /\/tool-logos\/codex\.svg/);
@@ -38,6 +43,7 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /\/product-icons\/lms-pro\.ico/);
   assert.match(page, /Xem chứng chỉ/);
   assert.match(page, /View certificate/);
+  assert.doesNotMatch(page, /portfolio-wordmark/);
   assert.doesNotMatch(page, /logo-sapp|assets\/logo-sapp/i);
 });
 

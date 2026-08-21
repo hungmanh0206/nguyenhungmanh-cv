@@ -4762,7 +4762,755 @@ body {
   }
 }
 
+/* Portfolio polish: floating header, simple minimap, reveal motion, journey and AI pages */
+html {
+  scroll-padding-top: 104px;
+}
+
+.portfolio-shell {
+  padding-top: 106px;
+}
+
+.portfolio-header {
+  position: fixed;
+  inset: 18px auto auto 50%;
+  top: 18px;
+  right: auto;
+  left: 50%;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  width: min(1040px, calc(100% - 32px));
+  min-height: 58px;
+  margin: 0;
+  padding: 8px 10px 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 999px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(249, 244, 252, 0.68)),
+    rgba(255, 255, 255, 0.64);
+  box-shadow:
+    0 18px 42px rgba(70, 54, 84, 0.12),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.96);
+  transform: translateX(-50%);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+}
+
+.portfolio-header::before {
+  display: block;
+  opacity: 0.72;
+  background:
+    radial-gradient(ellipse 42% 130% at 18% 0%, rgba(234, 200, 254, 0.34), transparent 72%),
+    radial-gradient(ellipse 38% 120% at 86% 0%, rgba(126, 185, 176, 0.16), transparent 74%);
+}
+
+.portfolio-top-nav {
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding: 0;
+}
+
+.portfolio-top-nav a {
+  min-height: 40px;
+  padding: 9px 12px;
+}
+
+.portfolio-header .language-select {
+  min-width: 0;
+}
+
+.portfolio-header .language-select > span {
+  white-space: nowrap;
+}
+
+.portfolio-header .language-trigger {
+  min-height: 40px;
+  border-color: rgba(209, 125, 254, 0.46);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(250, 245, 253, 0.86));
+  box-shadow: 0 8px 20px rgba(70, 54, 84, 0.08);
+}
+
+.portfolio-header .language-options {
+  top: calc(100% + 7px);
+}
+
+.portfolio-dock {
+  display: none;
+}
+
+.scroll-minimap {
+  right: max(18px, calc((100vw - 1180px) / 2 - 46px));
+  width: auto;
+  min-height: 0;
+  padding: 11px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(249, 244, 252, 0.56));
+  box-shadow:
+    10px 16px 30px rgba(70, 54, 84, 0.1),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.scroll-minimap-bars {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.scroll-minimap-bar {
+  position: relative;
+  display: block;
+  width: 26px;
+  height: 4px;
+  border-radius: 999px;
+  background: #c9c5cc;
+  transition:
+    width 180ms var(--motion-ease),
+    height 180ms var(--motion-ease),
+    background 180ms var(--motion-ease),
+    opacity 180ms var(--motion-ease);
+}
+
+.scroll-minimap-bar.is-active,
+.scroll-minimap-bar[aria-current="location"] {
+  width: 34px;
+  height: 5px;
+  background: linear-gradient(90deg, #bd2cff, #7a4dff);
+  box-shadow: 0 6px 16px rgba(145, 60, 195, 0.24);
+}
+
+.scroll-minimap-bar:hover,
+.scroll-minimap-bar:focus-visible {
+  width: 34px;
+  outline: 0;
+}
+
+.scroll-minimap-bar span {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 12px);
+  width: max-content;
+  max-width: 180px;
+  padding: 7px 10px;
+  border: 1px solid rgba(234, 200, 254, 0.62);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #3d3245;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translate(8px, -50%);
+  transition:
+    opacity 180ms var(--motion-ease),
+    transform 180ms var(--motion-ease);
+  box-shadow: 0 12px 26px rgba(70, 54, 84, 0.12);
+}
+
+.scroll-minimap-bar:hover span,
+.scroll-minimap-bar:focus-visible span,
+.scroll-minimap-bar.is-active span {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.portfolio-main .portfolio-section,
+.portfolio-main .portfolio-card,
+.portfolio-main .timeline-item,
+.portfolio-main .skill-group,
+.portfolio-main .journey-milestone,
+.portfolio-main .ai-phase-card,
+.portfolio-main .ai-flow-step,
+.portfolio-main .ai-metric-card,
+.portfolio-main .ai-artifact-chip {
+  opacity: 0;
+  translate: 0 22px;
+  transition:
+    opacity 560ms var(--motion-ease),
+    translate 560ms var(--motion-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.portfolio-main .portfolio-section.is-visible,
+.portfolio-main .portfolio-card.is-visible,
+.portfolio-main .timeline-item.is-visible,
+.portfolio-main .skill-group.is-visible,
+.portfolio-main .journey-milestone.is-visible,
+.portfolio-main .ai-phase-card.is-visible,
+.portfolio-main .ai-flow-step.is-visible,
+.portfolio-main .ai-metric-card.is-visible,
+.portfolio-main .ai-artifact-chip.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.journey-overview {
+  position: relative;
+  min-height: 330px;
+  margin-bottom: 26px;
+  padding: 34px;
+  overflow: hidden;
+  border-color: rgba(234, 200, 254, 0.24);
+  background:
+    radial-gradient(ellipse 48% 54% at 16% 10%, rgba(209, 125, 254, 0.22), transparent 72%),
+    radial-gradient(ellipse 44% 52% at 86% 14%, rgba(126, 185, 176, 0.14), transparent 72%),
+    linear-gradient(135deg, #211626 0%, #36213d 52%, #261d37 100%);
+  color: #fff;
+  box-shadow:
+    22px 28px 58px rgba(70, 54, 84, 0.18),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.journey-curve {
+  position: absolute;
+  inset: 34px 34px auto;
+  width: calc(100% - 68px);
+  height: 190px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.journey-curve path {
+  fill: none;
+  stroke: #b85cff;
+  stroke-linecap: round;
+  stroke-width: 16;
+  filter: drop-shadow(0 18px 24px rgba(184, 92, 255, 0.22));
+}
+
+.journey-overview-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 152px;
+}
+
+.journey-milestone {
+  position: relative;
+  display: grid;
+  gap: 7px;
+  min-height: 128px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.journey-dot {
+  position: absolute;
+  top: -58px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 4px solid rgba(255, 255, 255, 0.76);
+  border-radius: 50%;
+  background: #d17dfe;
+  box-shadow: 0 16px 28px rgba(209, 125, 254, 0.28);
+}
+
+.journey-dot::after {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 1px;
+  height: 54px;
+  background: linear-gradient(180deg, rgba(209, 125, 254, 0.88), transparent);
+  content: "";
+}
+
+.journey-milestone:nth-child(2) .journey-dot {
+  top: -90px;
+}
+
+.journey-milestone:nth-child(3) .journey-dot {
+  top: -102px;
+}
+
+.journey-milestone:nth-child(4) .journey-dot {
+  top: -86px;
+}
+
+.journey-milestone time {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.journey-milestone strong {
+  color: #d17dfe;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.22;
+}
+
+.journey-milestone > span:last-child {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.journey-detail-title {
+  margin: 0 0 18px 82px;
+  color: #241b2c;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.ai-workflow-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.ai-workflow-page .ai-copy {
+  position: static;
+}
+
+.ai-workflow-page .ai-copy p {
+  max-width: 900px;
+  margin: -8px 0 0 82px;
+}
+
+.ai-operating-card,
+.ai-guardrail-card,
+.ai-boundary-card,
+.ai-outcome-card,
+.ai-expansion-card,
+.ai-artifact-card {
+  padding: 24px;
+}
+
+.ai-phase-lane {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ai-phase-card {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  min-height: 210px;
+  padding: 18px;
+  border: 1px solid rgba(234, 200, 254, 0.44);
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(247, 240, 251, 0.72));
+  box-shadow:
+    10px 14px 26px rgba(70, 54, 84, 0.08),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+.ai-phase-card > span:first-child {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(249, 240, 255, 0.86);
+  color: #8b49a4;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ai-phase-card strong {
+  color: #241b2c;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.28;
+}
+
+.ai-phase-card ul,
+.ai-boundary-grid ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 18px;
+  color: #5a5361;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.52;
+}
+
+.ai-phase-card li::marker,
+.ai-boundary-grid li::marker {
+  color: #8b49a4;
+}
+
+.ai-phase-arrow {
+  position: absolute;
+  top: 50%;
+  right: -23px;
+  z-index: 2;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid rgba(234, 200, 254, 0.48);
+  border-radius: 999px;
+  background: #fff;
+  color: #8b49a4;
+  box-shadow: 0 10px 22px rgba(70, 54, 84, 0.1);
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.ai-phase-arrow .stage-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.ai-flow-section {
+  display: grid;
+  gap: 14px;
+}
+
+.ai-block-title {
+  margin: 0;
+  color: #241b2c;
+  font-size: 23px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.ai-core-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ai-flow-step {
+  position: relative;
+  display: grid;
+  gap: 9px;
+  min-height: 226px;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(250, 246, 253, 0.86));
+  box-shadow:
+    16px 20px 42px rgba(70, 54, 84, 0.1),
+    -10px -10px 28px rgba(255, 255, 255, 0.72),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.96);
+}
+
+.ai-step-index {
+  color: #8b49a4;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", "Cascadia Mono",
+    Consolas, monospace;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ai-flow-step .three-d-icon {
+  width: 54px;
+  height: 54px;
+}
+
+.ai-flow-step h4 {
+  margin: 0;
+  color: #241b2c;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.26;
+}
+
+.ai-flow-step p {
+  margin: 0;
+  color: #5a5361;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.58;
+}
+
+.ai-guardrail-layout,
+.ai-outcome-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.ai-gate-list,
+.ai-expansion-list,
+.ai-artifact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.ai-gate-list span,
+.ai-expansion-list span,
+.ai-artifact-chip {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 7px 11px;
+  border: 1px solid rgba(234, 200, 254, 0.5);
+  border-radius: 999px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(249, 240, 255, 0.74));
+  color: #4a4052;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ai-boundary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.ai-boundary-grid > div {
+  padding: 15px;
+  border: 1px solid rgba(234, 200, 254, 0.42);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.ai-boundary-grid strong {
+  display: block;
+  margin-bottom: 9px;
+  color: #8b49a4;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.ai-metric-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.ai-metric-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 58px;
+  padding: 11px;
+  border: 1px solid rgba(234, 200, 254, 0.38);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.ai-metric-card span {
+  color: #6a6270;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.ai-metric-card strong {
+  color: #241b2c;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.ai-metric-card .stage-icon {
+  width: 18px;
+  height: 18px;
+  margin: 0 auto;
+  color: #8b49a4;
+}
+
+@media (max-width: 1120px) {
+  .portfolio-shell {
+    padding-top: 106px;
+  }
+
+  .portfolio-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 58px;
+    padding: 8px 10px;
+  }
+
+  .portfolio-top-nav {
+    grid-column: auto;
+  }
+
+  .portfolio-header .language-select > span {
+    display: none;
+  }
+
+  .ai-core-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .journey-overview-grid,
+  .ai-phase-lane,
+  .ai-guardrail-layout,
+  .ai-outcome-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-overview {
+    min-height: 0;
+  }
+
+  .journey-curve,
+  .ai-phase-arrow {
+    display: none;
+  }
+
+  .journey-overview-grid {
+    gap: 14px;
+    padding-top: 0;
+  }
+
+  .journey-milestone {
+    min-height: 0;
+    padding-left: 34px;
+  }
+
+  .journey-dot,
+  .journey-milestone:nth-child(2) .journey-dot,
+  .journey-milestone:nth-child(3) .journey-dot,
+  .journey-milestone:nth-child(4) .journey-dot {
+    top: 3px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+  }
+
+  .journey-dot::after {
+    height: 76px;
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 82px;
+  }
+
+  .portfolio-shell {
+    padding-top: 78px;
+  }
+
+  .portfolio-header {
+    top: 10px;
+    width: calc(100% - 20px);
+    min-height: 52px;
+    padding: 7px;
+    border-radius: 26px;
+  }
+
+  .portfolio-top-nav {
+    display: flex;
+    gap: 3px;
+  }
+
+  .portfolio-top-nav a {
+    min-height: 36px;
+    padding: 8px 9px;
+    font-size: 11px;
+  }
+
+  .portfolio-top-nav .stage-icon {
+    display: none;
+  }
+
+  .portfolio-header .language-combobox {
+    width: 128px;
+  }
+
+  .portfolio-header .language-trigger {
+    grid-template-columns: 16px minmax(62px, 1fr) 14px;
+    min-height: 36px;
+    column-gap: 6px;
+    padding: 0 9px;
+    font-size: 12px;
+  }
+
+  .portfolio-header .language-options {
+    min-width: 128px;
+  }
+
+  .ai-workflow-page .ai-copy p {
+    margin: -4px 0 0;
+  }
+
+  .journey-overview,
+  .ai-operating-card,
+  .ai-guardrail-card,
+  .ai-boundary-card,
+  .ai-outcome-card,
+  .ai-expansion-card,
+  .ai-artifact-card {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .journey-detail-title {
+    margin: 0 0 14px;
+    font-size: 19px;
+  }
+
+  .journey-milestone strong {
+    font-size: 17px;
+  }
+
+  .ai-core-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-flow-step {
+    min-height: 0;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .ai-boundary-grid,
+  .ai-metric-card {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-metric-card .stage-icon {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 420px) {
+  .portfolio-header .language-combobox {
+    width: 118px;
+  }
+
+  .portfolio-header .language-trigger {
+    grid-template-columns: 15px minmax(56px, 1fr) 13px;
+    padding: 0 8px;
+  }
+
+  .portfolio-header .language-options {
+    min-width: 118px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .portfolio-main .portfolio-section,
+  .portfolio-main .portfolio-card,
+  .portfolio-main .timeline-item,
+  .portfolio-main .skill-group,
+  .portfolio-main .journey-milestone,
+  .portfolio-main .ai-phase-card,
+  .portfolio-main .ai-flow-step,
+  .portfolio-main .ai-metric-card,
+  .portfolio-main .ai-artifact-chip {
+    opacity: 1;
+    translate: 0 0;
+  }
+
   *,
   *::before,
   *::after {

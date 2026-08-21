@@ -581,35 +581,129 @@ const portfolioCopy = {
       "Các nhóm kỹ năng QA, AI testing, công cụ và nền tảng tôi sử dụng trong công việc hằng ngày.",
     journeyEyebrow: "JOURNEY",
     journeyTitle: "Hành trình phát triển",
+    journeyOverviewLabel: "Sơ đồ hành trình",
+    journeyDetailTitle: "Chi tiết kinh nghiệm",
     worksEyebrow: "FAVOURITE WORKS",
     worksTitle: "Sản phẩm đã tham gia",
     viewProject: "Xem sản phẩm",
     aiEyebrow: "AI WORKFLOW",
-    aiTitle: "Quy trình QA có AI hỗ trợ",
+    aiTitle: "QA Automation AI Agent",
     aiLead:
-      "Ứng dụng kinh nghiệm xây dựng AI Agent vào QA workflow để giảm thao tác lặp lại, tăng độ phủ kiểm thử và rút ngắn vòng phản hồi chất lượng.",
-    aiSteps: [
-      {
-        icon: "target" as const,
-        title: "Phân tích yêu cầu",
-        copy: "Tóm tắt phạm vi, xác định rủi ro và điểm cần làm rõ.",
-      },
-      {
-        icon: "notebook" as const,
-        title: "Thiết kế test case",
-        copy: "Sinh gợi ý testcase, checklist và dữ liệu kiểm thử.",
-      },
-      {
-        icon: "lab" as const,
-        title: "Thực thi kiểm thử",
-        copy: "Hỗ trợ API, regression và kiểm tra luồng nghiệp vụ trọng yếu.",
-      },
-      {
-        icon: "chart" as const,
-        title: "Báo cáo chất lượng",
-        copy: "Chuẩn hóa kết quả, defect summary và đề xuất ưu tiên xử lý.",
-      },
-    ],
+      "Một workflow AI Agent cho QA: từ đọc requirement, sinh testcase, publish AIO Tests, execute, triage bug đến re-run verify và đóng vòng học.",
+    aiWorkflow: {
+      operatingTitle: "Luồng vận hành 3 pha",
+      systemTitle: "QA Agent AI System",
+      guardrailTitle: "Gate kiểm soát chất lượng",
+      boundaryTitle: "AI-led / Human-led",
+      expansionTitle: "5 trục mở rộng",
+      outcomeTitle: "Before -> After",
+      artifactTitle: "Artifact mỗi vòng chạy",
+      phases: [
+        {
+          label: "Phase 1",
+          title: "Sinh & publish testcase",
+          points: [
+            "Requirement -> Ambiguity Gate",
+            "Excel testcase 10 cột",
+            "QA confirmation",
+            "Publish AIO Tests",
+          ],
+        },
+        {
+          label: "Phase 2",
+          title: "Execute có kiểm soát",
+          points: [
+            "Pull mirror AIO",
+            "preflight_gate",
+            "Execute + mở rộng 5 trục",
+            "output_gate -> push cycle",
+          ],
+        },
+        {
+          label: "Phase 3",
+          title: "Re-run, verify & close",
+          points: [
+            "Triage FE/BE",
+            "Log bug QA duyệt",
+            "Dev fix re-run 2-3 lần",
+            "PASS Done -> đóng vòng học",
+          ],
+        },
+      ],
+      steps: [
+        {
+          icon: "target" as const,
+          title: "Phân tích & sinh testcase",
+          copy: "AI đọc requirement, tách scope/risk và đề xuất testcase có trace để QA duyệt.",
+        },
+        {
+          icon: "notebook" as const,
+          title: "Review & QA Gate",
+          copy: "QA xử lý Ambiguity Gate, xác nhận phạm vi và chặn output thiếu cơ sở.",
+        },
+        {
+          icon: "computer" as const,
+          title: "Publish AIO Tests",
+          copy: "Chuẩn hóa folder, testcase, cycle và mirror dữ liệu giữa Excel và AIO.",
+        },
+        {
+          icon: "lab" as const,
+          title: "Execute & mở rộng",
+          copy: "Agent chạy preflight, thực thi test và mở rộng theo 5 trục chống lọt bug.",
+        },
+        {
+          icon: "shield" as const,
+          title: "Triage & log bug",
+          copy: "Phân tầng FE/BE, gom evidence và chỉ tạo bug sau khi QA duyệt.",
+        },
+        {
+          icon: "chart" as const,
+          title: "Re-run verify & học lại",
+          copy: "Re-run 2-3 vòng, cập nhật sổ tri thức và chuẩn hóa điều kiện PASS Done.",
+        },
+      ],
+      gates: [
+        "preflight_gate",
+        "design_gate / gate:gen-testcase",
+        "output_gate",
+        "risk_gate / expansion:plan",
+        "self-review --enforce",
+        "gate:policy một nguồn",
+      ],
+      boundary: [
+        {
+          title: "AI-led",
+          points: ["Xử lý throughput", "Tổng hợp evidence", "Thao tác lặp có checklist"],
+        },
+        {
+          title: "Human-led",
+          points: ["Duyệt gate", "Quyết định log bug", "Chịu trách nhiệm chất lượng"],
+        },
+      ],
+      expansion: [
+        "Field cùng khối",
+        "Cùng giá trị khác màn",
+        "Chuỗi lưu trữ",
+        "Nhánh / biến thể",
+        "Trạng thái kế cận",
+      ],
+      outcomes: [
+        { before: "Soạn testcase nhiều ngày", after: "1 phiên có QA Gate" },
+        { before: "Coverage cảm tính", after: "Trace coverage 80-100%" },
+        { before: "Pass-rate thủ công", after: "90-100% có output_gate" },
+        { before: "Gate rời rạc", after: "6 gate vận hành thống nhất" },
+      ],
+      artifacts: [
+        "Testcase Excel",
+        "Mirror AIO",
+        "Coverage & risk",
+        "Ambiguity Gate",
+        "AIO Tests + cycle",
+        "Evidence",
+        "Bug + sổ tri thức",
+        "Máy chống lọt bug",
+      ],
+    },
     credentialsEyebrow: "RESUME",
     credentialsTitle: "Học vấn, chứng chỉ và hoạt động",
     contactEyebrow: "CONTACT",
@@ -644,35 +738,129 @@ const portfolioCopy = {
       "The QA, AI testing, tools, and platform skills I use in daily product work.",
     journeyEyebrow: "JOURNEY",
     journeyTitle: "My development journey",
+    journeyOverviewLabel: "Journey map",
+    journeyDetailTitle: "Detailed experience",
     worksEyebrow: "FAVOURITE WORKS",
     worksTitle: "Products I contributed to",
     viewProject: "View project",
     aiEyebrow: "AI WORKFLOW",
-    aiTitle: "AI-assisted QA workflow",
+    aiTitle: "QA Automation AI Agent",
     aiLead:
-      "I apply hands-on AI Agent experience to QA workflows to reduce repetitive tasks, increase test coverage, and shorten the product quality feedback loop.",
-    aiSteps: [
-      {
-        icon: "target" as const,
-        title: "Requirement analysis",
-        copy: "Summarize scope, identify risks, and capture open questions.",
-      },
-      {
-        icon: "notebook" as const,
-        title: "Test case design",
-        copy: "Generate testcase ideas, checklists, and test data.",
-      },
-      {
-        icon: "lab" as const,
-        title: "Test execution",
-        copy: "Support API, regression, and critical business workflow testing.",
-      },
-      {
-        icon: "chart" as const,
-        title: "Quality reporting",
-        copy: "Standardize results, defect summaries, and priority suggestions.",
-      },
-    ],
+      "An AI Agent workflow for QA: reading requirements, generating test cases, publishing AIO Tests, executing, triaging bugs, re-running verification, and closing the learning loop.",
+    aiWorkflow: {
+      operatingTitle: "Three-phase operation",
+      systemTitle: "QA Agent AI System",
+      guardrailTitle: "Quality gates",
+      boundaryTitle: "AI-led / Human-led",
+      expansionTitle: "Five expansion axes",
+      outcomeTitle: "Before -> After",
+      artifactTitle: "Artifacts per run",
+      phases: [
+        {
+          label: "Phase 1",
+          title: "Generate & publish test cases",
+          points: [
+            "Requirement -> Ambiguity Gate",
+            "10-column testcase Excel",
+            "QA confirmation",
+            "Publish AIO Tests",
+          ],
+        },
+        {
+          label: "Phase 2",
+          title: "Controlled execution",
+          points: [
+            "Pull AIO mirror",
+            "preflight_gate",
+            "Execute + expand 5 axes",
+            "output_gate -> push cycle",
+          ],
+        },
+        {
+          label: "Phase 3",
+          title: "Re-run, verify & close",
+          points: [
+            "FE/BE triage",
+            "QA-approved bug logging",
+            "Dev fix re-run 2-3 times",
+            "PASS Done -> learning loop",
+          ],
+        },
+      ],
+      steps: [
+        {
+          icon: "target" as const,
+          title: "Analyze & generate",
+          copy: "AI reads requirements, separates scope/risk, and proposes traceable test cases for QA approval.",
+        },
+        {
+          icon: "notebook" as const,
+          title: "Review & QA Gate",
+          copy: "QA resolves the Ambiguity Gate, confirms scope, and blocks weak or unsupported output.",
+        },
+        {
+          icon: "computer" as const,
+          title: "Publish AIO Tests",
+          copy: "Standardize folders, test cases, cycles, and mirrored data between Excel and AIO.",
+        },
+        {
+          icon: "lab" as const,
+          title: "Execute & expand",
+          copy: "The Agent runs preflight checks, executes tests, and expands coverage across five anti-leak axes.",
+        },
+        {
+          icon: "shield" as const,
+          title: "Triage & log bugs",
+          copy: "Classify FE/BE issues, collect evidence, and create defects only after QA approval.",
+        },
+        {
+          icon: "chart" as const,
+          title: "Re-run verify & learn",
+          copy: "Re-run 2-3 rounds, update the knowledge base, and standardize PASS Done conditions.",
+        },
+      ],
+      gates: [
+        "preflight_gate",
+        "design_gate / gate:gen-testcase",
+        "output_gate",
+        "risk_gate / expansion:plan",
+        "self-review --enforce",
+        "gate:policy single source",
+      ],
+      boundary: [
+        {
+          title: "AI-led",
+          points: ["Handle throughput", "Summarize evidence", "Repeat checklist-based operations"],
+        },
+        {
+          title: "Human-led",
+          points: ["Approve gates", "Decide bug logging", "Own quality accountability"],
+        },
+      ],
+      expansion: [
+        "Same-block fields",
+        "Same values on other screens",
+        "Storage chains",
+        "Branches / variants",
+        "Adjacent states",
+      ],
+      outcomes: [
+        { before: "Testcase drafting takes days", after: "One QA-gated session" },
+        { before: "Coverage is subjective", after: "80-100% trace coverage" },
+        { before: "Manual pass-rate checks", after: "90-100% with output_gate" },
+        { before: "Scattered gates", after: "6 unified gates" },
+      ],
+      artifacts: [
+        "Testcase Excel",
+        "AIO mirror",
+        "Coverage & risk",
+        "Ambiguity Gate",
+        "AIO Tests + cycle",
+        "Evidence",
+        "Bug + knowledge base",
+        "Anti-leak machine",
+      ],
+    },
     credentialsEyebrow: "RESUME",
     credentialsTitle: "Education, certificates and activities",
     contactEyebrow: "CONTACT",
@@ -760,7 +948,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
     () => getPageMinimapItems(page, t, portfolio, productCards),
     [page, portfolio, productCards, t],
   );
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeMinimapId, setActiveMinimapId] = useState(minimapItems[0]?.id ?? "top");
   const topNavItems = [
     { href: "/", icon: "user" as const, key: "resume" as const, label: portfolio.nav.resume },
@@ -888,9 +1075,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
 
   useEffect(() => {
     function updateMinimap() {
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const nextProgress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
       const viewportAnchor = window.innerHeight * 0.38;
       const current =
         minimapItems.reduce((active, item) => {
@@ -905,7 +1089,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
             : active;
         }, minimapItems[0]?.id ?? "top") ?? "top";
 
-      setScrollProgress(Math.min(1, Math.max(0, nextProgress)));
       setActiveMinimapId(current);
     }
 
@@ -918,6 +1101,50 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
       window.removeEventListener("resize", updateMinimap);
     };
   }, [minimapItems]);
+
+  useEffect(() => {
+    const selectors = [
+      ".portfolio-main .portfolio-section",
+      ".portfolio-main .portfolio-card",
+      ".portfolio-main .timeline-item",
+      ".portfolio-main .skill-group",
+      ".portfolio-main .journey-milestone",
+      ".portfolio-main .ai-phase-card",
+      ".portfolio-main .ai-flow-step",
+      ".portfolio-main .ai-metric-card",
+      ".portfolio-main .ai-artifact-chip",
+    ].join(",");
+    const elements = Array.from(document.querySelectorAll<HTMLElement>(selectors));
+
+    if (elements.length === 0) {
+      return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    );
+
+    elements.forEach((element, index) => {
+      element.classList.remove("is-visible");
+      element.style.setProperty("--reveal-delay", `${Math.min(index * 18, 150)}ms`);
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [locale, page]);
 
   function handleLocaleSelect(nextLocale: Locale) {
     setLocale(nextLocale);
@@ -963,10 +1190,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
   return (
     <div className="site-shell portfolio-shell" id="top">
       <header className="site-header portfolio-header">
-        <a className="wordmark portfolio-wordmark" href="/" aria-label={t.name}>
-          <span className="wordmark-mark">M</span>
-          <span>{portfolio.brand}</span>
-        </a>
         <nav className="nav-links portfolio-top-nav" aria-label={portfolio.primaryNavLabel}>
           {topNavItems.map((item) => (
             <a
@@ -1140,6 +1363,11 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
               id="journey-title"
               title={portfolio.journeyTitle}
             />
+            <JourneyOverview
+              experiences={t.experiences}
+              label={portfolio.journeyOverviewLabel}
+            />
+            <h3 className="journey-detail-title">{portfolio.journeyDetailTitle}</h3>
             <ExperienceList experiences={t.experiences} productLabel={t.productLabel} />
           </section>
         ) : null}
@@ -1204,30 +1432,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
         ) : null}
 
         {page === "ai" ? (
-          <section className="portfolio-section ai-section page-section" id="ai-workflow">
-            <div className="ai-copy">
-              <PortfolioHeading
-                eyebrow={portfolio.aiEyebrow}
-                icon="lab"
-                id="ai-title"
-                title={portfolio.aiTitle}
-              />
-              <p>{portfolio.aiLead}</p>
-            </div>
-            <div className="ai-steps-grid">
-              {portfolio.aiSteps.map((step) => (
-                <article
-                  className="portfolio-card ai-step-card"
-                  id={`ai-step-${slugifyId(step.title)}`}
-                  key={step.title}
-                >
-                  <ThreeDIcon name={step.icon} />
-                  <h3>{step.title}</h3>
-                  <p>{step.copy}</p>
-                </article>
-              ))}
-            </div>
-          </section>
+          <AiWorkflowPage portfolio={portfolio} />
         ) : null}
 
         {page === "contact" ? (
@@ -1273,7 +1478,6 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
         activeId={activeMinimapId}
         items={minimapItems}
         label={portfolio.minimapLabel}
-        progress={scrollProgress}
       />
 
       {activeModal ? (
@@ -1342,73 +1546,27 @@ function ScrollMinimap({
   activeId,
   items,
   label,
-  progress,
 }: {
   activeId: string;
   items: readonly MinimapItem[];
   label: string;
-  progress: number;
 }) {
-  const railRef = useRef<HTMLDivElement>(null);
-
-  function scrollToPointer(clientY: number) {
-    const rail = railRef.current;
-
-    if (!rail) {
-      return;
-    }
-
-    const rect = rail.getBoundingClientRect();
-    const ratio = Math.min(1, Math.max(0, (clientY - rect.top) / rect.height));
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-
-    window.scrollTo({
-      behavior: "smooth",
-      top: maxScroll * ratio,
-    });
-  }
-
   if (items.length === 0) {
     return null;
   }
 
   return (
     <aside className="scroll-minimap" aria-label={label}>
-      <div
-        className="scroll-minimap-rail"
-        onPointerDown={(event) => {
-          event.currentTarget.setPointerCapture(event.pointerId);
-          scrollToPointer(event.clientY);
-        }}
-        onPointerMove={(event) => {
-          if (event.buttons === 1) {
-            scrollToPointer(event.clientY);
-          }
-        }}
-        ref={railRef}
-        role="presentation"
-      >
-        <span
-          className="scroll-minimap-progress"
-          style={{ height: `${Math.max(5, progress * 100)}%` }}
-        />
-        <span
-          className="scroll-minimap-thumb"
-          style={{ top: `${Math.min(100, Math.max(0, progress * 100))}%` }}
-        />
+      <div className="scroll-minimap-bars">
         {items.map((item, index) => {
-          const top = items.length > 1 ? (index / (items.length - 1)) * 100 : 0;
-
           return (
             <a
               aria-current={activeId === item.id ? "location" : undefined}
               aria-label={item.label}
-              className={`scroll-minimap-node${
-                activeId === item.id ? " is-active" : ""
-              }`}
+              className={`scroll-minimap-bar${activeId === item.id ? " is-active" : ""}`}
               href={`#${item.id}`}
               key={item.id}
-              style={{ top: `${top}%` }}
+              style={{ "--bar-index": index } as CSSProperties}
               title={item.label}
             >
               <span>{item.label}</span>
@@ -1483,10 +1641,13 @@ function getPageMinimapItems(
   }
 
   if (page === "journey") {
-    return t.experiences.map((experience, index) => ({
-      id: `experience-${index}`,
-      label: experience.role,
-    }));
+    return [
+      { id: "journey-overview", label: portfolio.journeyOverviewLabel },
+      ...t.experiences.map((experience, index) => ({
+        id: `experience-${index}`,
+        label: experience.role,
+      })),
+    ];
   }
 
   if (page === "skills") {
@@ -1504,10 +1665,13 @@ function getPageMinimapItems(
   }
 
   if (page === "ai") {
-    return portfolio.aiSteps.map((step) => ({
-      id: `ai-step-${slugifyId(step.title)}`,
-      label: step.title,
-    }));
+    return [
+      { id: "ai-operating-system", label: portfolio.aiWorkflow.operatingTitle },
+      { id: "ai-core-flow", label: portfolio.aiWorkflow.systemTitle },
+      { id: "ai-guardrails", label: portfolio.aiWorkflow.guardrailTitle },
+      { id: "ai-outcomes", label: portfolio.aiWorkflow.outcomeTitle },
+      { id: "ai-artifacts", label: portfolio.aiWorkflow.artifactTitle },
+    ];
   }
 
   return [{ id: "contact", label: portfolio.nav.contact }];
@@ -1578,6 +1742,169 @@ function CredentialsGrid({
         </div>
       </article>
     </div>
+  );
+}
+
+function JourneyOverview({
+  experiences,
+  label,
+}: {
+  experiences: readonly Experience[];
+  label: string;
+}) {
+  const milestones = experiences
+    .map((experience, index) => ({ experience, index }))
+    .reverse();
+
+  return (
+    <article className="portfolio-card journey-overview" id="journey-overview" aria-label={label}>
+      <svg className="journey-curve" viewBox="0 0 1000 220" aria-hidden="true">
+        <path d="M72 142 C230 148 316 72 472 66 C610 60 720 114 928 62" />
+      </svg>
+      <div className="journey-overview-grid">
+        {milestones.map(({ experience, index }, order) => (
+          <a
+            className="journey-milestone"
+            href={`#experience-${index}`}
+            key={`${experience.company}-${experience.date}`}
+            style={{ "--milestone-order": order } as CSSProperties}
+          >
+            <span className="journey-dot" aria-hidden="true" />
+            <time>{experience.date}</time>
+            <strong>{experience.company}</strong>
+            <span>{experience.role}</span>
+          </a>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function AiWorkflowPage({ portfolio }: { portfolio: (typeof portfolioCopy)[Locale] }) {
+  const workflow = portfolio.aiWorkflow;
+
+  return (
+    <section className="portfolio-section ai-section ai-workflow-page page-section" id="ai-workflow">
+      <div className="ai-copy">
+        <PortfolioHeading
+          eyebrow={portfolio.aiEyebrow}
+          icon="lab"
+          id="ai-title"
+          title={portfolio.aiTitle}
+        />
+        <p>{portfolio.aiLead}</p>
+      </div>
+
+      <article className="portfolio-card ai-operating-card" id="ai-operating-system">
+        <div className="compact-card-head">
+          <ThreeDIcon name="target" />
+          <h3>{workflow.operatingTitle}</h3>
+        </div>
+        <div className="ai-phase-lane">
+          {workflow.phases.map((phase, index) => (
+            <div className="ai-phase-card" key={phase.label}>
+              <span>{phase.label}</span>
+              <strong>{phase.title}</strong>
+              <ul>
+                {phase.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+              {index < workflow.phases.length - 1 ? (
+                <span className="ai-phase-arrow" aria-hidden="true">
+                  <Icon name="chevron" />
+                </span>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <section className="ai-flow-section" id="ai-core-flow" aria-labelledby="ai-core-flow-title">
+        <h3 className="ai-block-title" id="ai-core-flow-title">
+          {workflow.systemTitle}
+        </h3>
+        <div className="ai-core-grid">
+          {workflow.steps.map((step, index) => (
+            <article className="ai-flow-step" key={step.title}>
+              <div className="ai-step-index">{String(index + 1).padStart(2, "0")}</div>
+              <ThreeDIcon name={step.icon} />
+              <h4>{step.title}</h4>
+              <p>{step.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="ai-guardrail-layout" id="ai-guardrails" aria-labelledby="ai-guardrails-title">
+        <article className="portfolio-card ai-guardrail-card">
+          <h3 className="ai-block-title" id="ai-guardrails-title">
+            {workflow.guardrailTitle}
+          </h3>
+          <div className="ai-gate-list">
+            {workflow.gates.map((gate) => (
+              <span key={gate}>{gate}</span>
+            ))}
+          </div>
+        </article>
+
+        <article className="portfolio-card ai-boundary-card">
+          <h3 className="ai-block-title">{workflow.boundaryTitle}</h3>
+          <div className="ai-boundary-grid">
+            {workflow.boundary.map((group) => (
+              <div key={group.title}>
+                <strong>{group.title}</strong>
+                <ul>
+                  {group.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      <section className="ai-outcome-layout" id="ai-outcomes" aria-labelledby="ai-outcomes-title">
+        <article className="portfolio-card ai-outcome-card">
+          <h3 className="ai-block-title" id="ai-outcomes-title">
+            {workflow.outcomeTitle}
+          </h3>
+          <div className="ai-metric-grid">
+            {workflow.outcomes.map((metric) => (
+              <div className="ai-metric-card" key={`${metric.before}-${metric.after}`}>
+                <span>{metric.before}</span>
+                <Icon name="progress" />
+                <strong>{metric.after}</strong>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="portfolio-card ai-expansion-card">
+          <h3 className="ai-block-title">{workflow.expansionTitle}</h3>
+          <div className="ai-expansion-list">
+            {workflow.expansion.map((axis) => (
+              <span key={axis}>{axis}</span>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      <article className="portfolio-card ai-artifact-card" id="ai-artifacts">
+        <div className="compact-card-head">
+          <ThreeDIcon name="notebook" />
+          <h3>{workflow.artifactTitle}</h3>
+        </div>
+        <div className="ai-artifact-list">
+          {workflow.artifacts.map((artifact) => (
+            <span className="ai-artifact-chip" key={artifact}>
+              {artifact}
+            </span>
+          ))}
+        </div>
+      </article>
+    </section>
   );
 }
 
