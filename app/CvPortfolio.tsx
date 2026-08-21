@@ -76,8 +76,20 @@ const content = {
       { value: "AI", label: "định hướng kiểm thử" },
       { value: "LMS/eLearning", label: "sản phẩm trọng tâm" },
     ],
-    contactTitle: "Kênh liên hệ",
+    contactTitle: "Thông tin cá nhân",
     contact: [
+      { icon: "calendar" as const, label: "Ngày sinh", value: "02/06/1996" },
+      {
+        icon: "map" as const,
+        label: "Quê quán",
+        value: "Quảng Chính, Thanh Hoá",
+      },
+      {
+        icon: "phone" as const,
+        label: "Điện thoại",
+        value: "0862342696",
+        href: "tel:+84862342696",
+      },
       {
         icon: "mail" as const,
         label: "Email",
@@ -85,15 +97,15 @@ const content = {
         href: "mailto:hungmanh0206@gmail.com",
       },
       {
+        icon: "map" as const,
+        label: "Địa chỉ",
+        value: "ICID Complex, Lê Trọng Tấn, Dương Nội, Hà Nội",
+      },
+      {
         icon: "linkedin" as const,
         label: "LinkedIn",
         value: "nguyen-hung-manh",
         href: linkedinUrl,
-      },
-      {
-        icon: "map" as const,
-        label: "Khu vực làm việc",
-        value: "Hà Nội, Việt Nam",
       },
     ],
     focusTitle: "Mục tiêu nghề nghiệp",
@@ -324,8 +336,20 @@ const content = {
       { value: "AI", label: "testing direction" },
       { value: "LMS/eLearning", label: "core product domain" },
     ],
-    contactTitle: "Contact channels",
+    contactTitle: "Personal information",
     contact: [
+      { icon: "calendar" as const, label: "Date of birth", value: "June 2, 1996" },
+      {
+        icon: "map" as const,
+        label: "Hometown",
+        value: "Quang Chinh, Thanh Hoa, Vietnam",
+      },
+      {
+        icon: "phone" as const,
+        label: "Phone",
+        value: "0862342696",
+        href: "tel:+84862342696",
+      },
       {
         icon: "mail" as const,
         label: "Email",
@@ -333,15 +357,15 @@ const content = {
         href: "mailto:hungmanh0206@gmail.com",
       },
       {
+        icon: "map" as const,
+        label: "Address",
+        value: "ICID Complex, Le Trong Tan Street, Duong Noi Ward, Hanoi",
+      },
+      {
         icon: "linkedin" as const,
         label: "LinkedIn",
         value: "nguyen-hung-manh",
         href: linkedinUrl,
-      },
-      {
-        icon: "map" as const,
-        label: "Working location",
-        value: "Hanoi, Vietnam",
       },
     ],
     focusTitle: "Career objective",
@@ -614,7 +638,7 @@ const portfolioCopy = {
     minimapLabel: "Bản đồ trang",
     portfolioEdition: "PORTFOLIO · 2026",
     greeting: "Xin chào, tôi là",
-    headline: "QA cho LMS/eLearning với AI Test Kit có kiểm soát",
+    headline: "",
     heroLead:
       "Tôi kết hợp kiểm thử phần mềm, phân tích yêu cầu và AI-driven Testing để rút ngắn vòng viết testcase, tăng độ phủ kiểm thử và giữ QA là người quyết định chất lượng cuối cùng.",
     heroIconCards: [
@@ -1571,7 +1595,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
                 </span>
                 <h1 id="hero-title">
                   <span>{t.name}</span>
-                  <strong>{portfolio.headline}</strong>
+                  {portfolio.headline ? <strong>{portfolio.headline}</strong> : null}
                 </h1>
                 <span className="hero-role">{t.heroBadge}</span>
                 <p>{portfolio.heroLead}</p>
@@ -2765,7 +2789,38 @@ function InterestChips({
   );
 }
 
+function getContactThreeDIcon(icon: IconName, label: string): ThreeDIconName {
+  const normalizedLabel = label
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[đĐ]/g, "d")
+    .toLowerCase();
+
+  if (icon === "linkedin" || normalizedLabel.includes("linkedin")) {
+    return "linkedin";
+  }
+
+  if (icon === "mail" || normalizedLabel.includes("email")) {
+    return "mail";
+  }
+
+  if (icon === "map" || normalizedLabel.includes("que") || normalizedLabel.includes("dia chi")) {
+    return "location";
+  }
+
+  if (icon === "phone" || normalizedLabel.includes("phone") || normalizedLabel.includes("dien thoai")) {
+    return "target";
+  }
+
+  if (icon === "calendar" || normalizedLabel.includes("birth") || normalizedLabel.includes("ngay sinh")) {
+    return "notebook";
+  }
+
+  return "bulb";
+}
+
 function ContactRow({
+  icon,
   label,
   value,
   href,
@@ -2775,11 +2830,17 @@ function ContactRow({
   value: string;
   href?: string;
 }) {
+  const threeDIcon = getContactThreeDIcon(icon, label);
   const body = (
-    <span className="contact-copy">
+    <>
+      <span className="contact-icon contact-3d-icon" aria-hidden="true">
+        <ThreeDIcon name={threeDIcon} />
+      </span>
+      <span className="contact-copy">
         <strong>{label}</strong>
         <em>{value}</em>
-    </span>
+      </span>
+    </>
   );
   const rowClassName = `contact-row${
     href?.startsWith("mailto") ? " contact-row-email" : ""

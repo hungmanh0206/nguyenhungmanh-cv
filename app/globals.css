@@ -9135,15 +9135,20 @@ body {
   align-content: start;
 }
 
+.contact-section .portfolio-section-heading h1 {
+  color: #ffffff;
+}
+
 .contact-section .contact-grid {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .contact-section .contact-row,
 .modal-contact .contact-row,
 .profile-panel .contact-row {
-  grid-template-columns: minmax(0, 1fr) !important;
-  min-height: 68px;
+  grid-template-columns: 50px minmax(0, 1fr) !important;
+  min-height: 78px;
+  align-items: center;
 }
 
 .contact-copy {
@@ -9154,7 +9159,22 @@ body {
 .contact-section .contact-icon,
 .modal-contact .contact-icon,
 .profile-panel .contact-icon {
-  display: none !important;
+  display: inline-flex !important;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.contact-section .contact-icon .three-d-icon,
+.modal-contact .contact-icon .three-d-icon,
+.profile-panel .contact-icon .three-d-icon {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 10px 12px rgba(63, 41, 75, 0.16));
 }
 
 a:focus-visible,
@@ -9189,6 +9209,26 @@ button:focus-visible,
   .product-qa-case div {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .contact-section .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-section .contact-row,
+  .modal-contact .contact-row,
+  .profile-panel .contact-row {
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+  }
+
+  .contact-section .contact-icon,
+  .modal-contact .contact-icon,
+  .profile-panel .contact-icon,
+  .contact-section .contact-icon .three-d-icon,
+  .modal-contact .contact-icon .three-d-icon,
+  .profile-panel .contact-icon .three-d-icon {
+    width: 44px;
+    height: 44px;
   }
 
   .contact-action-row .button {
