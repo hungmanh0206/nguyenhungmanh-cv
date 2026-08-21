@@ -43,14 +43,6 @@ type IconName =
 const modalSections = ["experience", "skills", "certificates", "contact"] as const;
 type ModalKey = (typeof modalSections)[number];
 
-const skillGroupIcons: readonly IconName[] = [
-  "shield",
-  "settings",
-  "spark",
-  "zap",
-  "database",
-];
-
 const certificateUrl = "https://hust.ediploma.vn/verify/Zf3y-0Ovt-iJen";
 const certificatePdfUrl = "/data-analysis-certificate.pdf";
 const certificatePdfPreviewUrl = `${certificatePdfUrl}#toolbar=1&navpanes=0&zoom=page-fit&view=Fit`;
@@ -548,6 +540,14 @@ type ThreeDIconName =
   | "shield"
   | "target";
 
+const skillGroupThreeDIcons: readonly ThreeDIconName[] = [
+  "shield",
+  "target",
+  "lab",
+  "computer",
+  "chart",
+];
+
 const languageOptions = [
   { value: "vi", label: content.vi.languageName },
   { value: "en", label: content.en.languageName },
@@ -567,10 +567,28 @@ const portfolioCopy = {
       contact: "Liên hệ",
     },
     minimapLabel: "Bản đồ trang",
+    portfolioEdition: "PORTFOLIO · 2026",
     greeting: "Xin chào, tôi là",
     headline: "QA Engineer xây độ tin cậy cho sản phẩm số",
     heroLead:
       "Tôi kết hợp kiểm thử phần mềm, phân tích yêu cầu và AI-driven Testing để giúp sản phẩm LMS/eLearning phát hành ổn định hơn.",
+    heroIconCards: [
+      {
+        icon: "shield" as const,
+        title: "QA Gates",
+        copy: "Chặn output thiếu cơ sở trước khi đi vào execution.",
+      },
+      {
+        icon: "lab" as const,
+        title: "AI Testing Lab",
+        copy: "Tự động hóa testcase, execution và re-run verification.",
+      },
+      {
+        icon: "chart" as const,
+        title: "Quality Metrics",
+        copy: "Đo coverage, pass-rate và rủi ro theo từng vòng release.",
+      },
+    ],
     aboutEyebrow: "ABOUT ME",
     aboutTitle: "Một chút về tôi",
     aboutLead:
@@ -585,6 +603,7 @@ const portfolioCopy = {
     journeyDetailTitle: "Chi tiết kinh nghiệm",
     worksEyebrow: "FAVOURITE WORKS",
     worksTitle: "Sản phẩm đã tham gia",
+    workCaseLabel: "Case",
     viewProject: "Xem sản phẩm",
     aiEyebrow: "AI WORKFLOW",
     aiTitle: "QA Automation AI Agent",
@@ -724,10 +743,28 @@ const portfolioCopy = {
       contact: "Contact",
     },
     minimapLabel: "Page minimap",
+    portfolioEdition: "PORTFOLIO · 2026",
     greeting: "Hello, I am",
     headline: "QA Engineer building confidence for digital products",
     heroLead:
       "I combine software testing, requirement analysis, and AI-driven Testing to help LMS/eLearning products ship with greater stability.",
+    heroIconCards: [
+      {
+        icon: "shield" as const,
+        title: "QA Gates",
+        copy: "Block unsupported output before it reaches execution.",
+      },
+      {
+        icon: "lab" as const,
+        title: "AI Testing Lab",
+        copy: "Automate testcase generation, execution, and re-run verification.",
+      },
+      {
+        icon: "chart" as const,
+        title: "Quality Metrics",
+        copy: "Track coverage, pass-rate, and risk across release loops.",
+      },
+    ],
     aboutEyebrow: "ABOUT ME",
     aboutTitle: "A little about me",
     aboutLead:
@@ -742,6 +779,7 @@ const portfolioCopy = {
     journeyDetailTitle: "Detailed experience",
     worksEyebrow: "FAVOURITE WORKS",
     worksTitle: "Products I contributed to",
+    workCaseLabel: "Case",
     viewProject: "View project",
     aiEyebrow: "AI WORKFLOW",
     aiTitle: "QA Automation AI Agent",
@@ -1262,8 +1300,7 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
             <section className="portfolio-hero" id="resume" aria-labelledby="hero-title">
               <div className="portfolio-hero-copy">
                 <span className="portfolio-kicker">
-                  <ThreeDIcon name="target" />
-                  <span>{portfolio.greeting}</span>
+                  <span>{portfolio.portfolioEdition}</span>
                 </span>
                 <h1 id="hero-title">
                   <span>{t.name}</span>
@@ -1303,10 +1340,19 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
               </div>
 
               <div className="portfolio-hero-visual">
-                <ThreeDIcon className="floating-3d floating-3d-one" name="shield" />
-                <ThreeDIcon className="floating-3d floating-3d-two" name="bulb" />
                 <div className="portfolio-portrait-frame">
                   <img src="/manh-profile.png" alt={t.name} />
+                </div>
+                <div className="hero-icon-board" aria-label="QA focus areas">
+                  {portfolio.heroIconCards.map((card) => (
+                    <div className="hero-icon-card" key={card.title}>
+                      <ThreeDIcon name={card.icon} />
+                      <span>
+                        <strong>{card.title}</strong>
+                        <em>{card.copy}</em>
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </section>
@@ -1394,12 +1440,21 @@ export function CvPortfolio({ page = "resume" }: { page?: PortfolioPageKey }) {
               title={portfolio.worksTitle}
             />
             <div className="works-grid">
-              {productCards.map((product) => (
+              {productCards.map((product, index) => (
                 <article
                   className="portfolio-card work-card"
                   id={`work-${slugifyId(product.name)}`}
                   key={product.name}
                 >
+                  <div className="work-case-kicker">
+                    <span>
+                      {portfolio.workCaseLabel} / {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <ThreeDIcon
+                      className="work-context-icon"
+                      name={getProductContextIcon(product.name)}
+                    />
+                  </div>
                   <div className="work-card-media">
                     <img
                       alt=""
@@ -1624,6 +1679,17 @@ function getPortfolioProducts(t: Content, locale: Locale) {
       };
     });
   });
+}
+
+function getProductContextIcon(productName: string): ThreeDIconName {
+  const iconMap: Record<string, ThreeDIconName> = {
+    ActivePresenter: "computer",
+    "LMS Pro": "shield",
+    "Saola Animate": "bulb",
+    uPresenter: "lab",
+  };
+
+  return iconMap[productName] ?? "computer";
 }
 
 function getPageMinimapItems(
@@ -1988,9 +2054,10 @@ function SkillsGrid({ skillGroups }: { skillGroups: readonly SkillGroup[] }) {
           key={group.title}
         >
           <h3>
-            <span className="skill-icon" aria-hidden="true">
-              <Icon name={skillGroupIcons[index] ?? "layers"} />
-            </span>
+            <ThreeDIcon
+              className="skill-context-icon"
+              name={skillGroupThreeDIcons[index] ?? "target"}
+            />
             <span>{group.title}</span>
           </h3>
           <div className={isToolGroup(index) ? "tool-logo-list" : undefined}>

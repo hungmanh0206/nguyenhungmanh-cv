@@ -16,6 +16,10 @@ test("defines the bilingual CV content and external links", async () => {
   assert.match(page, /scroll-minimap/);
   assert.match(page, /scroll-minimap-bar/);
   assert.match(page, /journey-overview/);
+  assert.match(page, /PORTFOLIO · 2026/);
+  assert.match(page, /hero-icon-board/);
+  assert.match(page, /work-case-kicker/);
+  assert.match(page, /skill-context-icon/);
   assert.match(page, /preflight_gate/);
   assert.match(page, /Ambiguity Gate/);
   assert.match(page, /AI-led \/ Human-led/);
