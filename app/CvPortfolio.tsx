@@ -1911,13 +1911,6 @@ function ProductMonitor({
   return (
     <div className={`product-monitor is-${frame}`} aria-label={`${name} preview`}>
       <div className="product-monitor-frame">
-        {frame === "monitor" ? (
-          <div className="product-monitor-bar" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
-        ) : null}
         <div
           className="product-screen-slider"
           style={

@@ -8651,3 +8651,189 @@ body {
     min-height: 62px;
   }
 }
+
+/* Product page MacBook preview frame. */
+.product-monitor {
+  position: relative;
+  width: min(100%, 760px);
+  padding: clamp(10px, 2vw, 18px) 0 clamp(26px, 3vw, 40px);
+  perspective: 1200px;
+}
+
+.product-monitor.is-tablet {
+  width: min(100%, 760px) !important;
+  padding: clamp(10px, 2vw, 18px) 0 clamp(26px, 3vw, 40px) !important;
+}
+
+.product-monitor-frame {
+  position: relative;
+  z-index: 2;
+  width: min(92%, 700px);
+  margin-inline: auto;
+  overflow: hidden;
+  border: clamp(7px, 1.1vw, 11px) solid #17121d;
+  border-bottom-width: clamp(14px, 1.8vw, 20px);
+  border-radius: 20px 20px 9px 9px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 18%),
+    #111018;
+  box-shadow:
+    0 26px 55px rgba(37, 23, 47, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+    0 0 0 1px rgba(52, 42, 61, 0.26);
+}
+
+.product-monitor.is-tablet .product-monitor-frame {
+  width: min(92%, 700px) !important;
+  padding: 0 !important;
+  border: clamp(7px, 1.1vw, 11px) solid #17121d !important;
+  border-bottom-width: clamp(14px, 1.8vw, 20px) !important;
+  border-radius: 20px 20px 9px 9px !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 18%),
+    #111018 !important;
+  box-shadow:
+    0 26px 55px rgba(37, 23, 47, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+    0 0 0 1px rgba(52, 42, 61, 0.26) !important;
+}
+
+.product-monitor-frame::before {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  z-index: 4;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #27212e;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.product-monitor.is-tablet .product-monitor-frame::before {
+  top: 5px !important;
+  left: 50% !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: #27212e !important;
+  transform: translateX(-50%) !important;
+}
+
+.product-monitor-bar {
+  display: none;
+}
+
+.product-screen-slider,
+.product-monitor.is-tablet .product-screen-slider {
+  aspect-ratio: 16 / 10 !important;
+  border-radius: 10px 10px 3px 3px;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(209, 125, 254, 0.18), transparent 36%),
+    linear-gradient(135deg, #f8f4fb, #eee5f6 52%, #fbf7fd);
+}
+
+.product-screen-slide {
+  object-fit: cover;
+}
+
+.product-monitor-stand {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(104%, 790px);
+  height: clamp(18px, 2.4vw, 30px);
+  margin: -2px auto 0;
+  border-radius: 2px 2px 24px 24px;
+  background:
+    linear-gradient(90deg, transparent 0 17%, rgba(255, 255, 255, 0.28) 28%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.28) 72%, transparent 83%),
+    linear-gradient(180deg, #bbb5c2 0%, #7f7786 42%, #383241 100%);
+  box-shadow:
+    0 22px 34px rgba(51, 34, 61, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  clip-path: polygon(2% 0, 98% 0, 100% 46%, 95% 100%, 5% 100%, 0 46%);
+}
+
+.product-monitor.is-tablet .product-monitor-stand {
+  display: block !important;
+}
+
+.product-monitor-stand::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 19%;
+  height: 42%;
+  border-radius: 0 0 12px 12px;
+  background: rgba(61, 54, 69, 0.36);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.product-monitor::after {
+  position: absolute;
+  right: 8%;
+  bottom: 8px;
+  left: 8%;
+  display: block;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(50, 32, 61, 0.18);
+  content: "";
+  filter: blur(12px);
+}
+
+.product-monitor.is-tablet::after {
+  display: block !important;
+}
+
+@media (max-width: 760px) {
+  .product-monitor {
+    width: min(100%, 430px);
+    padding-bottom: 26px;
+  }
+
+  .product-monitor.is-tablet {
+    width: min(100%, 430px) !important;
+    padding-bottom: 26px !important;
+  }
+
+  .product-monitor-frame {
+    width: 93%;
+    border-width: 6px;
+    border-bottom-width: 12px;
+    border-radius: 16px 16px 7px 7px;
+  }
+
+  .product-monitor.is-tablet .product-monitor-frame {
+    width: 93% !important;
+    padding: 0 !important;
+    border-width: 6px !important;
+    border-bottom-width: 12px !important;
+    border-radius: 16px 16px 7px 7px !important;
+  }
+
+  .product-monitor-frame::before {
+    top: 4px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .product-monitor.is-tablet .product-monitor-frame::before {
+    top: 4px !important;
+    width: 4px !important;
+    height: 4px !important;
+  }
+
+  .product-monitor-stand {
+    width: 102%;
+    height: 18px;
+    border-radius: 2px 2px 18px 18px;
+  }
+
+  .product-monitor::after {
+    bottom: 7px;
+    height: 12px;
+  }
+}
